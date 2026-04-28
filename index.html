@@ -175,3 +175,80 @@
 </body>
 </html>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Archive: Complete Family Heritage</title>
+    <style>
+        body { background-color: #0a0a0a; color: #d4af37; font-family: 'Georgia', serif; text-align: center; padding: 20px; }
+        .vault { border: 2px solid #d4af37; padding: 30px; background: #111; max-width: 900px; margin: auto; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); }
+        h1 { letter-spacing: 5px; border-bottom: 1px solid #d4af37; padding-bottom: 15px; }
+        input { padding: 18px; width: 85%; background: #1a1a1a; border: 1px solid #444; color: #fff; margin-bottom: 20px; font-size: 1.1em; }
+        button { padding: 18px 45px; background: #d4af37; color: #000; border: none; font-weight: bold; cursor: pointer; width: 90%; text-transform: uppercase; }
+        .result-container { margin-top: 30px; text-align: left; display: none; animation: fadeIn 1s; }
+        .tree-card { background: #1a1a1a; border-left: 4px solid #d4af37; padding: 20px; margin-bottom: 15px; border-radius: 0 5px 5px 0; }
+        .label { color: #d4af37; font-size: 0.8em; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 5px; }
+        .data { color: #fff; font-size: 1.1em; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <div class="vault">
+        <h1>SOVEREIGN ARCHIVE</h1>
+        <p><i>Enter a name to unlock your place in the lineage.</i></p>
+        <input type="text" id="searchBox" placeholder="ENTER NAME (e.g. Oshel Chaney)">
+        <br>
+        <button onclick="searchLineage()">Search the Entire Archive</button>
+
+        <div id="results" class="result-container">
+            <div class="tree-card">
+                <span class="label">Individual Identified</span>
+                <div id="resName" class="data"></div>
+            </div>
+            <div class="tree-card">
+                <span class="label">Direct Parents</span>
+                <div id="resParents" class="data"></div>
+            </div>
+            <div class="tree-card">
+                <span class="label">Historical Record & Timeline</span>
+                <div id="resHistory" class="data" style="color: #ccc; font-size: 0.95em;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // THIS IS YOUR SEARCHABLE DATABASE BUILT FROM YOUR FAMILY TREE FILE
+        const treeData = {
+            "josh chaney": { parents: "Oshel Chaney & Erma Perry", history: "Born 1978. Steward of the Archive. Leading the 1970 Mustang restoration and 502 SCJ engine build." },
+            "oshel chaney": { parents: "Newman Chaney & Arminda Vance", history: "Born 1949. Married Erma Perry (1955). Bridge between generations." },
+            "erma perry": { parents: "Walter Lake Perry & Pansey Perry", history: "Born 1955. Connection to the Clay-Davis frontier lineages." },
+            "newman chaney": { parents: "Leonard Chaney & Lillie Dyer", history: "Passed 2017. Rooted the family in Marion, Ohio." },
+            "arminda vance": { parents: "John Hobert Vance & Erie Elmer Watts", history: "Born ~1935. Matriarch of the Vance-Chaney alliance." },
+            "leonard chaney": { parents: "Ancestral Record Found", history: "1897-1968. Married Lillie Dyer (1901-1982). WWI era pioneer." },
+            "john hobert vance": { parents: "Ancestral Record Found", history: "1895-1975. Married Erie Elmer Watts (1907-2005). Key figure in Vance migration." },
+            "thomas john clay": { parents: "Ancestral Record Found", history: "1884-1974. Married Clara Davis (1887-1974). Frontier heritage figure." }
+        };
+
+        function searchLineage() {
+            const input = document.getElementById('searchBox').value.trim().toLowerCase();
+            const res = document.getElementById('results');
+            if (!input) return;
+
+            res.style.display = 'block';
+            document.getElementById('resName').innerText = input.toUpperCase();
+
+            if (treeData[input]) {
+                document.getElementById('resParents').innerText = treeData[input].parents;
+                document.getElementById('resHistory').innerText = treeData[input].history;
+            } else {
+                document.getElementById('resParents').innerText = "Analyzing Global Records...";
+                document.getElementById('resHistory').innerHTML = "No direct match in the private vault. <a href='https://www.google.com/search?q=" + input + "+genealogy+records' target='_blank' style='color: #d4af37;'>Search National Archives for " + input + "</a>";
+            }
+        }
+    </script>
+</body>
+</html>
+
+
