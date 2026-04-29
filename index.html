@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE CHANEY ANCESTRY ARCHIVE</title>
+    <style>
+        body { 
+            background-color: #050505; 
+            color: #e0c097; 
+            font-family: 'Georgia', serif; 
+            margin: 0; 
+            padding: 0; 
+            text-align: center; 
+        }
+        
+        .heritage-banner {
+            width: 100%;
+            height: 600px;
+            background: linear-gradient(rgba(5,5,5,0.4), rgba(5,5,5,1)), url('1000043712.jpg'); 
+            background-size: cover;
+            background-position: center 20%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        h1 { color: #d4af37; text-transform: uppercase; letter-spacing: 8px; font-size: 3.5em; margin: 0; text-shadow: 3px 3px 15px #000; }
+        .tagline { color: #fff; font-style: italic; margin-top: 15px; letter-spacing: 3px; font-size: 1.3em; text-shadow: 2px 2px 10px #000; }
+
+        .search-container { 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            background: rgba(10,10,10,0.98); 
+            padding: 30px 0; 
+            border-bottom: 1px solid #333; 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            backdrop-filter: blur(10px); 
+        }
+        
+        input { 
+            padding: 20px 30px; 
+            width: 500px; 
+            background: #000; 
+            border: 1px solid #555; 
+            color: #fff; 
+            border-radius: 5px; 
+            font-size: 1.2em; 
+            outline: none; 
+            transition: 0.3s; 
+        }
+        input:focus { border-color: #d4af37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+        
+        button { 
+            padding: 20px 40px; 
+            background: #d4af37; 
+            color: #000; 
+            border: none; 
+            font-weight: bold; 
+            cursor: pointer; 
+            border-radius: 5px; 
+            font-size: 1.1em; 
+            text-transform: uppercase; 
+            transition: 0.3s; 
+        }
+        button:hover { background: #fff; box-shadow: 0 0 25px #d4af37; }
+        .doc-button { background: #222; color: #d4af37; border: 1px solid #d4af37; }
+        .doc-button:hover { background: #d4af37; color: #000; }
+
+        #output-area { width: 95%; max-width: 1500px; margin: 50px auto; text-align: left; }
+        .tree-node { background: #111; border-left: 12px solid #d4af37; padding: 45px; margin-bottom: 40px; border-radius: 0 15px 15px 0; box-shadow: 10px 10px 40px rgba(0,0,0,0.9); }
+        .name-banner { font-size: 2.6em; color: #fff; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 20px; }
+        .story-box { color: #ccc; font-size: 1.5em; line-height: 2.0; white-space: pre-wrap; }
+        .story-box strong { color: #d4af37; font-size: 1.1em; }
+
+        /* Document Display Styles */
+        #written-doc { display: none; width: 95%; max-width: 1200px; margin: 50px auto; text-align: left; background: #111; padding: 60px; border: 1px solid #333; box-shadow: 0 10px 40px #000; font-size: 1.3em; line-height: 1.8; color: #ccc; }
+        #written-doc h2 { color: #d4af37; text-align: center; border-bottom: 1px solid #444; padding-bottom: 15px; margin-bottom: 30px; letter-spacing: 3px; }
+        #written-doc h3 { color: #fff; margin-top: 40px; border-left: 5px solid #d4af37; padding-left: 15px; text-transform: uppercase; }
+        #written-doc p { margin-bottom: 20px; }
+        
+        /* Table Styles for the Archive */
+        table { width: 100%; border-collapse: collapse; margin: 30px 0; background: #0a0a0a; }
+        th, td { border: 1px solid #444; padding: 15px; text-align: left; }
+        th { background-color: #222; color: #d4af37; text-transform: uppercase; font-size: 0.9em; letter-spacing: 1px; }
+        td { color: #bbb; }
+    </style>
+</head>
+<body>
+    <div class="heritage-banner">
+        <h1>THE CHANEY ARCHIVE</h1>
+        <div class="tagline">Chaney • Vance • Perry • Clay • Watts • Dyer • Davis</div>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchIn" placeholder="Search the Database...">
+        <button onclick="searchVault()">Search</button>
+        <button class="doc-button" onclick="toggleDoc()">Read Full Archive Document</button>
+    </div>
+
+    <div id="output-area"></div>
+
+    <div id="written-doc">
+        <h2>THE CHANEY ANCESTRY ARCHIVE</h2>
+        <p style="text-align:center;"><em>A Comprehensive Family History of the Chaney, Vance, Perry, Clay, Watts, Dyer & Davis Lines</em></p>
+        <p style="text-align:center;">Compiled for Joshua Chaney | April 2026 | Marysville, Ohio</p>
+        <p style="text-align:center; font-style:italic; color:#888;">This document is a living archive — intended to grow as new records, oral histories, and documentary evidence are discovered and verified.</p>
+        
+        <h3>Section 1: Introduction & Purpose</h3>
+        <p>This document serves as the master genealogical archive of the Chaney family, consolidating all known family history information across multiple bloodlines into a single, comprehensive reference. It has been compiled for Joshua "Josh" Chaney of Marysville, Ohio, and is intended to function as the definitive record of the Chaney ancestry — encompassing the Chaney, Vance, Perry, Clay, Watts, Dyer, and Davis family lines.</p>
+        <p>The information contained herein has been drawn from verified genealogical records, family tree documentation, oral histories, and ongoing research. Where facts have been confirmed through documentary evidence, they are presented as established record. Where information remains unverified, incomplete, or subject to further investigation, it is clearly marked with "[To Be Confirmed]" or "[Date Unknown]" notations to preserve the integrity of the archive.</p>
+
+        <h3>Section 2: Four-Generation Pedigree Overview</h3>
+        <p>The following pedigree chart presents the direct ancestral line of Joshua "Josh" Chaney across four generations, from the subject through his great-grandparents. Each generation is presented as a distinct block with all verified dates and relationships.</p>
+        
+        <h4>Generation 1 — Subject</h4>
+        <table>
+            <tr><th>Name</th><th>Born</th><th>Died</th><th>Residence</th></tr>
+            <tr><td>Joshua "Josh" Chaney</td><td>c. 1978</td><td>—</td><td>Marysville, Ohio</td></tr>
+        </table>
+
+        <h4>Generation 2 — Parents</h4>
+        <table>
+            <tr><th>Relationship</th><th>Name</th><th>Born</th><th>Died</th></tr>
+            <tr><td>Father</td><td>Oshel Chaney</td><td>1949</td><td>[To Be Confirmed]</td></tr>
+            <tr><td>Mother</td><td>Erma Perry</td><td>1955</td><td>[To Be Confirmed]</td></tr>
+        </table>
+
+        <h4>Generation 3 — Grandparents</h4>
+        <table>
+            <tr><th>Relationship</th><th>Side</th><th>Name</th><th>Born</th><th>Died</th></tr>
+            <tr><td>Grandfather</td><td>Paternal</td><td>Newman Chaney</td><td>[To Be Confirmed]</td><td>2017</td></tr>
+            <tr><td>Grandmother</td><td>Paternal</td><td>Arminda Vance</td><td>c. 1935</td><td>[To Be Confirmed]</td></tr>
+            <tr><td>Grandfather</td><td>Maternal</td><td>Walter Lake Perry</td><td>[Date Unknown]</td><td>[Date Unknown]</td></tr>
+            <tr><td>Grandmother</td><td>Maternal</td><td>Pansey Perry</td><td>[To Be Confirmed]</td><td>1982</td></tr>
+        </table>
+
+        <h4>Generation 4 — Great-Grandparents</h4>
+        <table>
+            <tr><th>Family Line</th><th>Name</th><th>Born</th><th>Died</th><th>Age at Death</th></tr>
+            <tr><td>Chaney</td><td>Leonard Chaney</td><td>12 June 1895</td><td>17 September 1975</td><td>80</td></tr>
+            <tr><td>Vance</td><td>John Hobert Vance</td><td>22 March 1897</td><td>10 December 1968</td><td>71</td></tr>
+            <tr><td>Vance / Dyer</td><td>Lillie Lily Dyer</td><td>4 February 1901</td><td>November 1982</td><td>81</td></tr>
+            <tr><td>Perry</td><td>Ira Perry</td><td>16 October 1884</td><td>February 1974</td><td>89</td></tr>
+            <tr><td>Watts</td><td>Erie Elmer Watts</td><td>14 October 1907</td><td>15 January 2005</td><td>97</td></tr>
+            <tr><td>Clay / Davis</td><td>Clara Davis</td><td>9 November 1887</td><td>8 July 1974</td><td>86</td></tr>
+        </table>
+
+        <h3>Section 3: The Chaney Line</h3>
+        <p><strong>Leonard Chaney (1895–1975)</strong> was born on 12 June 1895 and died on 17 September 1975, at the age of eighty. He is the earliest confirmed ancestor bearing the Chaney surname in this family tree and represents the foundation of the documented patrilineal line.</p>
+        <p><strong>Newman Chaney (d. 2017)</strong> was the son of Leonard Chaney and the paternal grandfather of Joshua Chaney. He married Arminda Vance.</p>
+        <p><strong>Oshel Chaney (b. 1949)</strong> was born in 1949, the son of Newman Chaney and Arminda Vance. He married Erma Perry.</p>
+
+        <h3>Section 4: The Vance Line</h3>
+        <p><strong>John Hobert Vance (1897–1968)</strong> was born on 22 March 1897 and died on 10 December 1968. He married Lillie Lily Dyer.</p>
+        <p><strong>Lillie Lily Dyer (1901–1982)</strong> was born on 4 February 1901 and died in November 1982. Her maiden name connects the Vance line to the Dyer family.</p>
+        <p><strong>Arminda Vance (b. c. 1935)</strong> was the daughter of John Hobert Vance and Lillie Lily Dyer. Arminda married Newman Chaney.</p>
+
+        <h3>Section 5: The Perry Line</h3>
+        <p><strong>Ira Perry (1884–1974)</strong> was born on 16 October 1884 and died in February 1974. He is the great-grandfather of Joshua Chaney on the maternal side.</p>
+        <p><strong>Walter Lake Perry</strong> was the son of Ira and Sarah Perry. He married Pansey Perry.</p>
+        <p><strong>Erma Perry (b. 1955)</strong> was the daughter of Walter Lake Perry and Pansey Perry. She married Oshel Chaney.</p>
+
+        <h3>Section 6: The Clay Line & Yorkshire Clay Lineage</h3>
+        <p>Family research has explored a potential connection between the Thomas John Clay line and earlier Clay families traced to Yorkshire, England. If confirmed, this lineage places the Clay branch within the broader narrative of English migration to the American colonies during the seventeenth and eighteenth centuries.</p>
+
+        <h3>Section 9: Indigenous Heritage & Relations</h3>
+        <p>Family history discussions have included references to Indigenous heritage within the Perry and Vance lines. This includes the oral histories of a young Shawnee boy adopted into the Perry household, functioning as a "Bridge Family."</p>
+
+        <h3>Section 11: Amos Keener — Military Records</h3>
+        <p>Amos Keener has been identified as a figure connected to the Chaney family history. Military records related to Amos Keener are currently being researched, including branch of service, rank achieved, and theater of operations.</p>
+    </div>
+
+    <script>
+        function toggleDoc() {
+            const doc = document.getElementById('written-doc');
+            const out = document.getElementById('output-area');
+            if(doc.style.display === 'block') {
+                doc.style.display = 'none';
+            } else {
+                doc.style.display = 'block';
+                out.innerHTML = ''; 
+            }
+        }
+
+        async function searchVault() {
+            document.getElementById('written-doc').style.display = 'none'; 
+            const query = document.getElementById('searchIn').value.trim().toLowerCase();
+            const output = document.getElementById('output-area');
+            if (!query) return;
+            
+            output.innerHTML = "<p style='color:#d4af37; font-size:2em; text-align:center;'>Consulting the Master Database...</p>";
+            
+            try {
+                const response = await fetch('Gedcom.txt');
+                const text = await response.text();
+                const items = text.split('0 @');
+                let foundHtml = "";
+                
+                const searchTerms = query.split(' ').filter(term => term.length > 0);
+
+                items.forEach(item => {
+                    const itemLower = item.toLowerCase();
+                    const isMatch = searchTerms.every(term => itemLower.includes(term));
+                    
+                    if (isMatch && item.trim().length > 0) {
+                        const nameMatch = item.match(/1 NAME (.*)/);
+                        const name = nameMatch ? nameMatch[1].replace(/\//g, '') : "Archive Record";
+                        
+                        let notes = [...item.matchAll(/[1-3] NOTE (.*)/g)].map(m => m[1]).join('\n\n');
+                        notes = notes.replace(/(SUBJECT:|FATHER:|MOTHER:|THE NAVIGATOR:|PATERNAL GRANDFATHER:|PATERNAL GRANDMOTHER:|MATERNAL GRANDFATHER:|MATERNAL GRANDMOTHER:|GREAT-GRANDFATHER:|GREAT-GRANDMOTHER:|GREAT-GRANDPARENT FIGURE:|GREAT-GRANDMOTHER FIGURE:|FAMILY:|HISTORY:|YORKSHIRE LINEAGE:|THE WEAVER:|DOCUMENTATION:)/g, "<strong>$1</strong>");
+
+                        foundHtml += `<div class="tree-node">
+                                        <div class="name-banner">${name}</div>
+                                        <div class="story-box">${notes}</div>
+                                      </div>`;
+                    }
+                });
+                
+                output.innerHTML = foundHtml || `<p style='font-size:1.8em; text-align:center;'>No records found for "${query}".</p>`;
+            } catch (err) { 
+                output.innerHTML = "<p style='text-align:center; font-size:1.5em; color:red;'>Error connecting to Gedcom.txt.</p>"; 
+            }
+        }
+    </script>
+</body>
+</html>
