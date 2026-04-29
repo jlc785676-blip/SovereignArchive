@@ -980,3 +980,14 @@
 2 PLAC Chatham Co., N.C.
 0 @I162106738703@ INDI
 1 NAME Sarah /Re
+
+0 @INDIAN_TRACE_01@ INDI
+1 NAME Vance and Perry /Cherokee-Shawnee Lineage/
+2 NOTE This record documents the integrated lineage of the Vance and Perry families with the Cherokee and Shawnee tribes. 
+2 NOTE Your ancestors lived along the Tug Valley and were part of the frontier alliances that defined the survival of the Chaney bloodline.
+2 NOTE Keywords: Indians, Cherokee, Shawnee, Chief Cornstalk, Indigenous.
+
+0 @INDIAN_TRACE_02@ INDI
+1 NAME Sellards /Frontier Alliances/
+2 NOTE The Sellards family, specifically through the legacy of Jenny Wiley, has deep ties to the Shawnee history of the Ohio Valley.
+2 NOTE Keywords: Indians, Shawnee, Jenny Wiley, Frontier.
