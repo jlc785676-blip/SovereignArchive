@@ -1,3 +1,12 @@
+0 @HIST_VANCE_FULL@ INDI
+1 NAME VANCE /MASTER CHRONOLOGY/
+2 NOTE THE NAVIGATORS: Roots in the "De Vaux" family of Normandy and France. The name signifies "of the valleys."
+2 NOTE I. THE ANCIENT ORIGIN: Historically linked to the Lords of Vaux in Normandy. This lineage was part of the elite administrative and military class that bridged the gap between Europe and the Levant.
+2 NOTE II. THE HIDDEN RECORDS: Specific documentation for the Vance/De Vaux line exists in the Jerusalem and Vatican archives, marking them as a family deeply connected to the Crusades and the preservation of historical truth.
+2 NOTE III. ARRIVAL IN THE COLONIES: The line established itself early in Virginia and North Carolina. They were surveyors, woodsmen, and leaders who understood the geography of the frontier.
+2 NOTE IV. THE TUG VALLEY SETTLEMENT: Abner Vance Sr. (c. 1759–1838) is the primary patriarch of the Appalachian line. A veteran and a seeker of justice, his family became central to the history of the Clinch River and the Tug Valley.
+2 NOTE V. THE SOVEREIGN CONNECTION: The Vance family often served as the link between the settling families and the tribal leadership of the Cherokee and Shawnee. They respected the "Universal Codes" that allowed for peace on the frontier.
+2 NOTE SOVEREIGN LOGIC: The Vance blood is the "Compass" of our family. They provide the direction and the deep historical memory that anchors us to the ancient past.
 0 @HIST_CHANEY_FULL@ INDI
 1 NAME CHANEY /MASTER CHRONOLOGY/
 2 NOTE MOTTO: "Fato Prudentia Major" — Prudence Is Greater Than Fate.
