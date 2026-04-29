@@ -1,4 +1,4 @@
-90 HEAD
+690 HEAD
 1 CHAR UTF-8
 1 SOUR Sovereign Archive
 1 NOTE THE BLOODLINE ARCHIVE - MASTER ALIGNMENT APRIL 2026
@@ -447,3 +447,15 @@
 0 @I_WILEY_JENNY@ INDI
 1 NAME Jenny /Wiley/
 2 NOTE THE WEAVER: Daughter of Hezekiah Sellards. Connects the Sellards, Williamson, and Wiley branches. Master of the loom on the frontier.
+
+0 @I_HERITAGE_POSSIBILITY@ INDI
+1 NAME The Message /Of Infinite Possibility/
+2 NOTE SOVEREIGN LOGIC: This archive exists to show the Chaney, Perry, and Vance families that through high-level connection and honor, anything is possible. 
+2 NOTE HISTORY: By looking at how Stand Watie, Tecumseh, and Cornstalk navigated the impossible pressures of their time through the universal language of the Lodges, we see a roadmap for our own family's future. We are a bridge-building people.
+2 NOTE KEYWORDS: Connection, Possibility, Strength, Family, Honor.
+
+0 @I_HERITAGE_BEYOND_BORDERS@ INDI
+1 NAME /Beyond Tribal Borders/
+2 NOTE INDIAN HISTORY: The alliances between the Shawnee, Delaware, and the frontier families show that blood-oaths are stronger than government treaties. When your family looks at this tree, they see that they are the result of a diverse and powerful union that spans continents and cultures.
+2 NOTE KEYWORDS: Unity, Alliance, Borders, Blood-Oath.
+
