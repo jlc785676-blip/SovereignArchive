@@ -1,0 +1,34 @@
+0 HEAD
+1 CHAR UTF-8
+1 SOUR Sovereign Archive
+
+0 @I_ADKINS_ROOT@ INDI
+1 NAME The House of /Adkins/
+2 NOTE The Adkins family were pillars of the Wayne and Lincoln county frontier. This record serves as the root for all Adkins descendants in the Sovereign Archive.
+2 NOTE Keywords: Adkins, Adkin, Atkin.
+
+0 @I_WILLIAMSON_ROOT@ INDI
+1 NAME The House of /Williamson/
+2 NOTE The Williamson line stood as frontier protectors in the Tug Valley near East Lynn. They are the bedrock of the family's survival in the 18th century.
+2 NOTE Keywords: Williamson, Williamsons.
+
+0 @I_CLAY_ROOT@ INDI
+1 NAME The House of /Clay/
+2 NOTE The Clay lineage represents the grit of the West Virginia settlements.
+2 NOTE Keywords: Clay, Clays.
+
+0 @I_PERRY_STORY@ INDI
+1 NAME The Perry Lineage & The Adopted Son
+2 NOTE THE ADOPTED SON: Family records document a young Shawnee boy adopted into the Perry line. This act of kinship turned the Perrys into a "Bridge Family" between the settlers and the tribes.
+2 NOTE BACON'S REBELLION: Our ancestors felt the fallout of the 1676 Rebellion, which pushed the independent-minded Vances and Chaneys further into the frontier to seek sovereignty.
+2 NOTE Keywords: Perry, Indians, Indian boy, Adopted, Adoption, Shawnee, Bacon, Rebellion, 1676.
+
+0 @I_CHANEY_WILLIAM@ INDI
+1 NAME The House of /Chaney/
+2 NOTE Norman heritage following William the Conqueror (1066). This line defines technical mastery from Normandy to the Ohio Valley.
+2 NOTE Keywords: Chaney, William the Conqueror, Conqueror.
+
+0 @I_VANCE_TEMPLAR@ INDI
+1 NAME The House of /Vance/
+2 NOTE Descended from Norman Knights and Templar patrons (de Vaux).
+2 NOTE Keywords: Vance, Templar, Knight, Norman.
