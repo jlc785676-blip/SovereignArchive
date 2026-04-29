@@ -459,3 +459,12 @@
 2 NOTE INDIAN HISTORY: The alliances between the Shawnee, Delaware, and the frontier families show that blood-oaths are stronger than government treaties. When your family looks at this tree, they see that they are the result of a diverse and powerful union that spans continents and cultures.
 2 NOTE KEYWORDS: Unity, Alliance, Borders, Blood-Oath.
 
+
+0 @I_WILEY_JENNY@ INDI
+1 NAME Jenny /Wiley/ (Sellards)
+2 NOTE THE WEAVER: Daughter of Hezekiah Sellards. Her story is the heart of the Tug Valley.
+2 NOTE INDIAN HISTORY: Captured by the Shawnee in 1789, she survived a 10-month ordeal and a daring escape through the wilderness. She was a master of the loom and the true "Weaver" of the family's survival spirit.
+2 NOTE SOVEREIGN LOGIC: Her story proves that even in the face of the impossible, the bloodline finds a way home. She is a symbol of the unbreakable connection between the settlers and the spirit of the land.
+2 NOTE IMAGE_REF: 1000043784.jpg
+2 NOTE KEYWORDS: Jenny Wiley, Sellards, Frontier, Cabin, Weaver, Survival.
+
