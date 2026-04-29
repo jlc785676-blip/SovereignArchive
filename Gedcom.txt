@@ -1,3 +1,51 @@
+90 HEAD
+1 CHAR UTF-8
+1 SOUR Sovereign Archive
+1 NOTE THE BLOODLINE ARCHIVE - MASTER ALIGNMENT APRIL 2026
+
+0 @I_HERITAGE_WATIE@ INDI
+1 NAME Stand Watie /Degataga/
+2 NOTE INDIAN HISTORY: Born 1806, Died 1871. Cherokee leader and signer of the Treaty of New Echota.
+2 NOTE SOVEREIGN LOGIC: A high-ranking Freemason and the only Native American Brigadier General in the Confederate Army. He used the Masonic codes to unite the Cherokee under a banner of sovereignty.
+2 NOTE KEYWORDS: Stand Watie, Cherokee, Confederate, Freemason, Knights Templar, Trail of Tears.
+
+0 @I_HERITAGE_CORNSTALK@ INDI
+1 NAME Chief /Cornstalk/ (Hokolesqua)
+2 NOTE INDIAN HISTORY: The supreme Shawnee strategist who mentored Tecumseh. His death at Point Pleasant in 1774 signaled the start of a deep resistance.
+2 NOTE KEYWORDS: Cornstalk, Shawnee, Tecumseh, Hokolesqua, Point Pleasant.
+
+0 @I_HERITAGE_MASONIC@ INDI
+1 NAME Masonic /Frontier Lodge/
+2 NOTE HISTORY: The Freemasons and Knights Templar provided a silent network on the frontier. Leaders like Stand Watie and the Perry "Bridge Family" used these signs to protect bloodlines and maintain oaths.
+2 NOTE KEYWORDS: Freemason, Templar, Lodge, Secret Society, Blood Oath.
+
+0 @I_PERRY_ERMA@ INDI
+1 NAME Erma /Perry/
+2 NOTE PARENTS: Walter Lake Perry, Pansy Perry
+2 NOTE INDIAN HISTORY: Keeper of the Perry lineage. Her ancestors were Virginia Freemasons who protected the Shawnee and Nansemond bloodlines during the times of removal.
+
+0 @I_VANCE_JOHN@ INDI
+1 NAME John H /Vance/
+2 NOTE PARENTS: Lewis G Vance, Matilda Lowe
+2 NOTE INDIAN HISTORY: Traces to Cherokee oral history. The Vance records in the Vatican and Jerusalem contain the hidden history of these frontier movements.
+
+0 @I_WILLIAMSON_ADEN@ INDI
+1 NAME Aden /Williamson/
+2 NOTE INDIAN HISTORY: Frontier Defender in the Tug Valley. He stood as the line of protection during the era of Chief Cornstalk and the rising Shawnee confederacy.
+
+0 @I_SELLARDS_MARY@ INDI
+1 NAME Mary Jane /Sellards/
+2 NOTE PARENTS: Hezekiah Sellards, Jean Elizabeth Brevard
+2 NOTE HISTORY: Direct kin to Jenny Wiley. Her survival against Shawnee capture is a testament to the raw strength of this bloodline.
+
+0 @I_CLAY_THOMAS@ INDI
+1 NAME Thomas J /Clay/
+2 NOTE PARENTS: Marshall Clay, Silvena Eaves
+2 NOTE HISTORY: The Clay family were the surveyors and Masons who mapped the frontier as the Cherokee were being pushed west on the Trail of Tears.
+
+0 @I_ADKINS_SCOUTS@ INDI
+1 NAME /Wayne County Scouts/
+2 NOTE HISTORY: The Adkins family were the trackers and woodsmen who protected the Perry and Williamson settlements, using the same tracking signs recognized by tribal hunters.
 0 HEAD
 1 CHAR UTF-8
 1 SOUR Sovereign Archive
