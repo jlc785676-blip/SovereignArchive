@@ -468,3 +468,12 @@
 2 NOTE IMAGE_REF: 1000043784.jpg
 2 NOTE KEYWORDS: Jenny Wiley, Sellards, Frontier, Cabin, Weaver, Survival.
 
+0 @I_WILEY_JENNY@ INDI
+1 NAME Jenny /Wiley/ (Sellards)
+2 NOTE THE WEAVER: Daughter of Hezekiah Sellards.
+2 NOTE INDIAN HISTORY: Captured by the Shawnee in 1789.
+2 NOTE IMAGE_REF: JENNY_PORTRAIT
+2 NOTE HISTORY: Her final resting place in Kentucky.
+2 NOTE IMAGE_REF: JENNY_GRAVE
+2 NOTE KEYWORDS: Jenny Wiley, Sellards, Grave, Portrait, Survival.
+
