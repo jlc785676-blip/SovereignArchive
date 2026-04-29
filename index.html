@@ -213,3 +213,19 @@
     }
 </script>
 
+function formatHistory(text) {
+    // This connects the Portrait
+    let formatted = text.replace(/IMAGE_REF: JENNY_PORTRAIT/g, 
+        "<br><img src='Jenny%20Wiley.jpg' style='width:100%; max-width:500px; border: 3px solid #d4af37; border-radius: 8px;'><br>");
+
+    // This connects the Grave Site
+    formatted = formatted.replace(/IMAGE_REF: JENNY_GRAVE/g, 
+        "<br><img src='Jenny%20Wiley%20Grabe%20site.jpg' style='width:100%; max-width:500px; border: 3px solid #d4af37; border-radius: 8px;'><br>");
+
+    // Keep the Indian and Masonic highlights
+    formatted = formatted.replace(/(INDIAN HISTORY:.*?)(?=\n|$)/g, "<div class='indian-highlight'>$1</div>");
+    formatted = formatted.replace(/(SOVEREIGN LOGIC:.*?)(?=\n|$)/g, "<div class='masonic-highlight'>$1</div>");
+    
+    return formatted;
+}
+
