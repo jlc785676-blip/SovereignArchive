@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERMA PERRY ANCESTORS</title> 
+    <style>
+        body { background-color: #0a0a0a; color: #d4af37; font-family: 'Georgia', serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        .vault-container { border: 2px solid #d4af37; padding: 35px; background: #111; width: 95%; max-width: 900px; text-align: center; box-shadow: 0 0 60px rgba(212, 175, 55, 0.25); border-radius: 12px; }
+        h1 { letter-spacing: 4px; text-transform: uppercase; border-bottom: 1px solid #d4af37; padding-bottom: 15px; margin-bottom: 10px; font-size: 2em; }
+        .subtitle { color: #888; font-style: italic; font-size: 0.9em; margin-bottom: 30px; letter-spacing: 1px; }
+        .search-area { margin-bottom: 40px; display: flex; gap: 10px; justify-content: center; }
+        input { padding: 18px; width: 65%; background: #000; border: 1px solid #333; color: #fff; border-radius: 8px; font-size: 1.1em; outline: none; transition: 0.3s; }
+        input:focus { border-color: #d4af37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
+        button { padding: 18px 35px; background: #d4af37; color: #000; border: none; font-weight: bold; cursor: pointer; border-radius: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        #output { text-align: left; max-height: 700px; overflow-y: auto; padding-right: 20px; }
+        .history-section { border-bottom: 1px solid #222; padding: 25px 0; margin-bottom: 10px; }
+        .history-card { background: #161616; border: 1px solid #222; border-left: 5px solid #d4af37; padding: 25px; border-radius: 4px; margin-bottom: 20px; box-shadow: 5px 5px 15px rgba(0,0,0,0.5); }
+        .history-title { color: #fff; font-size: 1.5em; font-weight: bold; display: block; margin-bottom: 12px; font-variant: small-caps; }
+        .history-body { color: #ccc; font-size: 1.1em; line-height: 1.8; font-style: italic; white-space: pre-wrap; }
+        .no-result { text-align: center; color: #555; padding: 50px; }
+    </style>
+</head>
+<body>
+    <div class="vault-container">
+        <h1>ERMA PERRY ANCESTORS</h1> 
+        <div class="subtitle">The Chaney, Perry, & Vance Frontier Archive</div>
+        <div class="search-area">
+            <input type="text" id="nameIn" placeholder="Search Names, Tribes, or Chief Cornstalk...">
+            <button onclick="unlockHistory()">Unlock History</button>
+        </div>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        async function unlockHistory() {
+            const query = document.getElementById('nameIn').value.trim();
+            const output = document.getElementById('output');
+            if (!query) return;
+
+            output.innerHTML = "<p style='text-align:center; color:#d4af37;'>Consulting the Frontier Logs...</p>";
+
+            try {
+                const response = await fetch('Gedcom.txt');
+                const text = await response.text();
+                const records = text.split('0 @');
+                
+                let foundAnything = false;
+                let htmlContent = "";
+
+                records.forEach(record => {
+                    if (record.toLowerCase().includes(query.toLowerCase())) {
+                        foundAnything = true;
+                        const name = record.match(/1 NAME (.*)/)?.[1]?.replace(/\//g, '') || "Historical Account";
+                        // This pulls every Note line in the record
+                        const notes = [...record.matchAll(/[1-2] NOTE (.*)/g)].map(m => m[1]).join('\n\n');
+                        
+                        htmlContent += `
+                            <div class="history-card">
+                                <span class="history-title">${name}</span>
+                                <div class="history-body">${notes ? notes : "Details located in master file archive."}</div>
+                            </div>`;
+                    }
+                });
+
+                output.innerHTML = foundAnything ? htmlContent : `<div class="no-result">No specific history found for "${query}". Try "Indian" or "Vance".</div>`;
+            } catch (err) {
+                output.innerHTML = "<p style='text-align:center;'>Error: Could not access Gedcom.txt.</p>";
+            }
+        }
+    </script>
+</body>
+</html>
