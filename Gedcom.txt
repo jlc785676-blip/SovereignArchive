@@ -32,3 +32,61 @@
 1 NAME The House of /Vance/
 2 NOTE Descended from Norman Knights and Templar patrons (de Vaux).
 2 NOTE Keywords: Vance, Templar, Knight, Norman.
+
+0 HEAD
+1 CHAR UTF-8
+1 SOUR Sovereign Archive
+1 NOTE MASTER ANCESTRY FILE: RECONSTRUCTED APRIL 2026
+
+0 @I_PERRY_ROOT@ INDI
+1 NAME The House of /Perry/
+2 NOTE VIRGINIA FREEMASONS: The Perry family in Virginia were known members of the craft, utilizing their networks to protect frontier settlements. They were the primary record-keepers of the "Hidden Lineages," documenting the cross-cultural unions that the crown often ignored.
+2 NOTE THE ADOPTED SON: This branch formally recognizes the young Shawnee boy adopted into the Perry household. He was raised with the full rights of a Perry, cementing a blood-oath between the family and the local tribes.
+2 NOTE Keywords: Perry, Perrys, Freemason, Freemasons, Mason, Masonic, Adopted, Indian Boy, Shawnee.
+
+0 @I_JENNY_WILEY_MASTER@ INDI
+1 NAME /Jenny Wiley/ (Sellards-Williamson)
+2 NOTE FAMILY ORIGINS: Daughter of Hezekiah Sellards. Her lineage connects the Sellards, Williamsons, and Wileys into a singular frontier power. 
+2 NOTE THE WEAVER: Recognized for her masterful weaving, a skill that provided both clothing and trade-goods during her captivity and later life in the Tug Valley.
+2 NOTE Keywords: Jenny Wiley, Wiley, Sellards, Williamson, Hezekiah, Weaver, Weaving.
+
+0 @I_BACON_REBELLION@ INDI
+1 NAME /Bacon's Rebellion/ (1676)
+2 NOTE FRONTIER SOVEREIGNTY: The Perry and Vance ancestors were central to the movement of "Free Men" against the Tidewater elite. This rebellion was the catalyst for our families moving deep into the Appalachian interior to live by their own laws.
+2 NOTE Keywords: Bacon, Rebellion, 1676, Frontier, Rebel, Sovereign.
+
+0 @I_CHANEY_ROOT@ INDI
+1 NAME The House of /Chaney/
+2 NOTE NORMAN LINEAGE: Directly descended from the knights of William the Conqueror (1066). The Chaney name (originally Quesnay) represents the technical and military backbone of the family.
+2 NOTE Keywords: Chaney, Chaneys, William the Conqueror, Norman, Normandy.
+
+0 @I_VANCE_ROOT@ INDI
+1 NAME The House of /Vance/
+2 NOTE TEMPLAR GUARDIANS: Descended from the 'de Vaux' line. The Vance family brought the esoteric knowledge of the Knights Templar from the Holy Land to the Virginia frontier, often working in tandem with the Masonic Perrys.
+2 NOTE Keywords: Vance, Vances, Templar, Knights Templar, Jerusalem, Vatican.
+
+0 @I_ADKINS_ROOT@ INDI
+1 NAME The House of /Adkins/
+2 NOTE FRONTIER PILLARS: Rooted in Wayne and Lincoln Counties, the Adkins line provided the scouts and woodsmen necessary for the Perry and Williamson settlements to survive.
+2 NOTE Keywords: Adkins, Adkin, Atkin.
+
+0 @I_WILLIAMSON_ROOT@ INDI
+1 NAME The House of /Williamson/
+2 NOTE THE TUG VALLEY LINE: Closely intertwined with the Wiley and Perry families, the Williamsons were the primary landholders and defenders of the East Lynn region.
+2 NOTE Keywords: Williamson, Williamsons.
+
+0 @I_CLAY_ROOT@ INDI
+1 NAME The House of /Clay/
+2 NOTE FRONTIER GRIT: A lineage of surveyors and soldiers who mapped the path for the family's expansion into the Ohio Valley.
+2 NOTE Keywords: Clay, Clays.
+
+0 @I_INDIAN_ALLIANCE@ INDI
+1 NAME The /Nansemond & Mattaponi/ Alliances
+2 NOTE HIDDEN HISTORY: Documented by the Perry family records, these alliances were the secret to the family’s survival. While other settlements faced war, these lines thrived through mutual respect and shared kinship.
+2 NOTE Keywords: Indian, Indians, Nansemond, Mattaponi, Tribal, Cherokee, Shawnee.
+
+0 @I_CORNSTALK_RECORDS@ INDI
+1 NAME Chief /Cornstalk/ & The 1777 Betrayal
+2 NOTE THE WARNING: This record honors the Shawnee leader whose death at Fort Randolph changed the frontier forever, forcing our ancestors to rely on their private Masonic and Tribal networks for safety.
+2 NOTE Keywords: Cornstalk, Cornstock, Fort Randolph, 1777.
+
