@@ -1,0 +1,118 @@
+0 HEAD
+1 CHAR UTF-8
+1 SOUR Sovereign Archive
+1 NOTE THE CHANEY ANCESTRY ARCHIVE - MASTER ALIGNMENT APRIL 2026
+
+0 @I_PERRY_ERMA@ INDI
+1 NAME Erma /Perry/
+2 NOTE GENERATION 2 (MOTHER): Born 1955. 
+2 NOTE PARENTS: Walter Lake Perry, Pansy Perry
+2 NOTE FAMILY: Wife to Oshel Chaney. Mother to Joshua Chaney and Alisa Stevens.
+2 NOTE HISTORY: Her lineage carries the records of the Virginia Freemasons and the kinship bonds with the Indigenous tribes of the Ohio Valley.
+2 NOTE Keywords: Erma, Irma, Perry.
+
+0 @I_CHANEY_JOSHUA@ INDI
+1 NAME Joshua Josh /Chaney/
+2 NOTE GENERATION 1 (SUBJECT): Born c. 1978. Residence: Marysville, Ohio.
+2 NOTE PARENTS: Oshel Chaney, Erma Perry
+2 NOTE FAMILY: The current generation of the Chaney line and the keeper of this archive. Brother to Alisa Stevens.
+2 NOTE Keywords: Joshua, Josh, Chaney, Marysville.
+
+0 @I_STEVENS_ALISA@ INDI
+1 NAME Alisa /Stevens/
+2 NOTE GENERATION 1 (SISTER): 
+2 NOTE PARENTS: Oshel Chaney, Erma Perry
+2 NOTE FAMILY: Sister to Joshua Chaney. Carries the heritage of the Chaney, Vance, Perry, Clay, Watts, Dyer, and Davis family lines.
+2 NOTE Keywords: Alisa, Stevens, Chaney.
+
+0 @I_CHANEY_OSHEL@ INDI
+1 NAME Oshel /Chaney/
+2 NOTE GENERATION 2 (FATHER): Born 1949. 
+2 NOTE PARENTS: Newman Chaney, Arminda Vance
+2 NOTE FAMILY: Husband to Erma Perry. Father to Joshua Chaney and Alisa Stevens.
+2 NOTE Keywords: Oshel, Chaney, Ocean.
+
+0 @I_KEENER_AMOS@ INDI
+1 NAME Amos /Keener/
+2 NOTE THE NAVIGATOR: Stepfather to Joshua Chaney and Alisa Stevens. Husband to Erma Perry.
+2 NOTE MILITARY RECORDS: Active research pending regarding his branch of service, dates of service, rank achieved, and theater of operations. 
+2 NOTE Keywords: Amos, Keener, Navigator, Military, Veteran.
+
+0 @I_CHANEY_NEWMAN@ INDI
+1 NAME Newman /Chaney/
+2 NOTE GENERATION 3 (PATERNAL GRANDFATHER): Died 2017. 
+2 NOTE PARENTS: Leonard Chaney
+2 NOTE FAMILY: Husband to Arminda Vance.
+2 NOTE Keywords: Newman, Chaney.
+
+0 @I_VANCE_ARMINDA@ INDI
+1 NAME Arminda /Vance/
+2 NOTE GENERATION 3 (PATERNAL GRANDMOTHER): Born c. 1935.
+2 NOTE PARENTS: John Hobert Vance, Lillie Lily Dyer
+2 NOTE FAMILY: Wife to Newman Chaney.
+2 NOTE Keywords: Arminda, Vance.
+
+0 @I_PERRY_WALTER@ INDI
+1 NAME Walter Lake /Perry/
+2 NOTE GENERATION 3 (MATERNAL GRANDFATHER): 
+2 NOTE PARENTS: Ira Perry, Sarah Perry
+2 NOTE FAMILY: Husband to Pansy Perry.
+2 NOTE Keywords: Walter, Lake, Perry.
+
+0 @I_PERRY_PANSY@ INDI
+1 NAME Pansy /Perry/
+2 NOTE GENERATION 3 (MATERNAL GRANDMOTHER): Died 1982. 
+2 NOTE FAMILY: Wife of Walter Lake Perry. Parentage is under active research to determine connections to the Watts or Clay lines.
+2 NOTE Keywords: Pansy, Perry.
+
+0 @I_CHANEY_LEONARD@ INDI
+1 NAME Leonard /Chaney/
+2 NOTE GENERATION 4 (GREAT-GRANDFATHER): Born 12 June 1895. Died 17 September 1975 (Age 80).
+2 NOTE HISTORY: The earliest confirmed ancestor bearing the Chaney surname in this family tree. His life spanned a period of extraordinary change, encompassing both World Wars and the Great Depression.
+2 NOTE Keywords: Leonard, Chaney.
+
+0 @I_VANCE_JOHN@ INDI
+1 NAME John Hobert /Vance/
+2 NOTE GENERATION 4 (GREAT-GRANDFATHER): Born 22 March 1897. Died 10 December 1968 (Age 71).
+2 NOTE FAMILY: Husband to Lillie Lily Dyer. Father of Arminda Vance.
+2 NOTE Keywords: John, Hobert, Vance.
+
+0 @I_DYER_LILLIE@ INDI
+1 NAME Lillie Lily /Dyer/
+2 NOTE GENERATION 4 (GREAT-GRANDMOTHER): Born 4 February 1901. Died November 1982 (Age 81).
+2 NOTE FAMILY: Brings the Dyer surname into the Vance line. Wife to John Hobert Vance.
+2 NOTE Keywords: Lillie, Lily, Dyer.
+
+0 @I_PERRY_IRA@ INDI
+1 NAME Ira /Perry/
+2 NOTE GENERATION 4 (GREAT-GRANDFATHER): Born 16 October 1884. Died February 1974 (Age 89).
+2 NOTE HISTORY: His life spanned nearly nine decades, from the post-Reconstruction era through the early 1970s.
+2 NOTE Keywords: Ira, Perry.
+
+0 @I_PERRY_SARAH@ INDI
+1 NAME Sarah /Perry/
+2 NOTE GENERATION 4 (GREAT-GRANDMOTHER): Wife of Ira Perry. Discovering her maiden name is a high-priority research objective.
+2 NOTE Keywords: Sarah, Perry.
+
+0 @I_WATTS_ERIE@ INDI
+1 NAME Erie Elmer /Watts/
+2 NOTE GENERATION 4 (GREAT-GRANDPARENT FIGURE): Born 14 October 1907. Died 15 January 2005 (Age 97).
+2 NOTE HISTORY: Lived to see the dawn of the twenty-first century. 
+2 NOTE Keywords: Erie, Elmer, Watts.
+
+0 @I_CLAY_THOMAS@ INDI
+1 NAME Thomas John /Clay/
+2 NOTE GENERATION 4 (GREAT-GRANDPARENT FIGURE): Husband to Clara Davis.
+2 NOTE YORKSHIRE LINEAGE: Family research explores a potential connection between the Thomas John Clay line and earlier Clay families traced to Yorkshire, England.
+2 NOTE Keywords: Thomas, John, Clay, Yorkshire.
+
+0 @I_DAVIS_CLARA@ INDI
+1 NAME Clara /Davis/
+2 NOTE GENERATION 4 (GREAT-GRANDMOTHER FIGURE): Born 9 November 1887. Died 8 July 1974 (Age 86).
+2 NOTE FAMILY: Wife of Thomas John Clay. Brings the Davis surname into the tree.
+2 NOTE Keywords: Clara, Davis.
+
+0 @I_WILEY_JENNY@ INDI
+1 NAME /Jenny Wiley/ (Sellards)
+2 NOTE THE WEAVER: Daughter of Hezekiah Sellards. Connects the Sellards, Williamson, and Wiley branches. Master of the loom on the frontier.
+2 NOTE Keywords: Jenny, Wiley, Sellards, Williamson, Hezekiah, Weaver.
