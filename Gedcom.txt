@@ -1,4 +1,4 @@
-690 HEAD
+3690 HEAD
 1 CHAR UTF-8
 1 SOUR Sovereign Archive
 1 NOTE THE BLOODLINE ARCHIVE - MASTER ALIGNMENT APRIL 2026
@@ -486,4 +486,14 @@
 2 NOTE HISTORY: She later reunited with Thomas Wiley and settled in Johnson County, Kentucky. Her final resting place is a monument to her courage.
 2 NOTE IMAGE_REF: JENNY_GRAVE
 2 NOTE KEYWORDS: Jenny Wiley, Sellards, Capture, Escape, Survival, Grave.
+
+0 @HIST_CHANEY_MASTER@ INDI
+1 NAME CHENEY /MASTER CHRONOLOGY/
+2 NOTE MOTTO: "Fato Prudentia Major" — Prudence Is Greater Than Fate.
+2 NOTE I. VIKING ORIGINS (835–1066): Lineage traces to Rollo "The Walker," first ruler of Normandy. 
+2 NOTE II. NORMAN ORIGIN (1040–1086): Surname derives from the fief of Le Quesnay (Oak Grove). Ralph I de Chesney arrived with William the Conqueror in 1066.
+2 NOTE III. CHESNEY MAGNATES (1087–1200): Family rose as Bishops of Lincoln and Sheriffs of Norfolk.
+2 NOTE IV. LORDS OF SHURLAND (1380–1558): Sir John Cheney VI and Baron John Cheyne (the 6'8" "Vigorous Knight") established the family seat at Shurland Hall, Isle of Sheppey.
+2 NOTE V. AMERICAN FOUNDERS (1603–1667): John Cheney (arrived 1635, ship 'Defence') and William Cheney (Roxbury, 1639) established the New World branches.
+2 NOTE SOVEREIGN LOGIC: This record documents 1,200 years of unbroken endurance, from the Norse longships to the American frontier.
 
