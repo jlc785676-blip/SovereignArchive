@@ -229,3 +229,20 @@ function formatHistory(text) {
     return formatted;
 }
 
+function formatHistory(text) {
+    // Portait - fixed for the new filename
+    let formatted = text.replace(/IMAGE_REF: JENNY_PORTRAIT/g, 
+        "<div style='text-align:center;'><img src='Jenny%20Wiley.jpg' style='width:95%; max-width:500px; border: 3px solid #d4af37; border-radius: 8px; margin: 10px 0;'></div>");
+
+    // Grave Site - fixed for the new filename
+    formatted = formatted.replace(/IMAGE_REF: JENNY_GRAVE/g, 
+        "<div style='text-align:center;'><img src='Jenny%20Wiley%20Grabe%20site.jpg' style='width:95%; max-width:500px; border: 3px solid #d4af37; border-radius: 8px; margin: 10px 0;'></div>");
+
+    // Highlight the special Indian and Sovereign sections
+    formatted = formatted.replace(/(INDIAN HISTORY:.*?)(?=\n|$)/g, "<div class='indian-highlight'>$1</div>");
+    formatted = formatted.replace(/(SOVEREIGN LOGIC:.*?)(?=\n|$)/g, "<div class='masonic-highlight'>$1</div>");
+    
+    return formatted;
+}
+
+
