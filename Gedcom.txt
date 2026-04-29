@@ -1,4 +1,13 @@
 0 @HIST_CHANEY_FULL@ INDI
+1 NAME CHANEY /MASTER CHRONOLOGY/
+2 NOTE MOTTO: "Fato Prudentia Major" — Prudence Is Greater Than Fate.
+2 NOTE I. THE VIKING ORIGIN (c. 835–1066): Rollo "The Walker" founded Normandy. The line flows through William Longsword and Richard the Fearless to William the Conqueror (1066).
+2 NOTE II. THE NORMAN ORIGIN (c. 1040–1086): Name derived from Le Quesnay (Oak Grove). Ralph I de Chesney arrived with William the Bastard and is recorded in the Domesday Book (1086).
+2 NOTE III. THE CHESNEY MAGNATES (c. 1087–1200): Roger de Chesney (fl. 1087) and Robert de Chesney (Bishop of Lincoln, 1148). They held Oxford Castle and served as Royal Justices.
+2 NOTE IV. LORDS OF SHURLAND (c. 1380–1558): Sir John Cheney VI and Baron John Cheyne (the "Vigorous Knight" bodyguard to Henry VII). Sir Thomas Cheney served as Lord Warden of the Cinque Ports.
+2 NOTE V. THE AMERICAN FOUNDERS (c. 1603–1667): John Cheney (arrived 1635, ship Defence) and William Cheney (Roxbury, 1639). Ancestors of the Daniel Cheney line and the silk manufacturing dynasty.
+2 NOTE VI. SYMBOLIC HERITAGE: The Bull's Head emblem from the Battle of Hastings remains the heraldic mark of the lineage's strength.
+0 @HIST_CHANEY_FULL@ INDI
 1 NAME CHENEY /MASTER CHRONOLOGY/
 2 NOTE MOTTO: "Fato Prudentia Major" — Prudence Is Greater Than Fate.
 2 NOTE I. THE VIKING ORIGIN (c. 835–1066): Rollo "The Walker" founded Normandy. The line flows through William Longsword and Richard the Fearless to William the Conqueror (1066).
