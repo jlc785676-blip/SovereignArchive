@@ -54,3 +54,11 @@
 2 NOTE CHANEY: Rooted in medieval England, the Chaney name defines a legacy of artistic and technical mastery, notably shared by the legendary actor Lon Chaney.
 2 NOTE VANCE: A high-born Norman name that evolved through the grit of the American frontier pioneer.
 2 NOTE Keywords: Chaney, Vance, Lon Chaney, Perry, Williamson, Sellards, Heritage.
+
+0 @HIST_CORNSTALK_MASTER@ INDI
+1 NAME The Frontier Legacy: Chief Cornstalk & The Shawnee
+2 NOTE THE BETRAYAL AT FORT RANDOLPH: In 1777, the Shawnee leader Chief Cornstalk was murdered at Fort Randolph while on a mission of peace. This single event ignited the frontier wars that defined the lives of the early Vance, Perry, and Clay families.
+2 NOTE FRONTIER SURVIVAL: Following the death of Cornstalk, your Vance ancestors had to rely on their Norman warrior-grit to navigate the "Dark and Bloody Ground" of the Appalachian frontier.
+2 NOTE THE PERRY ALLIANCE: Unlike many settlers, the Perry line maintained trust and trade alliances with the Nansemond and Mattaponi tribes. These connections were the "Frontier Shield" that helped your family survive the Shawnee-settler conflicts in the Tug Valley.
+2 NOTE THE SELLARDS CONNECTION: The legacy of Jenny Wiley’s capture and escape remains the ultimate testament to the resilience of the Sellards and Perry lines during this volatile era of the Ohio Valley.
+2 NOTE Keywords: Cornstalk, Cornstock, Shawnee, Indian, Indians, Native, Tribe, Tribes, Fort Randolph, Frontier, Wiley, Sellards, Vance, Perry, Clay, Indigenous.
