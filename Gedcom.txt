@@ -1,6 +1,16 @@
 0 @HIST_CHANEY_FULL@ INDI
 1 NAME CHANEY /MASTER CHRONOLOGY/
 2 NOTE MOTTO: "Fato Prudentia Major" — Prudence Is Greater Than Fate.
+2 NOTE I. THE VIKING ORIGIN (c. 835–1066): Traces to Rollo "The Walker," first ruler of Normandy. Lineage follows William Longsword, Richard the Fearless, Richard the Good, and Robert the Magnificent to William the Conqueror.
+2 NOTE II. THE NORMAN ORIGIN (c. 1040–1086): Name derived from the oak grove of Le Quesnay. Ralph I de Chesney arrived with William the Conqueror and is recorded in the Domesday Book (1086) in Norfolk.
+2 NOTE III. THE CHESNEY MAGNATES (c. 1087–1200): Roger de Chesney (fl. 1087), William de Chesney (Magnate of Oxford), and Robert de Chesney (Bishop of Lincoln, 1148). They held Oxford Castle and served as Royal Justices.
+2 NOTE IV. LORDS OF SHURLAND (c. 1380–1558): Sir John Cheney VI and Baron John Cheyne (the "Vigorous Knight" 6'8" bodyguard to Henry VII). Sir Thomas Cheney served as Lord Warden of the Cinque Ports and Knight of the Garter.
+2 NOTE V. THE AMERICAN FOUNDERS (c. 1603–1667): John Cheney (arrived 1635, ship Defence) and William Cheney (Roxbury, 1639). Ancestors of the Daniel Cheney line and the silk manufacturing dynasty.
+2 NOTE VI. HERALDRY & SYMBOLS: Arms - Azure, six lions rampant Argent, a canton Ermine. The Bull's Head emblem signifies the protection used at the Battle of Hastings (1066).
+2 NOTE VII. MASTER TIMELINE: 911 (Treaty of Saint-Clair-sur-Epte), 1066 (Battle of Hastings), 1148 (Robert consecrated Bishop), 1485 (Bosworth Field), 1635 (Migration to America).
+0 @HIST_CHANEY_FULL@ INDI
+1 NAME CHANEY /MASTER CHRONOLOGY/
+2 NOTE MOTTO: "Fato Prudentia Major" — Prudence Is Greater Than Fate.
 2 NOTE I. THE VIKING ORIGIN (c. 835–1066): Rollo "The Walker" founded Normandy. The line flows through William Longsword and Richard the Fearless to William the Conqueror (1066).
 2 NOTE II. THE NORMAN ORIGIN (c. 1040–1086): Name derived from Le Quesnay (Oak Grove). Ralph I de Chesney arrived with William the Bastard and is recorded in the Domesday Book (1086).
 2 NOTE III. THE CHESNEY MAGNATES (c. 1087–1200): Roger de Chesney (fl. 1087) and Robert de Chesney (Bishop of Lincoln, 1148). They held Oxford Castle and served as Royal Justices.
