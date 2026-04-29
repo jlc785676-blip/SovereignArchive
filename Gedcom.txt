@@ -1,4 +1,4 @@
-0 HEAD
+20 HEAD
 1 CHAR UTF-8
 1 SOUR Sovereign Archive
 
@@ -29,3 +29,10 @@
 2 NOTE CHIEF CORNSTALK: The betrayal at Fort Randolph (1777) ignited the frontier wars. 
 2 NOTE JENNY WILEY: The resilience of the Sellards and Perry lines is immortalized in her escape from the Shawnee and Cherokee.
 2 NOTE Keywords: Indians, Indian, Cherokee, Shawnee, Cornstalk, Cornstock, Wiley, Tribes, Indigenous.
+
+
+0 @I_PERRY_STORY@ INDI
+1 NAME The Perry Lineage & The Adopted Son
+2 NOTE THE ADOPTED SON: Family records document a young Shawnee boy adopted into the Perry line. This act of kinship turned the Perrys into a "Bridge Family" between the settlers and the tribes.
+2 NOTE BACON'S REBELLION: Our ancestors felt the fallout of the 1676 Rebellion, which pushed the independent-minded Vances and Chaneys further into the frontier to seek sovereignty.
+2 NOTE Keywords: Perry, Indians, Indian boy, Adopted, Adoption, Shawnee, Bacon, Rebellion, 1676.
