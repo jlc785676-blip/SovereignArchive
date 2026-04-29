@@ -141,3 +141,31 @@
     </script>
 </body>
 </html>
+function displaySovereignStory(surname) {
+    // This looks for the exact tag we just added to the Gedcom
+    let targetID = "HIST_" + surname + "_FULL";
+    
+    // Logic to find the record in our loaded database
+    const record = gedcomData.find(r => r.rawText.includes("@" + targetID + "@"));
+    
+    const vault = document.getElementById('full-history-vault');
+    const body = document.getElementById('vault-body');
+    const title = document.getElementById('vault-title');
+    
+    if (record) {
+        title.innerText = surname + " MASTER CHRONOLOGY: VIKING TO FOUNDER";
+        body.innerHTML = formatHistory(record.notes);
+        vault.style.display = 'block';
+        vault.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        // Fallback search if the ID match misses
+        const fallback = gedcomData.find(r => r.name.includes(surname) && r.notes.includes("MASTER"));
+        if (fallback) {
+            title.innerText = surname + " MASTER CHRONOLOGY";
+            body.innerHTML = formatHistory(fallback.notes);
+            vault.style.display = 'block';
+        } else {
+            alert("Archive indexing in progress. Please refresh the page in 60 seconds.");
+        }
+    }
+}
