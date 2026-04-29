@@ -215,3 +215,42 @@ function displaySovereignStory(surname) {
     }
 </script>
 
+<script>
+    function displaySovereignStory(surname) {
+        // We look for the specific "FULL" tag at the bottom of your Gedcom
+        let targetID = "HIST_" + surname + "_FULL";
+        const record = gedcomData.find(r => r.rawText.includes("@" + targetID + "@"));
+        
+        const vault = document.getElementById('full-history-vault');
+        const body = document.getElementById('vault-body');
+        const title = document.getElementById('vault-title');
+        
+        if (record) {
+            title.innerText = surname + " MASTER CHRONOLOGY";
+            // formatHistory handles the bolding and the Indian history highlights
+            body.innerHTML = formatHistory(record.notes);
+            vault.style.display = 'block';
+            vault.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            alert("The " + surname + " record is currently being indexed. Please refresh.");
+        }
+    }
+
+    function formatHistory(text) {
+        // Keeps the Jenny Wiley images working
+        let formatted = text.replace(/IMAGE_REF: JENNY_PORTRAIT/g, "<div style='text-align:center;'><img src='Jenny%20Wiley.jpg' style='width:95%; max-width:500px; border: 3px solid #d4af37; border-radius: 8px; margin: 10px 0;'></div>");
+        formatted = formatted.replace(/IMAGE_REF: JENNY_GRAVE/g, "<div style='text-align:center;'><img src='Jenny%20Wiley%20Grabe%20site.jpg' style='width:95%; max-width:500px; border: 3px solid #d4af37; border-radius: 8px; margin: 10px 0;'></div>");
+        
+        // Highlights the Indian and Sovereign details
+        formatted = formatted.replace(/(INDIAN HISTORY:.*?)(?=\n|$)/g, "<div class='indian-highlight'>$1</div>");
+        formatted = formatted.replace(/(SOVEREIGN LOGIC:.*?)(?=\n|$)/g, "<div class='masonic-highlight'>$1</div>");
+        
+        // Bolds the major sections of your master files
+        const highlightRegex = /(SECTION.*?|GENERATION.*?|I\.|II\.|III\.|IV\.|V\.|VI\.|VII\.|VIII\.|MOTTO:|ORIGIN:|HISTORY:)/g;
+        formatted = formatted.replace(highlightRegex, "<strong>$1</strong>");
+        
+        return formatted;
+    }
+</script>
+
+
