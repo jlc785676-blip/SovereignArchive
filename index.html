@@ -169,3 +169,10 @@ function displaySovereignStory(surname) {
         }
     }
 }
+
+function displaySovereignStory(surname) {
+    let targetID = "HIST_" + surname + "_FULL";
+    // This finds the Vance record we just added
+    const record = gedcomData.find(r => r.rawText.includes("@" + targetID + "@"));
+    // ... the rest of the display code ...
+}
