@@ -1,4 +1,4 @@
-<div id="surname-header" style="text-align:center; padding: 25px; background: #1a1a1a; border-bottom: 3px solid #d4af37;">
+2<div id="surname-header" style="text-align:center; padding: 25px; background: #1a1a1a; border-bottom: 3px solid #d4af37;">
     <h2 style="color:#d4af37; letter-spacing: 2px;">THE SOVEREIGN BLOODLINES</h2>
     <div style="margin-top: 15px;">
         <button class="nav-btn" onclick="displaySovereignStory('CHANEY')">CHANEY</button>
@@ -304,6 +304,35 @@ function formatHistory(text) {
     formatted = formatted.replace(/(SOVEREIGN LOGIC:.*?)(?=\n|$)/g, "<div class='masonic-highlight'>$1</div>");
     
     return formatted;
+
+function displaySovereignStory(surname) {
+    // We search for the surname and the word MASTER to find our big history block
+    const query = "0 @HIST_" + surname + "_FULL@"; 
+    const rawData = searchGedcom(query);
+    
+    const vault = document.getElementById('full-history-vault');
+    const body = document.getElementById('vault-body');
+    const title = document.getElementById('vault-title');
+    
+    if (rawData) {
+        title.innerText = surname + " LINEAGE: FROM ORIGIN TO FRONTIER";
+        // This ensures the full story is formatted and displayed
+        body.innerHTML = formatHistory(rawData);
+        vault.style.display = 'block';
+        vault.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        // Backup search if the first one misses
+        const fallbackData = searchGedcom(surname + " MASTER");
+        if (fallbackData) {
+            title.innerText = surname + " LINEAGE: FROM ORIGIN TO FRONTIER";
+            body.innerHTML = formatHistory(fallbackData);
+            vault.style.display = 'block';
+        } else {
+            alert("Checking the archives... " + surname + " record not found yet.");
+        }
+    }
+}
+
 }
 
 
