@@ -1,0 +1,55 @@
+import datetime
+
+# This dictionary acts as the "Engine" containing the master data you've compiled
+ancestor_database = {
+    "Perry": [
+        {"name": "Abraham Perry", "dates": "1784-1861", "details": "Linking Virginia to early Kentucky migration."},
+        {"name": "John Perry", "dates": "1690-1760", "details": "Upper Parish, Nansemond, Colonial Virginia."},
+        {"name": "Astorg De Peyre I", "dates": "1010-1065", "details": "Ancient Norman roots, de la Peyre lineage."},
+        {"name": "Caradog ap Bran", "dates": "5-100 AD", "details": "King of Siluria, ancient British resistance."}
+    ],
+    "Clay": [
+        {"name": "John Clay", "dates": "1587-1655", "details": "The Virginia bridge for the Clay family line."},
+        {"name": "Sir John Thomas Clay", "dates": "1538-1632", "details": "Knight of Gloucestershire during the Elizabethan era."},
+        {"name": "Sir John Clay II", "dates": "1440-1532", "details": "Knight of Derbyshire, War of the Roses period."}
+    ]
+}
+
+def search_ancestors():
+    print("--- Master Ancestry Archive Access ---")
+    
+    # User Input Section
+    user_name = input("Enter your full name: ")
+    user_birth = input("Enter your birth date (MM/DD/YYYY): ")
+    question = input(f"Hello {user_name}, what is your question regarding the Perry/Clay lines? ").lower()
+
+    print("\n" + "="*30)
+    print(f"SEARCHING RECORDS FOR: {user_name} (Born: {user_birth})")
+    print("="*30)
+
+    found = False
+    
+    # Search Logic
+    # This checks your question against the keys (Perry/Clay) and the details
+    for branch, relatives in ancestor_database.items():
+        if branch.lower() in question:
+            print(f"\nFOCUSING ON THE {branch.upper()} LINEAGE:")
+            for person in relatives:
+                print(f" - {person['name']} ({person['dates']}): {person['details']}")
+            found = True
+            
+    if not found:
+        print("\nSearching deep archive for specific name matches...")
+        for branch, relatives in ancestor_database.items():
+            for person in relatives:
+                if any(word in person['name'].lower() for word in question.split()):
+                    print(f"MATCH FOUND: {person['name']} ({person['dates']})")
+                    print(f"NOTES: {person['details']}")
+                    found = True
+
+    if not found:
+        print("No direct match found in the current Master Archive. Try searching 'Perry' or 'Clay'.")
+
+# Execute the tool
+if __name__ == "__main__":
+    search_ancestors()
