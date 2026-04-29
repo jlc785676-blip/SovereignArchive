@@ -1,0 +1,1084 @@
+import re
+from datetime import datetime
+
+# Raw data storage for the GEDCOM text you provided
+raw_gedcom_data = """
+0 @I162715259532@ INDI
+1 NAME Abraham /Perry/
+1 BIRT
+2 DATE 1784
+1 DEAT
+2 DATE 1861
+0 @I162715259594@ INDI
+1 NAME John /Perry Jr/
+1 BIRT
+2 DATE 1715
+1 DEAT
+2 DATE 1785
+0 @I162715260390@ INDI
+1 NAME Roger Holcomb Perry (1495 - 1580) /Perry/
+1 BIRT
+2 DATE 1495
+1 DEAT
+2 DATE 1580
+0 @I162715389821@ INDI
+1 NAME Sir John Clay, II, Kt., of Derbyshire (1440 - 1532) /Clay/
+1 BIRT
+2 DATE 1440
+1 DEAT
+2 DATE 1532
+0 @I162715263867@ INDI
+1 NAME Caradog ap Bran, King of Siluria (5 - 100) /Perry/
+1 BIRT
+2 DATE 5
+1 DEAT
+2 DATE 100
+""0 HEAD
+1 SUBM @SUBM1@
+1 SOUR Ancestry.com Family Trees
+2 NAME Ancestry.com Member Trees
+2 VERS 2025.08
+2 _TREE Joshua Chaney Family Tree
+3 RIN 160986742
+3 NOTE Joshua Chaney Family Tree 1
+3 _ENV prd
+2 CORP Ancestry.com
+3 PHON 801-705-7000
+3 WWW www.ancestry.com
+3 ADDR 1300 West Traverse Parkway
+4 CONT Lehi, UT  84043
+4 CONT USA
+1 DATE 28 Apr 2026
+2 TIME 18:06:33
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+0 @SUBM1@ SUBM
+1 NAME Ancestry.com Member Trees Submitter
+0 @I162103995552@ INDI
+1 NAME Josh /Chaney/
+2 GIVN Josh
+2 SURN Chaney
+2 SOUR @S424681753@
+3 _APID 1,70050::10714621
+1 SEX M
+2 SOUR @S424681753@
+3 _APID 1,70050::10714621
+1 FAMC @F16@
+1 BIRT
+2 DATE Abt 1978
+2 SOUR @S424681753@
+3 _APID 1,70050::10714621
+1 DEAT
+2 PLAC Columbus, Franklin, Ohio, USA
+2 SOUR @S424681753@
+3 _APID 1,70050::10714621
+1 SOUR @S424681753@
+2 _APID 1,70050::10714621
+0 @I162103995553@ INDI
+1 NAME Oshel /Chaney/
+2 GIVN Oshel
+2 SURN Chaney
+1 SEX M
+1 FAMC @F15@
+1 FAMS @F16@
+1 BIRT
+2 DATE 25 June 1951
+2 PLAC West Hamlin, Lincoln County, West Virginia, United States of America
+2 SOUR @S424669060@
+3 DATA
+4 WWW https://www.findagrave.com/memorial/90786167/oshel-chaney
+3 _APID 1,60525::46538570
+1 RESI
+2 DATE 1979
+1 DEAT
+2 DATE 25 May 2012
+2 PLAC East Lynn, Wayne County, West Virginia, United States of America
+2 SOUR @S424669060@
+3 DATA
+4 WWW https://www.findagrave.com/memorial/90786167/oshel-chaney
+3 _APID 1,60525::46538570
+1 BURI
+2 PLAC Branchland, Lincoln County, West Virginia, United States of America
+2 SOUR @S424669060@
+3 DATA
+4 WWW https://www.findagrave.com/memorial/90786167/oshel-chaney
+3 _APID 1,60525::46538570
+1 SOUR @S424669060@
+2 DATA
+3 WWW https://www.findagrave.com/memorial/90786167/oshel-chaney
+2 _APID 1,60525::46538570
+0 @I162103995555@ INDI
+1 NAME Newman /Chaney/
+2 GIVN Newman
+2 SURN Chaney
+2 SOUR @S386606505@
+3 PAGE National Archives at Washington, DC; Washington, D.C.; Seventeenth Census of the United States, 1950; Year: 1950; Census Place: Stonewall, Wayne, West Virginia; Roll: 4761; Page: 20; Enumeration District: 50-30
+3 _APID 1,62308::36624881
+1 SEX M
+1 FAMC @F23@
+1 FAMS @F15@
+1 BIRT
+2 SOUR @S386606505@
+3 PAGE National Archives at Washington, DC; Washington, D.C.; Seventeenth Census of the United States, 1950; Year: 1950; Census Place: Stonewall, Wayne, West Virginia; Roll: 4761; Page: 20; Enumeration District: 50-30
+3 _APID 1,62308::36624881
+1 RESI
+2 DATE 1949
+2 PLAC East Lynn, Wayne, West Virginia, USA
+1 RESI
+2 DATE 1950
+2 PLAC Stonewall, Wayne, West Virginia, USA
+2 SOUR @S386606505@
+3 PAGE National Archives at Washington, DC; Washington, D.C.; Seventeenth Census of the United States, 1950; Year: 1950; Census Place: Stonewall, Wayne, West Virginia; Roll: 4761; Page: 20; Enumeration District: 50-30
+3 _APID 1,62308::36624881
+2 NOTE Occupation: Farm Hand; Relation to Head of House: Son; Marital Status: Never Married
+1 DEAT
+2 DATE 2017
+1 SOUR @S386606505@
+2 PAGE National Archives at Washington, DC; Washington, D.C.; Seventeenth Census of the United States, 1950; Year: 1950; Census Place: Stonewall, Wayne, West Virginia; Roll: 4761; Page: 20; Enumeration District: 50-30
+2 _APID 1,62308::36624881
+0 @I162103995556@ INDI
+1 NAME Arminda /VANCE/
+2 GIVN Arminda
+2 SURN VANCE
+2 SOUR @S386606505@
+3 PAGE National Archives at Washington, DC; Washington, D.C.; Seventeenth Census of the United States, 1950; Year: 1950; Census Place: Laurel Hill, Lincoln, West Virginia; Roll: 1079; Page: 21; Enumeration District: 22-17
+3 _APID 1,62308::36226714
+1 SEX F
+1 FAMC @F10@
+1 FAMS @F15@
+1 BIRT
+2 DATE abt 1935
+2 PLAC West Virginia
+2 SOUR @S386606505@
+3 PAGE National Archives at Washington, DC; Washington, D.C.; Seventeenth Census of the United States, 1950; Year: 1950; Census Place: Laurel Hill, Lincoln, West Virginia; Roll: 1079; Page: 21; Enumeration District: 22-17
+3 _APID 1,62308::36226714
+1 RESI
+2 DATE 1949
+2 PLAC East Lynn, Wayne, West Virginia, USA
+1 RESI
+2 DATE 1950
+2 PLAC Laurel Hill, Lincoln, West Virginia, USA
+2 SOUR @S386606505@
+3 PAGE National Archives at Washington, DC; Washington, D.C.; Seventeenth Census of the United States, 1950; Year: 1950; Census Place: Laurel Hill, Lincoln, West Virginia; Roll: 1079; Page: 21; Enumeration District: 22-17
+3 _APID 1,62308::36226714
+2 NOTE Relation to Head of House: Daughter; Marital Status: Never Married
+1 SOUR @S386606505@
+2 PAGE National Archives at Washington, DC; Washington, D.C.; Seventeenth Census of the United States, 1950; Year: 1950; Census Place: Laurel Hill, Lincoln, West Virginia; Roll: 1079; Page: 21; Enumeration District: 22-17
+2 _APID 1,62308::36226714
+0 @I162103995844@ INDI
+1 NAME Leonard  /Chaney/ *
+2 GIVN Leonard 
+2 SURN Chaney
+2 NSFX *
+1 SEX M
+1 FAMC @F22@
+1 FAMS @F23@
+1 BIRT
+2 DATE 22 Mar 1897
+2 PLAC East Lynn, Wayne, West Virginia, USA
+1 DEAT
+2 DATE 10 Dec 1968
+2 PLAC Wayne County, West Virginia, USA
+1 OBJE @O24@
+2 _PRIM Y
+2 _CROP
+3 _LEFT 0
+3 _TOP 249
+3 _WDTH 640
+3 _HGHT 640
+3 _TYPE primary
+0 @I162103996848@ INDI
+1 NAME Lillie Lily /Dyer/
+2 GIVN Lillie Lily
+2 SURN Dyer
+1 SEX F
+1 FAMC @F20@
+1 FAMS @F23@
+1 BIRT
+2 DATE 4 February 1901
+2 PLAC Wayne County, West Virginia
+1 DEAT
+2 DATE November 1982
+2 PLAC Huntington, Cabell County, West Virginia
+0 @I162103997387@ INDI
+1 NAME John Hobert /Vance/
+2 GIVN John Hobert
+2 SURN Vance
+1 SEX M
+1 FAMC @F2@
+1 FAMS @F10@
+1 BIRT
+2 DATE 12 Jun 1895
+2 PLAC Harts, Lincoln County, West Virginia, USA
+1 DEAT
+2 DATE 17 September 1975
+2 PLAC Branchland, Lincoln County, West Virginia, USA
+1 OBJE @O12@
+2 _PRIM Y
+0 @I162103997840@ INDI
+1 NAME Erie Elmer /Watts/
+2 GIVN Erie Elmer
+2 SURN Watts
+1 SEX F
+1 FAMC @F117@
+1 FAMS @F10@
+1 BIRT
+2 DATE 14 OCT 1907
+2 PLAC Branchland, Lincoln County, West Virginia, USA
+1 DEAT
+2 DATE 15 JAN 2005
+2 PLAC Branchland, Lincoln County, West Virginia, USA
+1 OBJE @O27@
+2 _PRIM Y
+2 _CROP
+3 _LEFT 0
+3 _TOP 51
+3 _WDTH 222
+3 _HGHT 222
+3 _TYPE primary
+0 @I162103998456@ INDI
+1 NAME Erma /perry/
+2 GIVN Erma
+2 SURN perry
+1 SEX F
+1 FAMC @F29@
+1 FAMS @F16@
+1 BIRT
+2 DATE 1955
+2 PLAC East Lynn, Wayne, West Virginia, USA
+0 @I162103998769@ INDI
+1 NAME George Henry /Chaney/
+2 GIVN George Henry
+2 SURN Chaney
+1 SEX M
+1 FAMC @F17@
+1 FAMS @F22@
+1 BIRT
+2 DATE 18 Jan 1853
+2 PLAC Scott, Virginia, USA
+1 DEAT
+2 DATE May 1917
+2 PLAC Lincoln, West Virginia, USA
+0 @I162103998959@ INDI
+1 NAME Alexander (7) Cheatham "Cheat" /Chaney/ sr
+2 GIVN Alexander (7) Cheatham "Cheat"
+2 SURN Chaney
+2 NSFX sr
+2 SOUR @S424668521@
+3 DATA
+4 WWW https://gw.geneanet.org/larryclark?n=chaney&oc=&p=alexander+cheatham
+3 _APID 1,62476::5075812187
+1 SEX M
+1 FAMC @F164@
+1 FAMS @F17@
+1 BIRT
+2 DATE Oct 1830
+2 PLAC Pittsylvania, Virginia, USA
+2 SOUR @S424668521@
+3 DATA
+4 WWW https://gw.geneanet.org/larryclark?n=chaney&oc=&p=alexander+cheatham
+3 _APID 1,62476::5075812187
+1 DEAT
+2 DATE 4 Jun 1939
+2 PLAC Pittsylvania, Virginia, United States
+2 SOUR @S424668521@
+3 DATA
+4 WWW https://gw.geneanet.org/larryclark?n=chaney&oc=&p=alexander+cheatham
+3 _APID 1,62476::5075812187
+1 SOUR @S424668521@
+2 DATA
+3 WWW https://gw.geneanet.org/larryclark?n=chaney&oc=&p=alexander+cheatham
+2 _APID 1,62476::5075812187
+1 OBJE @O30@
+2 _PRIM Y
+0 @I162103999059@ INDI
+1 NAME Elias /Chaney/
+2 GIVN Elias
+2 SURN Chaney
+2 SOUR @S424669060@
+3 DATA
+4 WWW https://www.findagrave.com/memorial/125308593/elias-chaney
+3 _APID 1,60525::75310779
+1 SEX M
+1 FAMC @F8@
+1 FAMS @F164@
+1 BIRT
+2 DATE Jan 1806
+2 PLAC Pittsylvania County, Virginia, United States of America
+2 SOUR @S424669060@
+3 DATA
+4 WWW https://www.findagrave.com/memorial/125308593/elias-chaney
+3 _APID 1,60525::75310779
+1 DEAT
+2 DATE 1 July 1886
+2 PLAC Patrick County, Virginia, United States of America
+2 SOUR @S424669060@
+3 DATA
+4 WWW https://www.findagrave.com/memorial/125308593/elias-chaney
+3 _APID 1,60525::75310779
+1 BURI
+2 PLAC Dodson, Patrick County, Virginia, United States of America
+2 SOUR @S424669060@
+3 DATA
+4 WWW https://www.findagrave.com/memorial/125308593/elias-chaney
+3 _APID 1,60525::75310779
+1 SOUR @S424669060@
+2 DATA
+3 WWW https://www.findagrave.com/memorial/125308593/elias-chaney
+2 _APID 1,60525::75310779
+0 @I162104001273@ INDI
+1 NAME Pansey /Perry/
+2 GIVN Pansey
+2 SURN Perry
+1 SEX F
+1 FAMC @F11@
+1 FAMS @F29@
+1 DEAT
+2 DATE 1982
+2 PLAC East Lynn, Wayne, West Virginia, USA
+0 @I162104001374@ INDI
+1 NAME Walter lake /Perry/
+2 GIVN Walter lake
+2 SURN Perry
+1 SEX M
+1 FAMC @F25@
+1 FAMS @F29@
+1 BIRT
+2 PLAC East Lynn, Wayne, West Virginia, USA
+1 DEAT
+2 PLAC East Lynn, Wayne, West Virginia, USA
+0 @I162104001424@ INDI
+1 NAME Thomas John /Clay/
+2 GIVN Thomas John
+2 SURN Clay
+1 SEX M
+1 FAMC @F27@
+1 FAMS @F11@
+1 BIRT
+2 DATE 16 Oct 1884
+2 PLAC Wayne, West Virginia, United States
+1 DEAT
+2 DATE Feb 1974
+2 PLAC Branchland, Lincoln, West Virginia, United States of America
+0 @I162104001458@ INDI
+1 NAME Clara /Davis/
+2 GIVN Clara
+2 SURN Davis
+1 SEX F
+1 FAMC @F13@
+1 FAMS @F11@
+1 BIRT
+2 DATE 9/11/1887
+2 PLAC branchland, lincoln, w.va usa
+1 DEAT
+2 DATE 8 july 1974
+2 PLAC huntington, cable, w.va, usa
+0 @I162104002635@ INDI
+1 NAME Sidney Paralee /Watson Chaney/ *
+2 GIVN Sidney Paralee
+2 SURN Watson Chaney
+2 NSFX *
+2 SOUR @S424770673@
+3 PAGE Year: 1880; Census Place: Laurel Hill, Lincoln, West Virginia; Roll: 1406; Page: 191c; Enumeration District: 067
+3 _APID 1,6742::9114449
+2 SOUR @S424669060@
+3 DATA
+4 WWW https://www.findagrave.com/memorial/141906026/parlee-chaney
+3 _APID 1,60525::116421226
+1 SEX F
+1 FAMC @F75@
+1 FAMS @F22@
+1 BIRT
+2 DATE 30 Apr 1860
+2 PLAC Boone County, Virginia (now Lincoln County, West Virginia)
+2 SOUR @S424770673@
+3 PAGE Year: 1880; Census Place: Laurel Hill, Lincoln, West Virginia; Roll: 1406; Page: 191c; Enumeration District: 067
+3 _APID 1,6742::9114449
+2 SOUR @S424669060@
+3 DATA
+4 WWW https://www.findagrave.com/memorial/141906026/parlee-chaney
+3 _APID 1,60525::116421226
+1 RESI
+2 DATE 1880
+2 PLAC Laurel Hill, Lincoln, West Virginia, USA
+2 SOUR @S424770673@
+3 PAGE Year: 1880; Census Place: Laurel Hill, Lincoln, West Virginia; Roll: 1406; Page: 191c; Enumeration District: 067
+3 _APID 1,6742::9114449
+2 NOTE Occupation: Housekeeper; Marital Status: Married; Relation to Head of House: Wife
+1 DEAT
+2 DATE 26 Feb 1947
+2 PLAC Four Mile, Lincoln County, West Virginia, USA
+2 SOUR @S424669060@
+3 DATA
+4 WWW https://www.findagrave.com/memorial/141906026/parlee-chaney
+3 _APID 1,60525::116421226
+1 BURI
+2 PLAC Branchland, Lincoln County, West Virginia, United States of America
+2 SOUR @S424669060@
+3 DATA
+4 WWW https://www.findagrave.com/memorial/141906026/parlee-chaney
+3 _APID 1,60525::116421226
+1 SOUR @S424770673@
+2 PAGE Year: 1880; Census Place: Laurel Hill, Lincoln, West Virginia; Roll: 1406; Page: 191c; Enumeration District: 067
+2 _APID 1,6742::9114449
+1 SOUR @S424669060@
+2 DATA
+3 WWW https://www.findagrave.com/memorial/141906026/parlee-chaney
+2 _APID 1,60525::116421226
+0 @I162104003469@ INDI
+1 NAME Abraham /Chaney/
+2 GIVN Abraham
+2 SURN Chaney
+2 SOUR @S424669060@
+3 _APID 1,60525::72176336
+1 SEX M
+2 SOUR @S424669060@
+3 _APID 1,60525::72176336
+1 FAMC @F1@
+1 FAMS @F8@
+1 BIRT
+2 DATE 1758
+2 PLAC Halifax County, Virginia, USA
+2 SOUR @S424669060@
+3 _APID 1,60525::72176336
+1 DEAT
+2 DATE 25 December 1848
+2 PLAC Pittsylvania County, Virginia, USA
+2 SOUR @S424669060@
+3 _APID 1,60525::72176336
+1 BURI
+2 PLAC Keeling, Pittsylvania County, Virginia, United States of America
+2 SOUR @S424669060@
+3 _APID 1,60525::72176336
+1 SOUR @S424669060@
+2 _APID 1,60525::72176336
+1 OBJE @O17@
+2 _PRIM Y
+0 @I162104003529@ INDI
+1 NAME Jacob /Chaney/
+2 GIVN Jacob
+2 SURN Chaney
+1 SEX M
+1 FAMC @F143@
+1 FAMS @F1@
+1 BIRT
+2 DATE 1715
+2 PLAC South River, Anne Arundel, Maryland, USA
+1 DEAT
+2 DATE 21 Sep 1801
+2 PLAC Laurel Grove, Keeling, Pittsylvania, Virginia, USA
+1 OBJE @O25@
+2 _PRIM Y
+0 @I162104004353@ INDI
+1 NAME Lewis Green /Vance/
+2 GIVN Lewis Green
+2 SURN Vance
+1 SEX M
+1 FAMC @F12@
+1 FAMS @F2@
+1 BIRT
+2 DATE 29 May 1855
+2 PLAC Lincoln County, West Virginia, USA
+1 DEAT
+2 DATE 12 March 1922
+2 PLAC Ferrellsburg, Lincoln County, West Virginia, USA
+1 OBJE @O32@
+2 _PRIM Y
+0 @I162104004378@ INDI
+1 NAME Rufus /Watts/
+2 GIVN Rufus
+2 SURN Watts
+1 SEX M
+1 FAMS @F117@
+1 BIRT
+2 DATE 10 Feb 1887
+2 PLAC Ranger, Lincoln, West Virginia, USA
+1 DEAT
+2 DATE 12 Jul 1907
+2 PLAC Watson Cemetary, Branchland, Lincoln, West Virginia, USA
+1 OBJE @O11@
+2 _PRIM Y
+2 _CROP
+3 _LEFT 68
+3 _TOP 0
+3 _WDTH 182
+3 _HGHT 182
+3 _TYPE primary
+0 @I162104004429@ INDI
+1 NAME Marshall /Clay/
+2 GIVN Marshall
+2 SURN Clay
+1 SEX M
+1 FAMC @F31@
+1 FAMS @F27@
+1 BIRT
+2 DATE 8 Aug 1860
+2 PLAC Wayne Co W VA
+1 DEAT
+2 DATE 29 November 1935 
+2 PLAC Logan County, WV
+1 OBJE @O15@
+2 _PRIM Y
+2 _CROP
+3 _LEFT 0
+3 _TOP 28
+3 _WDTH 360
+3 _HGHT 360
+3 _TYPE primary
+0 @I162104004453@ INDI
+1 NAME Silvena "Vania" /Eaves/
+2 GIVN Silvena "Vania"
+2 SURN Eaves
+1 SEX F
+1 FAMS @F27@
+1 BIRT
+2 DATE 1863
+2 PLAC Wayne County, WV
+2 SOUR @S424669060@
+3 DATA
+4 WWW https://www.findagrave.com/memorial/235834452/silvena-clay
+3 _APID 1,60525::206971354
+1 DEAT
+2 DATE 1890
+2 PLAC Wayne, West Virginia, United States
+2 SOUR @S424669060@
+3 DATA
+4 WWW https://www.findagrave.com/memorial/235834452/silvena-clay
+3 _APID 1,60525::206971354
+1 BURI
+2 PLAC Branchland, Lincoln County, West Virginia, United States of America
+2 SOUR @S424669060@
+3 DATA
+4 WWW https://www.findagrave.com/memorial/235834452/silvena-clay
+3 _APID 1,60525::206971354
+1 SOUR @S424669060@
+2 DATA
+3 WWW https://www.findagrave.com/memorial/235834452/silvena-clay
+2 _APID 1,60525::206971354
+0 @I162104004475@ INDI
+1 NAME Samuel T /Davis/
+2 GIVN Samuel T
+2 SURN Davis
+1 SEX M
+1 FAMS @F13@
+1 BIRT
+2 DATE Apr 1865
+2 PLAC West Virginia
+0 @I162104004978@ INDI
+1 NAME Daniel /Watson/
+2 GIVN Daniel
+2 SURN Watson
+1 SEX M
+1 FAMS @F75@
+1 BIRT
+2 DATE 09-08-1825
+2 PLAC Prestonburg Floyd Co KY
+1 DEAT
+2 DATE 04-27-1913
+2 PLAC Lincoln Co, WVa
+2 NOTE Age: 87
+1 OBJE @O23@
+2 _PRIM Y
+0 @I162104005273@ INDI
+1 NAME Elizabeth Ray (1872 - 1938 //
+2 GIVN Elizabeth Ray (1872 - 1938
+1 SEX F
+1 FAMC @F123@
+1 FAMS @F13@
+1 BIRT
+2 DATE 1872
+2 PLAC West Virginia
+1 DEAT
+2 DATE 1938
+0 @I162104005875@ INDI
+1 NAME John Riley /Clay/
+2 GIVN John Riley
+2 SURN Clay
+1 SEX M
+1 FAMC @F4@
+1 FAMS @F31@
+1 BIRT
+2 DATE 1833
+2 PLAC Lawrence County, KY
+1 DEAT
+2 DATE 18 Mar 1890
+2 PLAC Wayne, Wayne, West Virginia, United States
+1 OBJE @O28@
+2 _PRIM Y
+0 @I162104005892@ INDI
+1 NAME John Riley Clay SR (abt. 1834 /Clay/
+2 GIVN John Riley Clay SR (abt. 1834
+2 SURN Clay
+1 SEX M
+1 FAMC @F37@
+1 FAMS @F4@
+1 BIRT
+2 DATE 1834
+2 PLAC Halifax, Halifax, Virginia, USA
+1 DEAT
+2 PLAC Wayne, Augusta, Virginia, USA
+0 @I162104005905@ INDI
+1 NAME Malinda /Akers/
+2 GIVN Malinda
+2 SURN Akers
+2 SOUR @S424770673@
+3 PAGE Year: 1880; Census Place: Stonewall, Wayne, West Virginia; Roll: 1415; Page: 248b; Enumeration District: 140
+3 _APID 1,6742::15020426
+2 SOUR @S424668521@
+3 DATA
+4 WWW https://gw.geneanet.org/tdowling?n=akers&oc=&p=malinda
+3 _APID 1,62476::5487918527
+1 SEX F
+1 FAMS @F4@
+1 BIRT
+2 DATE abt 1806
+2 PLAC Pike, Kentucky, USA
+2 SOUR @S424770673@
+3 PAGE Year: 1880; Census Place: Stonewall, Wayne, West Virginia; Roll: 1415; Page: 248b; Enumeration District: 140
+3 _APID 1,6742::15020426
+2 SOUR @S424668521@
+3 DATA
+4 WWW https://gw.geneanet.org/tdowling?n=akers&oc=&p=malinda
+3 _APID 1,62476::5487918527
+1 RESI
+2 DATE 1880
+2 PLAC Stonewall, Wayne, West Virginia, USA
+2 SOUR @S424770673@
+3 PAGE Year: 1880; Census Place: Stonewall, Wayne, West Virginia; Roll: 1415; Page: 248b; Enumeration District: 140
+3 _APID 1,6742::15020426
+2 NOTE Marital Status: Widowed; Relation to Head of House: Self
+1 DEAT
+2 DATE 1880
+2 PLAC Stonewall, Wayne, West Virginia, USA
+2 SOUR @S424668521@
+3 DATA
+4 WWW https://gw.geneanet.org/tdowling?n=akers&oc=&p=malinda
+3 _APID 1,62476::5487918527
+1 SOUR @S424770673@
+2 PAGE Year: 1880; Census Place: Stonewall, Wayne, West Virginia; Roll: 1415; Page: 248b; Enumeration District: 140
+2 _APID 1,6742::15020426
+1 SOUR @S424668521@
+2 DATA
+3 WWW https://gw.geneanet.org/tdowling?n=akers&oc=&p=malinda
+2 _APID 1,62476::5487918527
+0 @I162104006900@ INDI
+1 NAME John Hopkins /Dyer/
+2 GIVN John Hopkins
+2 SURN Dyer
+2 SOUR @S386606505@
+3 PAGE United States of America, Bureau of the Census; Washington, D.C.; Seventeenth Census of the United States, 1950; Record Group: Records of the Bureau of the Census, 1790-2007; Record Group Number: 29; Residence Date: 1950; Home in 1950: Stonewall, W
+4 CONC ayne, We
+3 _APID 1,62308::36624864
+1 SEX M
+1 FAMS @F20@
+1 BIRT
+2 DATE 13 Jun 1872
+2 PLAC Wayne, West Virginia
+2 SOUR @S386606505@
+3 PAGE United States of America, Bureau of the Census; Washington, D.C.; Seventeenth Census of the United States, 1950; Record Group: Records of the Bureau of the Census, 1790-2007; Record Group Number: 29; Residence Date: 1950; Home in 1950: Stonewall, W
+4 CONC ayne, We
+3 _APID 1,62308::36624864
+1 RESI
+2 DATE 1950
+2 PLAC Stonewall, Wayne, West Virginia, USA
+2 SOUR @S386606505@
+3 PAGE United States of America, Bureau of the Census; Washington, D.C.; Seventeenth Census of the United States, 1950; Record Group: Records of the Bureau of the Census, 1790-2007; Record Group Number: 29; Residence Date: 1950; Home in 1950: Stonewall, W
+4 CONC ayne, We
+3 _APID 1,62308::36624864
+2 NOTE Relation to Head: Father; Marital Status: Married
+1 DEAT
+2 DATE 23 Apr 1956
+2 PLAC Lick Creek, Wayne, West Virginia
+1 SOUR @S386606505@
+2 PAGE United States of America, Bureau of the Census; Washington, D.C.; Seventeenth Census of the United States, 1950; Record Group: Records of the Bureau of the Census, 1790-2007; Record Group Number: 29; Residence Date: 1950; Home in 1950: Stonewall, W
+3 CONC ayne, We
+2 _APID 1,62308::36624864
+1 _MTTAG @T5@
+1 _MTTAG @T9@
+1 _MTTAG @T10@
+0 @I162104012799@ INDI
+1 NAME ira /Perry/
+2 GIVN ira
+2 SURN Perry
+1 SEX M
+1 FAMC @F3@
+1 FAMS @F25@
+1 BIRT
+2 PLAC East Lynn, Wayne, West Virginia, USA
+1 DEAT
+2 PLAC East Lynn, Wayne, West Virginia, USA
+0 @I162104012867@ INDI
+1 NAME sarah /perry/
+2 GIVN sarah
+2 SURN perry
+1 SEX F
+1 FAMC @F26@
+1 FAMS @F25@
+0 @I162104012918@ INDI
+1 NAME Private Mitchell /Perry/
+2 GIVN Private Mitchell
+2 SURN Perry
+1 SEX M
+1 FAMC @F19@
+1 FAMS @F3@
+1 BIRT
+2 DATE 24 October 1834
+2 PLAC Pikesville, Pike, Kentucky
+1 DEAT
+2 DATE 31 May 1920
+2 PLAC East Lynn, Wayne County, West Virginia, United States of America
+1 OBJE @O21@
+2 _PRIM Y
+0 @I162104012969@ INDI
+1 NAME George Washington /Perry/
+2 GIVN George Washington
+2 SURN Perry
+2 SOUR @S424668521@
+3 DATA
+4 WWW https://gw.geneanet.org/holdtotherod8?n=perry&oc=&p=george+washington
+3 _APID 1,62476::6606792976
+1 SEX M
+1 FAMC @F129@
+1 FAMS @F19@
+1 BIRT
+2 DATE 1810
+2 PLAC Floyd County, Kentucky
+2 SOUR @S424668521@
+3 DATA
+4 WWW https://gw.geneanet.org/holdtotherod8?n=perry&oc=&p=george+washington
+3 _APID 1,62476::6606792976
+1 DEAT
+2 DATE 17 Sep 1884
+2 PLAC Johnson County, Kentucky
+2 SOUR @S424668521@
+3 DATA
+4 WWW https://gw.geneanet.org/holdtotherod8?n=perry&oc=&p=george+washington
+3 _APID 1,62476::6606792976
+1 SOUR @S424668521@
+2 DATA
+3 WWW https://gw.geneanet.org/holdtotherod8?n=perry&oc=&p=george+washington
+2 _APID 1,62476::6606792976
+1 OBJE @O34@
+2 _PRIM Y
+0 @I162104012994@ INDI
+1 NAME Nehemiah "Nick" /Finley/
+2 GIVN Nehemiah "Nick"
+2 SURN Finley
+2 SOUR @S424669060@
+3 DATA
+4 WWW https://www.findagrave.com/memorial/49086672/nehemiah-finley
+3 _APID 1,60525::8428333
+1 SEX M
+1 FAMC @F141@
+1 FAMS @F26@
+1 BIRT
+2 DATE 16 Oct 1851
+2 PLAC Wayne County, Virginia
+2 SOUR @S424669060@
+3 DATA
+4 WWW https://www.findagrave.com/memorial/49086672/nehemiah-finley
+3 _APID 1,60525::8428333
+1 DEAT
+2 DATE 12 June 1934
+2 PLAC Wayne County, West Virginia
+2 SOUR @S424669060@
+3 DATA
+4 WWW https://www.findagrave.com/memorial/49086672/nehemiah-finley
+3 _APID 1,60525::8428333
+1 BURI
+2 PLAC Kiahsville, Wayne County, West Virginia, United States of America
+2 SOUR @S424669060@
+3 DATA
+4 WWW https://www.findagrave.com/memorial/49086672/nehemiah-finley
+3 _APID 1,60525::8428333
+1 SOUR @S424669060@
+2 DATA
+3 WWW https://www.findagrave.com/memorial/49086672/nehemiah-finley
+2 _APID 1,60525::8428333
+1 OBJE @O13@
+2 _PRIM Y
+0 @I162104013008@ INDI
+1 NAME Martha Ellen /Frasher/
+2 GIVN Martha Ellen
+2 SURN Frasher
+1 SEX F
+1 FAMS @F26@
+1 BIRT
+2 DATE 26 MAY 1856
+2 PLAC Lick Creek, Wayne, Virginia, USA
+1 DEAT
+2 DATE 14 Sep 1931
+2 PLAC Wayne, Wayne, West Virginia, USA
+0 @I162104013190@ INDI
+1 NAME Nancy Harriett /Williamson/
+2 GIVN Nancy Harriett
+2 SURN Williamson
+1 SEX F
+1 FAMC @F18@
+1 FAMS @F3@
+1 BIRT
+2 DATE 7 February 1848
+2 PLAC Wayne County, West Virginia, United States of America
+1 DEAT
+2 DATE 12 May 1929
+2 PLAC East Lynn, Wayne County, West Virginia, United States of America
+1 OBJE @O6@
+2 _PRIM Y
+0 @I162104013221@ INDI
+1 NAME Alden /Williamson/
+2 GIVN Alden
+2 SURN Williamson
+1 SEX M
+1 FAMC @F7@
+1 FAMS @F18@
+1 BIRT
+2 DATE 1817
+2 PLAC Floyd County, Kentucky
+1 DEAT
+2 DATE 1900
+2 PLAC Wayne County, West Virginia
+1 OBJE @O16@
+2 _PRIM Y
+0 @I162104013243@ INDI
+1 NAME Clarissa /Marcum/
+2 GIVN Clarissa
+2 SURN Marcum
+1 SEX F
+1 FAMC @F28@
+1 FAMS @F18@
+1 BIRT
+2 DATE 1820
+2 PLAC Louisa, Lawrence, Kentucky, USA
+1 DEAT
+2 DATE 1876
+2 PLAC Wayne, West Virginia, USA
+0 @I162104013286@ INDI
+1 NAME Rebecca /Syck/
+2 GIVN Rebecca
+2 SURN Syck
+2 SOUR @S424668521@
+3 DATA
+4 WWW https://gw.geneanet.org/holdtotherod8?n=syck&oc=&p=rebecca
+3 _APID 1,62476::6606793334
+1 SEX F
+1 FAMS @F19@
+1 BIRT
+2 DATE 1809
+2 PLAC Floyd County, Kentucky
+2 SOUR @S424668521@
+3 DATA
+4 WWW https://gw.geneanet.org/holdtotherod8?n=syck&oc=&p=rebecca
+3 _APID 1,62476::6606793334
+1 DEAT
+2 DATE 1834-1836
+2 PLAC Pike County, Kentucky
+2 SOUR @S424668521@
+3 DATA
+4 WWW https://gw.geneanet.org/holdtotherod8?n=syck&oc=&p=rebecca
+3 _APID 1,62476::6606793334
+1 SOUR @S424668521@
+2 DATA
+3 WWW https://gw.geneanet.org/holdtotherod8?n=syck&oc=&p=rebecca
+2 _APID 1,62476::6606793334
+0 @I162104013399@ INDI
+1 NAME Hezekiah /Finley/
+2 GIVN Hezekiah
+2 SURN Finley
+1 SEX M
+1 FAMS @F141@
+1 BIRT
+2 DATE 30 Dec 1803
+2 PLAC Wythe County, Virginia, USA
+1 DEAT
+2 DATE 03 Nov 1885
+2 PLAC Wayne County, West Virginia, USA
+2 NOTE Age at Death: 81
+0 @I162104018394@ INDI
+1 NAME Moses /Marcum/
+2 GIVN Moses
+2 SURN Marcum
+1 SEX M
+1 FAMC @F151@
+1 FAMS @F28@
+1 BIRT
+2 DATE 1785
+2 PLAC Wayne, West Virginia, USA
+1 DEAT
+2 DATE 1861
+2 PLAC Wayne, West Virginia, USA
+0 @I162104018409@ INDI
+1 NAME Edy /Bryant/
+2 GIVN Edy
+2 SURN Bryant
+1 SEX F
+1 FAMC @F5@
+1 FAMS @F28@
+1 BIRT
+2 DATE 1785
+2 PLAC Wayne, Augusta Co., Virginia
+1 DEAT
+2 DATE 1861
+2 PLAC Wayne, Augusta Co., Virginia
+0 @I162105414971@ INDI
+1 NAME Hester Ann "Pinky" /WILKERSON/
+2 GIVN Hester Ann "Pinky"
+2 SURN WILKERSON
+1 SEX F
+1 FAMC @F49@
+1 FAMS @F17@
+1 BIRT
+2 DATE OCT 1830
+2 PLAC Virginia
+1 DEAT
+2 PLAC Lincoln County, West Virginia
+0 @I162105415065@ INDI
+1 NAME Sarah /Midkiff/
+2 GIVN Sarah
+2 SURN Midkiff
+1 SEX F
+1 FAMS @F1@
+1 BIRT
+2 DATE 1727
+2 PLAC Halifax, Virginia
+1 DEAT
+2 DATE abt   1801
+2 PLAC Laurel Grove, Pittsylvania, Virginia, USA
+1 OBJE @O26@
+2 _PRIM Y
+0 @I162105415079@ INDI
+1 NAME Mary Alice /Cheatham/
+2 GIVN Mary Alice
+2 SURN Cheatham
+2 SOUR @S424669073@
+3 PAGE The National Archives in Washington, DC; Washington, DC, USA; Registers of Signatures of Depositors in Branches of the Freedman's Savings and Trust Company, 1865-1874; ARC Identifier: 566522; Record Group Number: 101; Record Group: Records of the O
+4 CONC ffice of
+3 DATA
+4 WWW https://familysearch.org/ark:/61903/1:2:MZ3W-81N
+3 _APID 1,8755::171029
+1 SEX F
+1 FAMS @F8@
+1 BIRT
+2 DATE 1767
+2 PLAC Lunenburg County, Virginia, USA
+2 SOUR @S424669073@
+3 PAGE The National Archives in Washington, DC; Washington, DC, USA; Registers of Signatures of Depositors in Branches of the Freedman's Savings and Trust Company, 1865-1874; ARC Identifier: 566522; Record Group Number: 101; Record Group: Records of the O
+4 CONC ffice of
+3 DATA
+4 WWW https://familysearch.org/ark:/61903/1:2:MZ3W-81N
+3 _APID 1,8755::171029
+1 RESI
+2 DATE 12 Feb 1870
+2 PLAC Virginia
+2 SOUR @S424669073@
+3 PAGE The National Archives in Washington, DC; Washington, DC, USA; Registers of Signatures of Depositors in Branches of the Freedman's Savings and Trust Company, 1865-1874; ARC Identifier: 566522; Record Group Number: 101; Record Group: Records of the O
+4 CONC ffice of
+3 DATA
+4 WWW https://familysearch.org/ark:/61903/1:2:MZ3W-81N
+3 _APID 1,8755::171029
+2 NOTE Relation to Head of House: Self
+1 DEAT
+2 DATE 1811
+2 PLAC Pittsylvania County, Virginia, USA
+1 SOUR @S424669073@
+2 PAGE The National Archives in Washington, DC; Washington, DC, USA; Registers of Signatures of Depositors in Branches of the Freedman's Savings and Trust Company, 1865-1874; ARC Identifier: 566522; Record Group Number: 101; Record Group: Records of the O
+3 CONC ffice of
+2 DATA
+3 WWW https://familysearch.org/ark:/61903/1:2:MZ3W-81N
+2 _APID 1,8755::171029
+0 @I162106738656@ INDI
+1 NAME Josiah Silas /Marcum/
+2 GIVN Josiah Silas
+2 SURN Marcum
+1 SEX M
+1 FAMS @F151@
+1 BIRT
+2 DATE 2 May 1759
+2 PLAC James River, Chesterfield, Virginia
+1 DEAT
+2 DATE March 1846
+2 PLAC Jennies Creek, Wayne, West Virginia
+1 OBJE @O4@
+2 _PRIM Y
+0 @I162106738685@ INDI
+1 NAME Obediah /Bryan/
+2 GIVN Obediah
+2 SURN Bryan
+1 SEX M
+1 FAMS @F5@
+1 BIRT
+2 DATE 1745
+2 PLAC Tyrrell Co., N.C.
+1 DEAT
+2 DATE 2 Feb. 1800
+2 PLAC Chatham Co., N.C.
+0 @I162106738703@ INDI
+1 NAME Sarah /Re" 
+
+
+# Note: You can paste the ENTIRE text from your file between those triple quotes.
+
+def parse_gedcom(data):
+    """Extracts Names, Birth, and Death dates from GEDCOM format."""
+    records = []
+    current_person = {}
+    
+    lines = data.strip().split('\n')
+    for line in lines:
+        # New Individual
+        if "INDI" in line:
+            if current_person: records.append(current_person)
+            current_person = {"name": "", "birth": "Unknown", "death": "Unknown"}
+        
+        # Extract Name
+        elif "1 NAME" in line:
+            name = line.split("NAME")[1].replace("/", "").strip()
+            current_person["name"] = name
+            
+        # Extract Dates
+        elif "2 DATE" in line:
+            date_val = line.split("DATE")[1].strip()
+            # If the last line was BIRT, it's a birth date. If DEAT, it's death.
+            prev_line = lines[lines.index(line) - 1]
+            if "1 BIRT" in prev_line:
+                current_person["birth"] = date_val
+            elif "1 DEAT" in prev_line:
+                current_person["death"] = date_val
+                
+    if current_person: records.append(current_person)
+    return records
+
+def search_archive():
+    # Load and Parse data
+    all_ancestors = parse_gedcom(raw_gedcom_data)
+    
+    print("--- MASTER ANCESTRY ARCHIVE INTERFACE ---")
+    user_name = input("Enter your name: ")
+    user_bday = input("Enter your birth year (YYYY): ")
+    query = input(f"\nHello {user_name}, which ancestor or family line are you looking for? ").lower()
+
+    print(f"\nSearching for '{query}' in the {len(all_ancestors)} indexed records...\n")
+    print(f"{'NAME':<45} | {'BORN':<10} | {'DIED':<10} | {'GEN GAP'}")
+    print("-" * 85)
+
+    found = False
+    for person in all_ancestors:
+        if query in person['name'].lower():
+            # Calculate Generation Gap (Approx 25 years per generation)
+            try:
+                birth_year = int(re.search(r'\d+', person['birth']).group())
+                gap_years = int(user_bday) - birth_year
+                generations = gap_years // 25
+                gen_str = f"~{generations} gens"
+            except:
+                gen_str = "N/A"
+
+            print(f"{person['name']:<45} | {person['birth']:<10} | {person['death']:<10} | {gen_str}")
+            found = True
+
+    if not found:
+        print("No matches found. Check your spelling or try a broader surname like 'Perry' or 'Clay'.")
+
+if __name__ == "__main__":
+    search_archive()
