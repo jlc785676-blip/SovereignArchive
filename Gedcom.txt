@@ -477,3 +477,13 @@
 2 NOTE IMAGE_REF: JENNY_GRAVE
 2 NOTE KEYWORDS: Jenny Wiley, Sellards, Grave, Portrait, Survival.
 
+0 @I_WILEY_JENNY@ INDI
+1 NAME Jenny /Wiley/ (Sellards)
+2 NOTE THE WEAVER: Daughter of Hezekiah Sellards.
+2 NOTE IMAGE_REF: JENNY_PORTRAIT
+2 NOTE INDIAN HISTORY: Captured in October 1789 by a raiding party of Shawnee, Delaware, and Cherokee. She witnessed the loss of her children but survived through sheer frontier resolve. For 10 months, she was held in the wilderness of Kentucky, eventually escaping while her captors were away. She navigated the winter woods and flooded rivers to reach Harmon's Station. 
+2 NOTE SOVEREIGN LOGIC: Her story is the "Great Weaver's Thread" of our family. It shows that no matter how far we are taken, the bloodline finds its way back to the light.
+2 NOTE HISTORY: She later reunited with Thomas Wiley and settled in Johnson County, Kentucky. Her final resting place is a monument to her courage.
+2 NOTE IMAGE_REF: JENNY_GRAVE
+2 NOTE KEYWORDS: Jenny Wiley, Sellards, Capture, Escape, Survival, Grave.
+
