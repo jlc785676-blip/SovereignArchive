@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE BLOODLINE ARCHIVE</title>
+    <style>
+        body { background-color: #050505; color: #e0c097; font-family: 'Georgia', serif; margin: 0; padding: 0; text-align: center; }
+        
+        .heritage-banner {
+            width: 100%; height: 450px;
+            background: linear-gradient(rgba(5,5,5,0.6), rgba(5,5,5,1)), url('1000043712.jpg'); 
+            background-size: cover; background-position: center 20%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        h1 { color: #d4af37; text-transform: uppercase; letter-spacing: 8px; font-size: 3.2em; margin: 0; text-shadow: 3px 3px 15px #000; }
+        .tagline { color: #fff; font-style: italic; margin-top: 15px; letter-spacing: 3px; font-size: 1.2em; text-shadow: 2px 2px 10px #000; max-width: 90%; line-height: 1.6; }
+
+        /* Surname Button Styles */
+        #surname-header { padding: 25px; background: #1a1a1a; border-bottom: 3px solid #d4af37; }
+        .nav-btn { background: #222; color: #d4af37; border: 1px solid #d4af37; padding: 12px 20px; margin: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; text-transform: uppercase; }
+        .nav-btn:hover { background: #d4af37; color: #000; transform: scale(1.05); }
+
+        /* Vault Display */
+        #full-history-vault { display:none; max-width: 900px; margin: 20px auto; padding: 30px; background: #111; border: 2px solid #d4af37; text-align: left; }
+        #vault-title { color:#d4af37; text-align:center; border-bottom: 1px solid #444; padding-bottom: 10px; text-transform: uppercase; }
+
+        /* Search Container */
+        .search-container { position: sticky; top: 0; z-index: 1000; background: rgba(10,10,10,0.98); padding: 25px 0; border-bottom: 1px solid #333; display: flex; flex-direction: column; align-items: center; gap: 15px; backdrop-filter: blur(10px); }
+        .search-row { display: flex; justify-content: center; gap: 15px; width: 100%; }
+        input { padding: 15px 25px; width: 450px; background: #000; border: 1px solid #555; color: #fff; border-radius: 5px; font-size: 1.1em; }
+        .main-btn { padding: 15px 30px; background: #d4af37; color: #000; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; width: 220px; text-transform: uppercase; }
+        .indian-btn { background: #8b0000; color: #fff; border: 1px solid #ff4500; }
+
+        #output-area { width: 95%; max-width: 1200px; margin: 50px auto; text-align: left; }
+        .tree-node { background: #111; border-left: 12px solid #d4af37; padding: 35px; margin-bottom: 25px; box-shadow: 5px 5px 25px rgba(0,0,0,0.8); }
+        .indian-highlight { background: rgba(139, 0, 0, 0.15); border-left: 5px solid #ff4500; padding: 15px; margin: 15px 0; color: #ffebcd; font-style: italic; }
+        .masonic-highlight { background: rgba(212, 175, 55, 0.1); border-left: 5px solid #d4af37; padding: 15px; margin: 15px 0; color: #fff; }
+    </style>
+</head>
+<body>
+
+    <div class="heritage-banner">
+        <h1>THE BLOODLINE ARCHIVE</h1>
+        <div class="tagline">Chaney • Perry • Vance • Dyer • Watts • Davis • Clay • Williamson • Adkins</div>
+    </div>
+
+    <div id="surname-header">
+        <h2 style="color:#d4af37; letter-spacing: 2px;">THE SOVEREIGN BLOODLINES</h2>
+        <div style="margin-top: 15px;">
+            <button class="nav-btn" onclick="displaySovereignStory('CHANEY')">CHANEY</button>
+            <button class="nav-btn" onclick="displaySovereignStory('VANCE')">VANCE</button>
+            <button class="nav-btn" onclick="displaySovereignStory('PERRY')">PERRY</button>
+            <button class="nav-btn" onclick="displaySovereignStory('WILLIAMSON')">WILLIAMSON</button>
+            <button class="nav-btn" onclick="displaySovereignStory('SELLARDS')">SELLARDS</button>
+        </div>
+    </div>
+
+    <div id="full-history-vault">
+        <h2 id="vault-title"></h2>
+        <div id="vault-body" style="color:#f0f0f0; line-height:1.8; font-family: serif; font-size: 1.2em;"></div>
+        <button onclick="document.getElementById('full-history-vault').style.display='none'" style="margin-top:20px; background:none; color:#d4af37; border:1px solid #d4af37; padding:10px; cursor:pointer;">Close Record</button>
+    </div>
+
+    <div class="search-container">
+        <div class="search-row">
+            <input type="text" id="nameSearch" placeholder="Search Names or Surnames...">
+            <button class="main-btn" onclick="searchVault('name')">Trace Bloodline</button>
+        </div>
+        <div class="search-row">
+            <input type="text" id="indianSearch" placeholder="Search Indian History...">
+            <button class="main-btn indian-btn" onclick="searchVault('indian')">Explore Heritage</button>
+        </div>
+    </div>
+
+    <div id="output-area"></div>
+
+    <script>
+        let gedcomData = [];
+
+        async function loadDatabase() {
+            try {
+                const response = await fetch('Gedcom.txt?v=' + new Date().getTime());
+                const text = await response.text();
+                const rawItems = text.replace(/\r/g, '').split('0 @').filter(item => item.trim().length > 0);
+                gedcomData = rawItems.map(item => {
+                    const nameMatch = item.match(/1 NAME (.*)/);
+                    const cleanName = nameMatch ? nameMatch[1].replace(/\//g, '').trim() : "Unknown Record";
+                    let notes = [...item.matchAll(/[1-3] NOTE (.*)/g)].map(m => m[1]).join('\n\n');
+                    return { name: cleanName, rawText: item, rawLower: item.toLowerCase(), notes: notes };
+                });
+            } catch (err) { console.error("Database failed to load."); }
+        }
+
+        function formatHistory(text) {
+            let formatted = text.replace(/IMAGE_REF: JENNY_PORTRAIT/g, "<div style='text-align:center;'><img src='Jenny%20Wiley.jpg' style='width:95%; max-width:500px; border: 3px solid #d4af37; border-radius: 8px; margin: 10px 0;'></div>");
+            formatted = formatted.replace(/IMAGE_REF: JENNY_GRAVE/g, "<div style='text-align:center;'><img src='Jenny%20Wiley%20Grabe%20site.jpg' style='width:95%; max-width:500px; border: 3px solid #d4af37; border-radius: 8px; margin: 10px 0;'></div>");
+            formatted = formatted.replace(/(INDIAN HISTORY:.*?)(?=\n|$)/g, "<div class='indian-highlight'>$1</div>");
+            formatted = formatted.replace(/(SOVEREIGN LOGIC:.*?)(?=\n|$)/g, "<div class='masonic-highlight'>$1</div>");
+            const highlightRegex = /(GENERATION.*?|FAMILY:|PARENTS:|HISTORY:|THE WEAVER:|MOTTO:|I\.|II\.|III\.|IV\.|V\.|VI\.)/g;
+            formatted = formatted.replace(highlightRegex, "<strong>$1</strong>");
+            return formatted;
+        }
+
+        function displaySovereignStory(surname) {
+            let searchName = surname;
+            // Catch both spelling variants for the button
+            if (surname === "CHANEY") searchName = "CH"; 
+            
+            // Search for the master record by looking for the "MASTER CHRONOLOGY" in notes
+            const record = gedcomData.find(r => r.rawLower.includes(searchName.toLowerCase()) && r.rawLower.includes("master chronology"));
+            
+            const vault = document.getElementById('full-history-vault');
+            if (record) {
+                document.getElementById('vault-title').innerText = surname + " MASTER RECORD";
+                document.getElementById('vault-body').innerHTML = formatHistory(record.notes);
+                vault.style.display = 'block';
+                vault.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert("The record for " + surname + " is still being indexed.");
+            }
+        }
+
+        async function searchVault(mode) {
+            if (gedcomData.length === 0) await loadDatabase();
+            let query = (mode === 'name') ? document.getElementById('nameSearch').value.toLowerCase() : document.getElementById('indianSearch').value.toLowerCase();
+            const output = document.getElementById('output-area');
+            if (!query) return;
+
+            let matches = gedcomData.filter(r => mode === 'name' ? r.name.toLowerCase().includes(query) : r.rawLower.includes(query));
+            let html = "";
+            matches.forEach(r => {
+                html += `<div class="tree-node"><div class="name-banner">${r.name}</div><div class="story-box">${formatHistory(r.notes)}</div></div>`;
+            });
+            output.innerHTML = html || "<p style='text-align:center;'>No matching records found.</p>";
+        }
+
+        window.onload = loadDatabase;
+    </script>
+</body>
+</html>
