@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+8<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -196,3 +196,20 @@
     </script>
 </body>
 </html>
+
+<script>
+    function formatHistory(text) {
+        // Adds the Jenny Wiley Image if referenced in the notes
+        let formatted = text.replace(/IMAGE_REF: 1000043784.jpg/g, 
+            "<img src='1000043784.jpg' style='width:100%; max-width:600px; border: 2px solid #d4af37; margin: 15px 0; border-radius: 5px; shadow: 5px 5px 15px #000;'>");
+
+        // Highlights Indian History and Masonic Connections
+        formatted = formatted.replace(/(INDIAN HISTORY:.*?)(?=\n|$)/g, "<div class='indian-highlight'>$1</div>");
+        formatted = formatted.replace(/(SOVEREIGN LOGIC:.*?)(?=\n|$)/g, "<div class='masonic-highlight'>$1</div>");
+        
+        const highlightRegex = /(GENERATION.*?|FAMILY:|PARENTS:|HISTORY:|INDIAN HISTORY:|THE WEAVER:|SOVEREIGN LOGIC:|KEYWORDS:)/g;
+        formatted = formatted.replace(highlightRegex, "<strong>$1</strong>");
+        return formatted;
+    }
+</script>
+
