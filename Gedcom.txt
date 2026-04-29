@@ -166,3 +166,4 @@
 1 NAME Bacon's Rebellion (1676)
 2 NOTE HISTORY: The historical spark that pushed independent-minded families into the frontier to seek sovereignty away from colonial government control.
 2 NOTE Keywords: Bacon, Rebellion, 1676, Sovereignty.
+
