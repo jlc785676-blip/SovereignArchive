@@ -1,0 +1,56 @@
+0 HEAD
+1 SOUR Sovereign Archive
+1 CHAR UTF-8
+1 GEDC
+2 VERS 5.5.1
+
+0 @I1@ INDI
+1 NAME Josh /Chaney/
+2 BIRT
+3 DATE Abt 1978
+2 NOTE Lineage: Son of Oshel Chaney and Erma Perry. Master of the Sovereign Archive.
+
+0 @I2@ INDI
+1 NAME Oshel /Chaney/
+2 BIRT
+3 DATE 25 June 1951
+2 DEAT
+3 DATE 25 May 2012
+3 PLAC East Lynn, Wayne County, WV
+
+0 @I3@ INDI
+1 NAME Erma /Perry/
+2 BIRT
+3 DATE 1955
+2 NOTE Daughter of Walter Lake Perry and Pansey Perry.
+
+0 @I4@ INDI
+1 NAME Newman /Chaney/
+2 BIRT
+3 DATE 1925
+2 NOTE Professional history: Farm Hand and frontier descendant.
+
+0 @I5@ INDI
+1 NAME Arminda /VANCE/
+2 BIRT
+3 DATE abt 1935
+2 NOTE Mother of Oshel Chaney; link to the Vance Norman bloodline.
+
+0 @HISTORY_VAULT_TEMPLAR@ INDI
+1 NAME Knights Templar & Norman Conquest
+2 NOTE THE VANCE LINEAGE: Tracing back to the Norman Knights (originally 'Vaux') who served as patrons for the Knights Templar during the Crusades. This heritage connects the Holy Land to the Appalachian frontier.
+2 NOTE WILLIAM THE CONQUEROR: Our ancestors carried the Norman warrior-spirit from the 1066 invasion of England through centuries of migration to the Ohio Valley.
+2 NOTE Keywords: Templar, Knight, Knights, Norman, Normandy, William the Conqueror, Crusader, Medieval, Vance.
+
+0 @HISTORY_VAULT_INDIAN@ INDI
+1 NAME Native American & Frontier Legacy
+2 NOTE CHIEF CORNSTALK & THE SHAWNEE: The resistance led by Chief Cornstalk at Fort Randolph was a pivotal moment for the Perry and Vance families. His legacy reshaped the Tug Valley where our people lived.
+2 NOTE JENNY WILEY & THE SELLARDS: The capture and escape of Jenny Wiley represents the resilience of the Sellards and Perry lines amidst the Shawnee and Cherokee conflicts of the 18th century.
+2 NOTE TRIBAL ALLIANCES: Our lineage is woven with the Nansemond, Mattaponi, and Shawnee. These connections were essential for frontier survival and the "Middle Ground" diplomacy of early America.
+2 NOTE Keywords: Indians, Indian, Cherokee, Shawnee, Cornstalk, Jenny Wiley, Tribe, Mattaponi, Nansemond, Indigenous.
+
+0 @HISTORY_VAULT_SURNAMES@ INDI
+1 NAME Surname Legacies: Chaney & Vance
+2 NOTE CHANEY: Rooted in medieval England, the Chaney name defines a legacy of artistic and technical mastery, notably shared by the legendary actor Lon Chaney.
+2 NOTE VANCE: A high-born Norman name that evolved through the grit of the American frontier pioneer.
+2 NOTE Keywords: Chaney, Vance, Lon Chaney, Perry, Williamson, Sellards, Heritage.
