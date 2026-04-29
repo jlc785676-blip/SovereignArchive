@@ -1,3 +1,19 @@
+function showStory(surname) {
+    // This tells the engine to look for the "MASTER CHRONOLOGY" we just added
+    const query = surname + " MASTER CHRONOLOGY";
+    const result = searchGedcom(query);
+    
+    const vault = document.getElementById('story-vault');
+    const content = document.getElementById('story-content');
+    
+    if (result) {
+        content.innerHTML = formatHistory(result);
+        vault.style.display = 'block';
+        vault.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        alert("The full chronology for " + surname + " is still being compiled.");
+    }
+}
 8<!DOCTYPE html>
 <html lang="en">
 <head>
