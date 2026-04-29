@@ -1,0 +1,401 @@
+0 HEAD
+1 CHAR UTF-8
+1 SOUR Sovereign Archive
+1 NOTE THE BLOODLINE ARCHIVE - MASTER ALIGNMENT APRIL 2026
+
+0 @I_HERITAGE_CHANEY@ INDI
+1 NAME Chaney /Surname History/
+2 NOTE HISTORY: The Chaney patrilineal line descends directly from the Norman knights of 1066. They are defined by their military service, bearing Army veterans who defended their country before settling deep into the Ohio and Appalachian frontiers.
+2 NOTE Keywords: Chaney, Heritage, Norman, Ohio, Veteran.
+
+0 @I_HERITAGE_PERRY@ INDI
+1 NAME Perry /Surname History/
+2 NOTE INDIAN HISTORY: The Perrys trace back to Phillipe Perry in 1625. They were Virginia Freemasons who utilized their lodges to protect the "Hidden Lineages." They became a legendary "Bridge Family" when they adopted a young Shawnee boy, sealing a blood-oath with the Indigenous tribes of the Ohio Valley. They intermarried and traded with the Nansemond.
+2 NOTE Keywords: Perry, Heritage, Shawnee, Freemason, Nansemond, Adopted.
+
+0 @I_HERITAGE_VANCE@ INDI
+1 NAME Vance /Surname History/
+2 NOTE INDIAN HISTORY: Tracing back to 1595, the Vances brought esoteric knowledge to the Virginia frontier, with records preserved in Jerusalem and Vatican archives. They carry strong oral histories of Cherokee and Native ancestry, surviving and adapting to the untamed wilderness.
+2 NOTE Keywords: Vance, Heritage, Cherokee, Native, Vatican, Frontier.
+
+0 @I_HERITAGE_CLAY@ INDI
+1 NAME Clay /Surname History/
+2 NOTE HISTORY: The Clay lineage traces back to Yorkshire, England, before crossing the ocean to Colonial Virginia in the 1600s. They were the Virginia Surveyors who mapped the path for westward expansion, securing the necessary land rights for the families to thrive.
+2 NOTE Keywords: Clay, Heritage, Yorkshire, England, Surveyors, Virginia.
+
+0 @I_HERITAGE_SELLARDS@ INDI
+1 NAME Sellards /Surname History/
+2 NOTE HISTORY: The Sellards are famous for their unbreakable frontier strength, tracing back to Peter Sellards (1710). They are the bloodline of Jenny Wiley, the legendary survivor and master weaver whose endurance against Native capture in 1789 became a cornerstone of Appalachian history.
+2 NOTE Keywords: Sellards, Heritage, Jenny Wiley, Frontier, Weaver.
+
+0 @I_HERITAGE_WILLIAMSON@ INDI
+1 NAME Williamson /Surname History/
+2 NOTE INDIAN HISTORY: The Williamsons were the ultimate Frontier Defenders. They stood as central protectors in the Tug Valley conflicts and were heavily involved during the era of Chief Cornstalk and the Shawnee uprisings, holding the line for the pioneer settlements.
+2 NOTE Keywords: Williamson, Heritage, Cornstalk, Shawnee, Defenders.
+
+0 @I_HERITAGE_ADKINS@ INDI
+1 NAME Adkins /Surname History/
+2 NOTE HISTORY: The Adkins family provided the Wayne County Scouts. They were expert woodsmen, trackers, and survivalists who protected the Perry and Williamson settlements, guiding the families safely through hostile territories.
+2 NOTE Keywords: Adkins, Heritage, Scouts, Wayne County, Woodsmen.
+
+0 @I_PERRY_ERMA@ INDI
+1 NAME Erma /Perry/
+2 NOTE GENERATION 2 (MOTHER): Born 1955. 
+2 NOTE PARENTS: Walter Lake Perry, Pansy Perry
+2 NOTE FAMILY: Wife to Oshel Chaney. Mother to Joshua Chaney and Alisa Stevens.
+2 NOTE INDIAN HISTORY: Her lineage carries the records of the Virginia Freemasons and the deep kinship bonds with the Indigenous tribes.
+
+0 @I_CHANEY_JOSHUA@ INDI
+1 NAME Joshua Josh /Chaney/
+2 NOTE GENERATION 1 (SUBJECT): Born 1978. Residence: Marysville, Ohio.
+2 NOTE PARENTS: Oshel Chaney, Erma Perry
+
+0 @I_STEVENS_ALISA@ INDI
+1 NAME Alisa /Stevens/
+2 NOTE GENERATION 1 (SISTER): 
+2 NOTE PARENTS: Oshel Chaney, Erma Perry
+
+0 @I_CHANEY_OSHEL@ INDI
+1 NAME Oshel /Chaney/
+2 NOTE GENERATION 2 (FATHER): Born 1951. Died 2012.
+2 NOTE PARENTS: Newman Chaney, Arminda Vance
+
+0 @I_KEENER_AMOS@ INDI
+1 NAME Amos /Keener/
+2 NOTE THE NAVIGATOR: Stepfather to Joshua Chaney and Alisa Stevens. Husband to Erma Perry.
+
+0 @I_CHANEY_NEWMAN@ INDI
+1 NAME Newman /Chaney/
+2 NOTE GENERATION 3 (PATERNAL GRANDFATHER): 
+2 NOTE PARENTS: Leonard Chaney, Lillie Lily Dyer
+
+0 @I_VANCE_ARMINDA@ INDI
+1 NAME Arminda /Vance/
+2 NOTE GENERATION 3 (PATERNAL GRANDMOTHER): Born 1935.
+2 NOTE PARENTS: John H Vance, Erie Elmer Watts
+
+0 @I_PERRY_WALTER@ INDI
+1 NAME Walter Lake /Perry/
+2 NOTE GENERATION 3 (MATERNAL GRANDFATHER): 
+2 NOTE PARENTS: Ira Perry, Sarah Perry
+
+0 @I_PERRY_PANSY@ INDI
+1 NAME Pansy /Perry/
+2 NOTE GENERATION 3 (MATERNAL GRANDMOTHER): 
+2 NOTE PARENTS: Thomas J Clay, Clara Davis
+
+0 @I_CHANEY_LEONARD@ INDI
+1 NAME Leonard /Chaney/
+2 NOTE GENERATION 4 (GREAT-GRANDFATHER): Born 1897. Died 1968.
+
+0 @I_DYER_LILLIE@ INDI
+1 NAME Lillie Lily /Dyer/
+2 NOTE GENERATION 4 (GREAT-GRANDMOTHER): Born 1901. Died 1982.
+
+0 @I_VANCE_JOHN@ INDI
+1 NAME John H /Vance/
+2 NOTE GENERATION 4 (GREAT-GRANDFATHER): Born 1895. Died 1975.
+2 NOTE PARENTS: Lewis G Vance, Matilda Lowe
+
+0 @I_WATTS_ERIE@ INDI
+1 NAME Erie Elmer /Watts/
+2 NOTE GENERATION 4 (GREAT-GRANDMOTHER): Born 1907. Died 2005.
+
+0 @I_PERRY_IRA@ INDI
+1 NAME Ira /Perry/
+2 NOTE GENERATION 4 (GREAT-GRANDFATHER): Born 1884. Died 1974.
+2 NOTE PARENTS: Private M Perry, Nancy H Williams
+
+0 @I_PERRY_SARAH@ INDI
+1 NAME Sarah /Perry/
+2 NOTE GENERATION 4 (GREAT-GRANDMOTHER): Wife of Ira Perry. 
+
+0 @I_CLAY_THOMAS@ INDI
+1 NAME Thomas J /Clay/
+2 NOTE GENERATION 4 (GREAT-GRANDFATHER): Born 1884. Died 1974.
+2 NOTE PARENTS: Marshall Clay, Silvena Eaves
+
+0 @I_DAVIS_CLARA@ INDI
+1 NAME Clara /Davis/
+2 NOTE GENERATION 4 (GREAT-GRANDMOTHER): Born 1887. Died 1974.
+
+0 @I_PERRY_PRIVATE@ INDI
+1 NAME Private M /Perry/
+2 NOTE GENERATION 5: Born 1834. Died 1920.
+2 NOTE PARENTS: George W Perry, Rebecca Syck
+
+0 @I_WILLIAMS_NANCY@ INDI
+1 NAME Nancy H /Williams/
+2 NOTE GENERATION 5: Born 1848. Died 1929.
+2 NOTE PARENTS: Alden Williams, Clarissa Marcum
+
+0 @I_PERRY_GEORGE@ INDI
+1 NAME George W /Perry/
+2 NOTE GENERATION 6: Born 1810. Died 1884.
+2 NOTE PARENTS: Arnold Perry, Mary Elizabeth
+
+0 @I_SYCK_REBECCA@ INDI
+1 NAME Rebecca /Syck/
+2 NOTE GENERATION 6: Born 1809. Died 1834.
+
+0 @I_WILLIAMS_ALDEN@ INDI
+1 NAME Alden /Williams/
+2 NOTE GENERATION 6: Born 1817. Died 1900.
+2 NOTE PARENTS: Richard Williams, Mary Jane Sellards
+
+0 @I_MARCUM_CLARISSA@ INDI
+1 NAME Clarissa /Marcum/
+2 NOTE GENERATION 6: Born 1820. Died 1876.
+2 NOTE PARENTS: Moses Marcum, Edy Bryant
+
+0 @I_PERRY_ARNOLD@ INDI
+1 NAME Arnold /Perry/
+2 NOTE GENERATION 7: Born 1784. Died 1861.
+2 NOTE PARENTS: Abraham Perry, Mary Collins
+
+0 @I_ELIZABETH_MARY@ INDI
+1 NAME Mary /Elizabeth/
+2 NOTE GENERATION 7: Born 1786. Died 1871.
+
+0 @I_WILLIAMS_RICHARD@ INDI
+1 NAME Richard /Williams/
+2 NOTE GENERATION 7: Deceased.
+
+0 @I_SELLARDS_MARY@ INDI
+1 NAME Mary Jane /Sellards/
+2 NOTE GENERATION 7: Born 1760. Died 1831.
+2 NOTE PARENTS: Hezekiah Sellards, Jean Elizabeth Brevard
+
+0 @I_SELLARDS_HEZEKIAH@ INDI
+1 NAME Hezekiah /Sellards/
+2 NOTE GENERATION 8: Born 1735. Died 1792.
+2 NOTE PARENTS: Peter Sellards
+
+0 @I_SELLARDS_PETER@ INDI
+1 NAME Peter /Sellards/
+2 NOTE GENERATION 9: Born 1710. Died 1791.
+
+0 @I_BREVARD_JEAN_ELIZ@ INDI
+1 NAME Jean Elizabeth /Brevard/
+2 NOTE GENERATION 8: Born 1740. Died 1800.
+2 NOTE PARENTS: John Brevard Sr, Jane McWhorter
+
+0 @I_BREVARD_JOHN_SR@ INDI
+1 NAME John /Brevard Sr/
+2 NOTE GENERATION 9: Born 1711. Died 1790.
+2 NOTE PARENTS: Jean Brevard, Katherine
+
+0 @I_MCWHORTER_JANE@ INDI
+1 NAME Jane /McWhorter/
+2 NOTE GENERATION 9: Born 1712. Died 1800.
+2 NOTE PARENTS: Hugh McWhorter, Jean Jane
+
+0 @I_BREVARD_JEAN@ INDI
+1 NAME Jean /Brevard/
+2 NOTE GENERATION 10: Born 1665. Died 1730.
+
+0 @I_KATHERINE@ INDI
+1 NAME Katherine /Unknown/
+2 NOTE GENERATION 10: Born 1684. Died 1730.
+
+0 @I_MCWHORTER_HUGH@ INDI
+1 NAME Hugh /McWhorter/
+2 NOTE GENERATION 10: Born 1682. Died 1749.
+2 NOTE PARENTS: Alexander McWhorter
+
+0 @I_JEAN_JANE@ INDI
+1 NAME Jean Jane /Unknown/
+2 NOTE GENERATION 10: Born 1683. Died 1757.
+
+0 @I_MCWHORTER_ALEXANDER@ INDI
+1 NAME Alexander /McWhorter/
+2 NOTE GENERATION 11: Born 1644. Died 1690.
+
+0 @I_MARCUM_MOSES@ INDI
+1 NAME Moses /Marcum/
+2 NOTE GENERATION 7: Born 1785. Died 1861.
+
+0 @I_BRYANT_EDY@ INDI
+1 NAME Edy /Bryant/
+2 NOTE GENERATION 7: Born 1785. Died 1861.
+
+0 @I_PERRY_ABRAHAM@ INDI
+1 NAME Abraham /Perry/
+2 NOTE GENERATION 8: Born 1735. Died 1788.
+2 NOTE PARENTS: John Perry Jr, Sarah Walton
+
+0 @I_COLLINS_MARY@ INDI
+1 NAME Mary /Collins/
+2 NOTE GENERATION 8: Born 1740. Died 1820.
+
+0 @I_PERRY_JOHN_JR@ INDI
+1 NAME John /Perry Jr/
+2 NOTE GENERATION 9: Born 1715. Died 1785.
+2 NOTE PARENTS: John B Perry, Sarah Elizabeth
+
+0 @I_WALTON_SARAH@ INDI
+1 NAME Sarah /Walton/
+2 NOTE GENERATION 9: Born 1715. Died 1796.
+
+0 @I_PERRY_JOHN_B@ INDI
+1 NAME John B /Perry/
+2 NOTE GENERATION 10: Born 1690. Died 1760.
+2 NOTE PARENTS: John Perry
+
+0 @I_PERRY_JOHN_1660@ INDI
+1 NAME John /Perry/
+2 NOTE GENERATION 11: Born 1660. Died 1725.
+2 NOTE PARENTS: Phillipe Perry
+
+0 @I_PERRY_PHILLIPE@ INDI
+1 NAME Phillipe /Perry/
+2 NOTE GENERATION 12: Born 1625. Died 1688.
+
+0 @I_ELIZABETH_SARAH@ INDI
+1 NAME Sarah /Elizabeth/
+2 NOTE GENERATION 10: Born 1690. Died 1761.
+
+0 @I_VANCE_LEWIS@ INDI
+1 NAME Lewis G /Vance/
+2 NOTE GENERATION 5: Born 1855. Died 1932.
+2 NOTE PARENTS: Paris S Vance, Nancy A Maynard
+
+0 @I_LOWE_MATILDA@ INDI
+1 NAME Matilda /Lowe/
+2 NOTE GENERATION 5: Born 1871. Died 1943.
+
+0 @I_VANCE_PARIS@ INDI
+1 NAME Paris S /Vance/
+2 NOTE GENERATION 6: Born 1824. Died 1914.
+2 NOTE PARENTS: Richard Vance, Mary Ann Cline
+
+0 @I_MAYNARD_NANCY@ INDI
+1 NAME Nancy A /Maynard/
+2 NOTE GENERATION 6: Born 1830. Died 1913.
+
+0 @I_VANCE_RICHARD@ INDI
+1 NAME Richard /Vance/
+2 NOTE GENERATION 7: Born 1792. Died 1860.
+2 NOTE PARENTS: Abner Vance Sr, Susannah Howard
+
+0 @I_CLINE_MARY@ INDI
+1 NAME Mary Ann /Cline/
+2 NOTE GENERATION 7: Born 1792. Died 1890.
+
+0 @I_VANCE_ABNER@ INDI
+1 NAME Abner /Vance Sr/
+2 NOTE GENERATION 8: Born 1759. Died 1838.
+2 NOTE PARENTS: Ephriam Vance
+
+0 @I_HOWARD_SUSANNAH@ INDI
+1 NAME Susannah /Howard/
+2 NOTE GENERATION 8: Born 1767. Died 1850.
+
+0 @I_VANCE_EPHRIAM@ INDI
+1 NAME Ephriam /Vance/
+2 NOTE GENERATION 9: Born 1710. Died 1781.
+2 NOTE PARENTS: Andrew Vance, Jane Ann Hoge
+
+0 @I_VANCE_ANDREW@ INDI
+1 NAME Andrew /Vance/
+2 NOTE GENERATION 10: Born 1684. Died 1754.
+2 NOTE PARENTS: John Vance
+
+0 @I_HOGE_JANE@ INDI
+1 NAME Jane Ann /Hoge/
+2 NOTE GENERATION 10: Born 1690. Died 1732.
+
+0 @I_VANCE_JOHN_1650@ INDI
+1 NAME John /Vance/
+2 NOTE GENERATION 11: Born 1650. Died 1710.
+2 NOTE PARENTS: Rev Jo Vance, Elizabeth Shaw
+
+0 @I_VANCE_REV_JO@ INDI
+1 NAME Rev Jo /Vance/
+2 NOTE GENERATION 12: Born 1620. Died 1692.
+2 NOTE PARENTS: John L Vance, Agnes E Ramey
+
+0 @I_SHAW_ELIZABETH@ INDI
+1 NAME Elizabeth /Shaw/
+2 NOTE GENERATION 12: Born 1630. Died 1661.
+
+0 @I_VANCE_JOHN_L@ INDI
+1 NAME John L /Vance/
+2 NOTE GENERATION 13: Born 1595. Died 1661.
+
+0 @I_RAMEY_AGNES@ INDI
+1 NAME Agnes E /Ramey/
+2 NOTE GENERATION 13: Born 1601. Died 1680.
+
+0 @I_CLAY_MARSHALL@ INDI
+1 NAME Marshall /Clay/
+2 NOTE GENERATION 5: Born 1860. Died 1935.
+2 NOTE PARENTS: John Ril Clay, Mary E C
+
+0 @I_EAVES_SILVENA@ INDI
+1 NAME Silvena /Eaves/
+2 NOTE GENERATION 5: Born 1863. Died 1890.
+
+0 @I_CLAY_JOHN_RIL@ INDI
+1 NAME John Ril /Clay/
+2 NOTE GENERATION 6: Born 1833. Died 1890.
+2 NOTE PARENTS: John R Clay, Malinda Akers
+
+0 @I_C_MARY_E@ INDI
+1 NAME Mary E /C/
+2 NOTE GENERATION 6: Born 1869. Died 1940.
+
+0 @I_CLAY_JOHN_R@ INDI
+1 NAME John R /Clay/
+2 NOTE GENERATION 7: Born 1834.
+2 NOTE PARENTS: James Clay
+
+0 @I_AKERS_MALINDA@ INDI
+1 NAME Malinda /Akers/
+2 NOTE GENERATION 7: Born 1806. Died 1880.
+
+0 @I_CLAY_JAMES@ INDI
+1 NAME James /Clay/
+2 NOTE GENERATION 8: Born 1803. Died 1870.
+2 NOTE PARENTS: Jordan Clay
+
+0 @I_CLAY_JORDAN@ INDI
+1 NAME Jordan /Clay/
+2 NOTE GENERATION 9: Born 1777. Died 1856.
+2 NOTE PARENTS: Caleb Cl Clay, Elizabeth Marston
+
+0 @I_CLAY_CALEB@ INDI
+1 NAME Caleb Cl /Clay/
+2 NOTE GENERATION 10: Born 1746. Died 1786.
+2 NOTE PARENTS: Thomas C Clay, Anna Dater Powell
+
+0 @I_MARSTON_ELIZABETH@ INDI
+1 NAME Elizabeth /Marston/
+2 NOTE GENERATION 10: Born 1750. Died 1815.
+
+0 @I_CLAY_THOMAS_C@ INDI
+1 NAME Thomas C /Clay/
+2 NOTE GENERATION 11: Born 1719. Died 1791.
+2 NOTE PARENTS: Charles C Clay
+
+0 @I_POWELL_ANNA@ INDI
+1 NAME Anna Dater /Powell/
+2 NOTE GENERATION 11: Born 1728. Died 1791.
+
+0 @I_CLAY_CHARLES_1674@ INDI
+1 NAME Charles C /Clay/
+2 NOTE GENERATION 12: Born 1674. Died 1765.
+2 NOTE PARENTS: Charles C Clay Sr
+
+0 @I_CLAY_CHARLES_1643@ INDI
+1 NAME Charles C /Clay Sr/
+2 NOTE GENERATION 13: Born 1643. Died 1686.
+
+0 @I_WILLIAMSON_ADEN@ INDI
+1 NAME Aden /Williamson/
+2 NOTE FRONTIER DEFENDER: 
+2 NOTE INDIAN HISTORY: A central protector in the Tug Valley conflicts and heavily involved during the era of Chief Cornstalk and the Shawnee uprisings.
+
+0 @I_WILEY_JENNY@ INDI
+1 NAME Jenny /Wiley/
+2 NOTE THE WEAVER: Daughter of Hezekiah Sellards. Connects the Sellards, Williamson, and Wiley branches. Master of the loom on the frontier.
