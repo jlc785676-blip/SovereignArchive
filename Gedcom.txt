@@ -1,3 +1,26 @@
+0 @HIST_CLAY_FULL@ INDI
+1 NAME CLAY /MASTER CHRONOLOGY/
+2 NOTE MOTTO: "Fato Prudentia Major"
+2 NOTE I. ORIGIN: Derived from Old English "claeg." Topographic name for those who worked heavy clay soil.
+2 NOTE III. VIRGINIA FOUNDERS: John Thomas Clay I (1613) arrived on the 'Treasurer.'
+2 NOTE V. AMERICAN HISTORY: Henry Clay (The Great Compromiser) and Cassius Marcellus Clay.
+
+0 @HIST_PERRY_FULL@ INDI
+1 NAME PERRY /MASTER CHRONOLOGY/
+2 NOTE I. ORIGIN: English "Pear Tree" or Welsh "Son of Harry."
+2 NOTE II. COLONIAL VIRGINIA: John Perry (1620s).
+2 NOTE VI. INDIGENOUS HERITAGE: The "Indian Tom Perry" connection to Mattaponi and Nansemond tribes.
+
+0 @HIST_SELLARDS_FULL@ INDI
+1 NAME SELLARDS /MASTER CHRONOLOGY/
+2 NOTE I. PICTISH HERITAGE: Rooted in the ancient Pictish civilization of Aberdeenshire, Scotland.
+2 NOTE III. TEMPLAR CONNECTION: William Sellerarius recorded in the Knights Templar registers (12th C).
+
+0 @HIST_WILLIAMSON_FULL@ INDI
+1 NAME WILLIAMSON /MASTER CHRONOLOGY/
+2 NOTE MOTTO: "Murus aeneus conscientia sana"
+2 NOTE II. THE CONQUEROR: Linked to William the Conqueror (1066) and the Norman legacy.
+2 NOTE IV. BORDER CLAN: The Williamsons of Peebles—fierce, independent riding families.
 0 @HIST_VANCE_FULL@ INDI
 1 NAME VANCE /MASTER CHRONOLOGY/
 2 NOTE THE NAVIGATORS: Roots in the "De Vaux" family of Normandy and France. The name signifies "of the valleys."
