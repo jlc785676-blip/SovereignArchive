@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERMA PERRY ANCESTORS</title> 
+    <style>
+        body { background-color: #0a0a0a; color: #d4af37; font-family: 'Georgia', serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        .vault-container { border: 2px solid #d4af37; padding: 40px; background: #111; width: 95%; max-width: 900px; text-align: center; box-shadow: 0 0 60px rgba(212, 175, 55, 0.3); border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); }
+        h1 { letter-spacing: 3px; text-transform: uppercase; border-bottom: 2px solid #d4af37; padding-bottom: 15px; margin-bottom: 10px; font-size: 2.2em; color: #d4af37; }
+        .subtitle { color: #888; font-style: italic; font-size: 1em; margin-bottom: 35px; }
+        .search-area { margin-bottom: 40px; display: flex; gap: 12px; justify-content: center; }
+        input { padding: 18px; width: 65%; background: #000; border: 1px solid #444; color: #fff; border-radius: 8px; font-size: 1.1em; outline: none; }
+        input:focus { border-color: #d4af37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
+        button { padding: 18px 35px; background: #d4af37; color: #000; border: none; font-weight: bold; cursor: pointer; border-radius: 8px; text-transform: uppercase; transition: 0.3s; }
+        button:hover { background: #fff; box-shadow: 0 0 20px #d4af37; }
+        #output { text-align: left; max-height: 750px; overflow-y: auto; padding-right: 20px; }
+        .history-scroll { background: #161616; border: 1px solid #333; border-left: 6px solid #d4af37; padding: 30px; border-radius: 4px; margin-bottom: 25px; box-shadow: 10px 10px 30px rgba(0,0,0,0.6); }
+        .history-head { color: #fff; font-size: 1.6em; font-weight: bold; display: block; margin-bottom: 15px; border-bottom: 1px solid #222; padding-bottom: 10px; }
+        .history-text { color: #ccc; font-size: 1.15em; line-height: 1.9; font-style: italic; white-space: pre-wrap; }
+        .match-count { color: #d4af37; font-size: 0.8em; text-transform: uppercase; margin-bottom: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="vault-container">
+        <h1>ERMA PERRY ANCESTORS</h1> 
+        <div class="subtitle">The Chaney-Perry-Vance Frontier Records</div>
+        <div class="search-area">
+            <input type="text" id="nameIn" placeholder="Search: Indians, Cornstalk, Wiley, Cherokee...">
+            <button onclick="runSmartQuery()">Search Records</button>
+        </div>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        async function runSmartQuery() {
+            const query = document.getElementById('nameIn').value.trim().toLowerCase();
+            const output = document.getElementById('output');
+            if (!query) return;
+            output.innerHTML = "<p style='text-align:center; color:#d4af37;'>Scanning all bloodlines and history scrolls...</p>";
+
+            try {
+                const response = await fetch('Gedcom.txt');
+                const text = await response.text();
+                const records = text.split('0 @');
+                let htmlData = "";
+                let matches = 0;
+
+                records.forEach(record => {
+                    const recordLower = record.toLowerCase();
+                    // This is the "Smart" part: it checks if the query is INSIDE the record at all
+                    if (recordLower.indexOf(query) !== -1) {
+                        matches++;
+                        const name = record.match(/1 NAME (.*)/)?.[1]?.replace(/\//g, '') || "Heritage Record";
+                        const story = [...record.matchAll(/[1-2] NOTE (.*)/g)].map(m => m[1]).join('\n\n');
+                        htmlData += `<div class="history-scroll"><span class="history-head">${name}</span><div class="history-text">${story}</div></div>`;
+                    }
+                });
+
+                if (matches > 0) {
+                    output.innerHTML = `<div class="match-count">${matches} matches found in the vault</div>` + htmlData;
+                } else {
+                    output.innerHTML = `<p style='text-align:center; color:#666;'>No matches for "${query}". Try a partial word like "Indian" or "Vance".</p>`;
+                }
+            } catch (err) { output.innerHTML = "<p style='text-align:center;'>System Error: Ensure Gedcom.txt is in the GitHub folder.</p>"; }
+        }
+    </script>
+</body>
+</html>
