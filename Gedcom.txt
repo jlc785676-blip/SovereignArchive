@@ -1,0 +1,46 @@
+0 HEAD
+1 CHAR UTF-8
+1 SOUR Sovereign Archive
+1 NOTE MASTER ANCESTRY & FRONTIER HISTORY - FULL REBUILD 2026
+
+0 @I_PERRY_ERMA@ INDI
+1 NAME Erma /Perry/ Keener
+2 NOTE MATRIARCH: Daughter of Walter Lake Perry and Pansey Perry. Central to the Perry-Chaney lineage.
+2 NOTE VIRGINIA FREEMASONS: The Perry patriarchs utilized Masonic lodges to maintain accurate ledgers of "Hidden Lineages"—the kinship bonds between our family and tribes like the Nansemond and Mattaponi that official records ignored.
+2 NOTE THE ADOPTED SON: This record officially recognizes the young Shawnee boy adopted into the Perry line. He was raised with the full Perry name, cementing a blood-oath and alliance between our family and the tribes.
+2 NOTE Keywords: Erma, Perry, Keener, Freemason, Masonic, Adopted, Indian Boy, Shawnee, Kinship, Virginia.
+
+0 @I_PERRY_WALTER@ INDI
+1 NAME Walter Lake /Perry/
+2 NOTE ANCESTOR: Father of Erma Perry. A key figure in the East Lynn and Tug Valley heritage.
+2 NOTE Keywords: Walter, Lake, Perry.
+
+0 @I_PERRY_PANSEY@ INDI
+1 NAME Pansey /Perry/
+2 NOTE ANCESTOR: Mother of Erma Perry.
+2 NOTE Keywords: Pansey, Perry.
+
+0 @I_CHANEY_OSHEL@ INDI
+1 NAME Oshel /Chaney/
+2 NOTE PATRIARCH: Army Veteran and father to the Chaney line. Directly descended from the Norman knights of 1066.
+2 NOTE Keywords: Oshel, Chaney, Army, Veteran.
+
+0 @I_WILEY_MASTER@ INDI
+1 NAME /Jenny Wiley/ (Sellards-Williamson)
+2 NOTE THE WEAVER: Captured in 1789, Jenny's survival is legendary. She was the family's master weaver, a skill passed through the Sellards and Williamson lines.
+2 NOTE Keywords: Jenny Wiley, Wiley, Sellards, Williamson, Weaver, Weaving, Loom.
+
+0 @I_VANCE_RAY@ INDI
+1 NAME Ray Raymond /Vance/
+2 NOTE ANCESTOR: A primary figure in the Vance lineage with records preserved in Jerusalem and the Vatican archives.
+2 NOTE Keywords: Ray, Raymond, Vance, Jerusalem, Vatican.
+
+0 @I_WILLIAMSON_ADEN@ INDI
+1 NAME Aden /Williamson/
+2 NOTE FRONTIER DEFENDER: Key figure in the Tug Valley conflicts and the history of Chief Cornstalk.
+2 NOTE Keywords: Aden, Williamson, Cornstalk.
+
+0 @I_BACON_REB@ INDI
+1 NAME /Bacon's Rebellion/ (1676)
+2 NOTE THE SOVEREIGN SPARK: Our ancestors fought for frontier independence. Its fallout pushed the Vances, Chaneys, and Perrys into the Appalachian interior.
+2 NOTE Keywords: Bacon, Rebellion, 1676, Frontier, Sovereignty.
