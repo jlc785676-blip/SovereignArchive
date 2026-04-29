@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE BLOODLINE ARCHIVE</title>
+    <style>
+        body { background-color: #050505; color: #e0c097; font-family: 'Georgia', serif; margin: 0; padding: 0; text-align: center; }
+        
+        .heritage-banner {
+            width: 100%; height: 450px;
+            background: linear-gradient(rgba(5,5,5,0.6), rgba(5,5,5,1)), url('1000043712.jpg'); 
+            background-size: cover; background-position: center 20%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        h1 { color: #d4af37; text-transform: uppercase; letter-spacing: 8px; font-size: 3.2em; margin: 0; text-shadow: 3px 3px 15px #000; }
+        .tagline { color: #fff; font-style: italic; margin-top: 15px; letter-spacing: 3px; font-size: 1.2em; text-shadow: 2px 2px 10px #000; max-width: 90%; line-height: 1.6; }
+
+        /* Dual Search Container */
+        .search-container { position: sticky; top: 0; z-index: 1000; background: rgba(10,10,10,0.98); padding: 25px 0; border-bottom: 1px solid #333; display: flex; flex-direction: column; align-items: center; gap: 15px; backdrop-filter: blur(10px); }
+        
+        .search-row { display: flex; justify-content: center; gap: 15px; width: 100%; }
+        
+        input { padding: 15px 25px; width: 450px; background: #000; border: 1px solid #555; color: #fff; border-radius: 5px; font-size: 1.1em; outline: none; }
+        input:focus { border-color: #d4af37; }
+        
+        button { padding: 15px 30px; background: #d4af37; color: #000; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; font-size: 1em; text-transform: uppercase; width: 220px; }
+        
+        /* Special Button for Indian History */
+        .indian-btn { background: #8b0000; color: #fff; border: 1px solid #ff4500; }
+        .indian-btn:hover { background: #ff4500; }
+
+        #output-area { width: 95%; max-width: 1200px; margin: 50px auto; text-align: left; }
+        
+        /* Main Record Box */
+        .tree-node { background: #111; border-left: 12px solid #d4af37; padding: 35px; margin-bottom: 25px; border-radius: 0 10px 10px 0; box-shadow: 5px 5px 25px rgba(0,0,0,0.8); }
+        .name-banner { font-size: 2.4em; color: #fff; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 15px; }
+        .story-box { color: #ccc; font-size: 1.3em; line-height: 1.8; white-space: pre-wrap; }
+        .story-box strong { color: #d4af37; font-size: 1.1em; }
+
+        /* Special Indian History Highlight */
+        .indian-highlight { background: rgba(139, 0, 0, 0.15); border-left: 5px solid #ff4500; padding: 15px; margin: 15px 0; border-radius: 3px; font-style: italic; color: #ffebcd; }
+
+        /* Ancestors Section */
+        .ancestor-section { margin-top: 30px; padding-top: 20px; border-top: 2px dashed #444; }
+        .ancestor-title { color: #d4af37; font-size: 1.5em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
+        .ancestor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        
+        .anc-node { background: #1a1a1a; border-left: 6px solid #888; padding: 20px; border-radius: 5px; }
+        .anc-name { font-size: 1.4em; color: #fff; font-weight: bold; margin-bottom: 8px; border-bottom: 1px solid #333; padding-bottom: 8px; text-transform: uppercase; }
+        .anc-story { font-size: 1em; color: #bbb; line-height: 1.6; white-space: pre-wrap; }
+        .anc-story strong { color: #d4af37; }
+
+        @media (max-width: 800px) { .ancestor-grid { grid-template-columns: 1fr; } .search-row { flex-direction: column; align-items: center; } input { width: 90%; } }
+    </style>
+</head>
+<body>
+    <div class="heritage-banner">
+        <h1>THE BLOODLINE ARCHIVE</h1>
+        <div class="tagline">Chaney • Perry • Vance • Dyer • Watts • Davis • Clay • Williamson • Adkins</div>
+    </div>
+
+    <div class="search-container">
+        <div class="search-row">
+            <input type="text" id="nameSearch" placeholder="Search Names or Surnames (e.g., Perry, Erma, Pansy)...">
+            <button onclick="searchVault('name')">Trace Bloodline</button>
+        </div>
+        <div class="search-row">
+            <input type="text" id="indianSearch" placeholder="Search Indian History (e.g., Indian, Adopted, Cornstalk)...">
+            <button class="indian-btn" onclick="searchVault('indian')">Explore Heritage</button>
+        </div>
+    </div>
+
+    <div id="output-area">
+        <p style="text-align: center; font-size: 1.5em; font-style: italic; color: #888; margin-top: 50px;">
+            Select a search method above to explore the archives.
+        </p>
+    </div>
+
+    <script>
+        function formatHistory(text) {
+            let formatted = text.replace(/(INDIAN HISTORY:.*?)(?=\n|$)/g, "<div class='indian-highlight'>$1</div>");
+            const highlightRegex = /(GENERATION 1 \(SUBJECT\):|GENERATION 1 \(SISTER\):|GENERATION 2 \(FATHER\):|GENERATION 2 \(MOTHER\):|GENERATION 3 \(PATERNAL GRANDFATHER\):|GENERATION 3 \(PATERNAL GRANDMOTHER\):|GENERATION 3 \(MATERNAL GRANDFATHER\):|GENERATION 3 \(MATERNAL GRANDMOTHER\):|GENERATION 4 \(GREAT-GRANDFATHER\):|GENERATION 4 \(GREAT-GRANDMOTHER\):|GENERATION 4 \(GREAT-GRANDPARENT FIGURE\):|GENERATION 4 \(GREAT-GRANDMOTHER FIGURE\):|FAMILY:|PARENTS:|HISTORY:|YORKSHIRE LINEAGE:|THE WEAVER:|DOCUMENTATION:|MILITARY RECORDS:|THE NAVIGATOR:|FRONTIER DEFENDER:)/g;
+            formatted = formatted.replace(highlightRegex, "<strong>$1</strong>");
+            return formatted;
+        }
+
+        async function searchVault(mode) {
+            let query = "";
+            if (mode === 'name') {
+                query = document.getElementById('nameSearch').value.trim().toLowerCase();
+                document.getElementById('indianSearch').value = ""; // Clear the other box
+            } else if (mode === 'indian') {
+                query = document.getElementById('indianSearch').value.trim().toLowerCase();
+                document.getElementById('nameSearch').value = ""; // Clear the other box
+            }
+
+            const output = document.getElementById('output-area');
+            if (!query) return;
+            
+            output.innerHTML = "<p style='color:#d4af37; font-size:2em; text-align:center;'>Searching the Records...</p>";
+            
+            try {
+                const response = await fetch('Gedcom.txt?v=' + new Date().getTime());
+                const text = await response.text();
+                const rawItems = text.replace(/\r/g, '').split('0 @').filter(item => item.trim().length > 0);
+                
+                const database = rawItems.map(item => {
+                    const nameMatch = item.match(/1 NAME (.*)/);
+                    const cleanName = nameMatch ? nameMatch[1].replace(/\//g, '').trim() : "Unknown Record";
+                    let notes = [...item.matchAll(/[1-3] NOTE (.*)/g)].map(m => m[1]).join('\n\n');
+                    return { name: cleanName, rawText: item, rawLower: item.toLowerCase(), notes: notes };
+                });
+
+                const searchTerms = query.split(' ').filter(term => term.length > 0);
+                let primaryMatches = [];
+
+                if (mode === 'name') {
+                    // Search ONLY within the person's name (e.g. typing "Perry" finds all Perrys)
+                    primaryMatches = database.filter(record => {
+                        return searchTerms.every(term => record.name.toLowerCase().includes(term));
+                    });
+                } else if (mode === 'indian') {
+                    // Search the ENTIRE record text for history keywords (e.g. "Cornstalk", "Adopted", "Indian")
+                    primaryMatches = database.filter(record => {
+                        return searchTerms.every(term => record.rawLower.includes(term));
+                    });
+                }
+
+                if (primaryMatches.length === 0) {
+                    output.innerHTML = `<p style='font-size:1.8em; text-align:center;'>No records found for "${query}".</p>`;
+                    return;
+                }
+
+                let foundHtml = "";
+
+                primaryMatches.forEach(mainRecord => {
+                    let mainNotesHtml = formatHistory(mainRecord.notes);
+                    
+                    foundHtml += `<div class="tree-node">
+                                    <div class="name-banner">${mainRecord.name}</div>
+                                    <div class="story-box">${mainNotesHtml}</div>`;
+                    
+                    // Only trace ancestors if we are doing a specific Name search to avoid cluttering broad history searches
+                    if (mode === 'name') {
+                        let ancestors = [];
+                        let queue = [mainRecord];
+                        let visited = new Set();
+                        visited.add(mainRecord.name);
+
+                        while(queue.length > 0) {
+                            let current = queue.shift();
+                            let parentMatch = current.notes.match(/PARENTS:\s*([^\n]+)/);
+                            
+                            if (parentMatch) {
+                                let parentNames = parentMatch[1].split(',').map(n => n.trim());
+                                parentNames.forEach(pName => {
+                                    let pRecord = database.find(r => r.name.toLowerCase() === pName.toLowerCase());
+                                    if (pRecord && !visited.has(pRecord.name)) {
+                                        visited.add(pRecord.name);
+                                        ancestors.push(pRecord);
+                                        queue.push(pRecord); 
+                                    }
+                                });
+                            }
+                        }
+
+                        if (ancestors.length > 0) {
+                            foundHtml += `<div class="ancestor-section">
+                                            <div class="ancestor-title">Ancestors of ${mainRecord.name}</div>
+                                            <div class="ancestor-grid">`;
+                            
+                            ancestors.forEach(anc => {
+                                let ancNotesHtml = formatHistory(anc.notes);
+                                foundHtml += `<div class="anc-node">
+                                                <div class="anc-name">${anc.name}</div>
+                                                <div class="anc-story">${ancNotesHtml}</div>
+                                              </div>`;
+                            });
+                            
+                            foundHtml += `</div></div>`;
+                        }
+                    }
+                    
+                    foundHtml += `</div>`; // Close main tree-node
+                });
+                
+                output.innerHTML = foundHtml;
+                
+            } catch (err) { 
+                output.innerHTML = "<p style='text-align:center; font-size:1.5em; color:red;'>Error connecting to Gedcom.txt.</p>"; 
+            }
+        }
+    </script>
+</body>
+</html>
