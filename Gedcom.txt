@@ -1,4 +1,4 @@
-0 @HIST_CLAY_FULL@ INDI
+60 @HIST_CLAY_FULL@ INDI
 1 NAME CLAY /MASTER CHRONOLOGY/
 2 NOTE MOTTO: "Fato Prudentia Major"
 2 NOTE I. ORIGIN: Derived from Old English "claeg." Topographic name for those who worked heavy clay soil.
@@ -582,3 +582,17 @@
 2 NOTE IV. BORDER CLAN: The Williamsons of Peebles—fierce, independent riding families.
 
 
+0 @HIST_CHANEY_FULL@ INDI
+1 NAME CHENEY /MASTER CHRONOLOGY/
+2 NOTE MOTTO: "Fato Prudentia Major" — Prudence Is Greater Than Fate.
+2 NOTE THE VIKING ORIGIN: The lineage begins with the Norse chieftains. Ragnar and the raiders of the North Sea forged the spirit of the line.
+2 NOTE IMAGE_REF: viking-ships-painting.jpg
+2 NOTE IMAGE_REF: Rollo Ragnar.jpeg
+2 NOTE THE FOUNDER: Rollo (Hrólfr) "The Walker" (c. 835–933). He was the first ruler of Normandy and the direct ancestor of the Cheney knights.
+2 NOTE IMAGE_REF: ROLLO TOO BIG FOR HORSE .jpeg
+2 NOTE IMAGE_REF: Rollo Knights templar.jpeg
+2 NOTE THE CONQUEROR: Six generations from Rollo came William the Conqueror (1066). He is the standard-bearer who took the Viking spirit and built a kingdom in England.
+2 NOTE IMAGE_REF: William the Conqueror king portr.jpg
+2 NOTE IMAGE_REF: William the Conqueror staue 1 .jpg
+2 NOTE THE KNIGHTS: From William's conquest, Ralph de Caisneto (Cheney) established the family in Norfolk and eventually the great seat of Shurland Hall.
+2 NOTE SOVEREIGN LOGIC: To be a Cheney is to be a son of the Conqueror and the Viking. It is a legacy of total determination.
