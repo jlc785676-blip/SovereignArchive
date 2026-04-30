@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>THE SOVEREIGN ARCHIVE</title>
+    <style>
+        body { 
+            background-color: #050505; color: #e0c097; font-family: 'Georgia', serif; 
+            margin: 0; padding: 0; overflow-x: hidden;
+            background-image: url('https://www.transparenttextures.com/patterns/dark-wood.png');
+        }
+        .header-fixed { position: sticky; top: 0; width: 100%; z-index: 2000; background: #1a0f00; border-bottom: 3px solid #3e2723; padding: 10px 0; }
+        
+        .wood-btn { 
+            padding: 14px; width: 92%; 
+            background: linear-gradient(rgba(255,255,255,0.15), rgba(0,0,0,0.5)), url('https://www.transparenttextures.com/patterns/wood-pattern.png'), #5d4037;
+            color: #fbe9e7; border: 2px solid #211510; font-weight: bold; border-radius: 8px; box-shadow: 0 6px 0 #211510; text-shadow: 1px 1px 2px #000; transition: all 0.1s; margin-bottom: 8px;
+        }
+        .wood-btn:active { transform: translateY(4px); box-shadow: 0 2px 0 #211510; }
+        .music-btn { background: linear-gradient(145deg, #2e7d32, #1b5e20); color: #fff; border: 2px solid #0a2f0c; }
+
+        #splash-collage { margin: 20px 15px 180px 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .collage-img { width: 100%; border: 2px solid #5d4037; border-radius: 4px; box-shadow: 0 4px 10px #000; }
+
+        #vault-overlay { display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 5, 0.99); z-index: 3000; overflow-y: auto; padding: 10px; box-sizing: border-box; }
+        .vault-content { max-width: 95%; margin: 10px auto; background: #111; border: 3px solid #d4af37; padding: 15px; border-radius: 8px; }
+
+        .v-img { max-width: 100%; height: auto; border: 1px solid #5d4037; margin: 15px 0; display: block; }
+        .footer-fixed { position: fixed; bottom: 0; width: 100%; z-index: 2000; background: #1a0f00; border-top: 3px solid #3e2723; padding: 8px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; }
+        .nav-btn { background: linear-gradient(145deg, #5d4037, #3e2723); color: #d4af37; border: 1px solid #211510; padding: 10px; font-size: 10px; font-weight: bold; border-radius: 4px; width: 30%; }
+        
+        .history-block { margin-bottom: 35px; border-bottom: 2px solid #3e2723; padding-bottom: 20px; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+
+    <div class="header-fixed">
+        <center>
+            <input type="text" id="nameSearch" style="padding:12px; width:88%; background:#000; color:#fff; border:2px solid #5d4037; border-radius:6px; margin-bottom:8px;" placeholder="Search Name (Erma, Perry, Vance)...">
+            <button class="wood-btn" onclick="executeDeepTrace(document.getElementById('nameSearch').value)">EXECUTE DEEP TRACE</button>
+        </center>
+    </div>
+
+    <div id="splash-collage">
+        <img src="viking-ships-painting.jpg" style="grid-column: span 2;" class="collage-img">
+        <img src="ROLLO TOO BIG FOR HORSE .jpeg" class="collage-img">
+        <img src="William the Conqueror king portr.jpg" class="collage-img">
+        <img src="Jenny Wiley.jpg" style="grid-column: span 2;" class="collage-img">
+    </div>
+
+    <div id="vault-overlay">
+        <div class="vault-content">
+            <h2 id="v-title" style="color:#d4af37; text-align:center; border-bottom:2px solid #d4af37; padding-bottom:10px;"></h2>
+            <div id="v-body"></div>
+            <button class="wood-btn" onclick="document.getElementById('vault-overlay').style.display='none'">RETURN TO ARCHIVE</button>
+        </div>
+    </div>
+
+    <div class="footer-fixed">
+        <button id="mBtn" class="wood-btn music-btn" onclick="toggleMusic()">THE GAEL: PLAY MUSIC</button>
+        <button class="nav-btn" onclick="executeDeepTrace('CHANEY')">CHANEY</button>
+        <button class="nav-btn" onclick="executeDeepTrace('VANCE')">VANCE</button>
+        <button class="nav-btn" onclick="executeDeepTrace('PERRY')">PERRY</button>
+        <button class="nav-btn" onclick="executeDeepTrace('CLAY')">CLAY</button>
+        <button class="nav-btn" onclick="executeDeepTrace('SELLARDS')">SELLARDS</button>
+        <button class="nav-btn" onclick="executeDeepTrace('WILLIAMSON')">WILLIAMSON</button>
+    </div>
+
+    <audio id="mohicansPlayer" loop><source src="The Last of the Mohicans.mp4" type="audio/mpeg"></audio>
+    <audio id="woodThump"><source src="https://www.soundjay.com/buttons/sounds/button-14.mp3" type="audio/mpeg"></audio>
+
+    <script>
+        const thump = document.getElementById('woodThump');
+        const music = document.getElementById('mohicansPlayer');
+        let db = [];
+
+        async function init() {
+            const res = await fetch('Gedcom.txt?v=' + new Date().getTime());
+            const data = await res.text();
+            const items = data.split('0 @').filter(i => i.trim().length > 0);
+            db = items.map(i => {
+                const n = i.match(/1 NAME (.*)/);
+                const notes = [...i.matchAll(/[1-3] NOTE (.*)/g)].map(m => m[1]).join('\n\n');
+                const genMatch = notes.match(/GENERATION (\d+)/i);
+                const gen = genMatch ? parseInt(genMatch[1]) : 0;
+                return { name: n ? n[1].replace(/\//g, '').trim() : "Record", raw: i.toLowerCase(), notes: notes, gen: gen };
+            });
+        }
+
+        function playThump() { thump.currentTime = 0; thump.play().catch(e=>{}); }
+        function toggleMusic() { if (music.paused) { music.play(); document.getElementById('mBtn').innerText = "THE GAEL: ON"; } else { music.pause(); document.getElementById('mBtn').innerText = "THE GAEL: PLAY"; } }
+
+        function executeDeepTrace(query) {
+            playThump();
+            if (!query) return;
+            const q = query.toLowerCase();
+            // Pulls target and every record mentioning the name
+            let results = db.filter(r => r.raw.includes(q)).sort((a, b) => b.gen - a.gen);
+            
+            let h = "";
+            results.forEach(r => {
+                let formattedNotes = r.notes.replace(/IMAGE_REF: (.*?)(?=\n|$|\r)/g, "<img src='$1' class='v-img'>");
+                h += `<div class="history-block">
+                        <div style="font-size:1.3em; color:#fff; font-weight:bold; border-left:5px solid #d4af37; padding-left:10px;">${r.name}</div>
+                        <div style="margin-top:10px;">${formattedNotes}</div>
+                      </div>`;
+            });
+            document.getElementById('v-title').innerText = query.toUpperCase() + " COMPLETE HISTORY";
+            document.getElementById('v-body').innerHTML = h || "<p>Lineage scanning...</p>";
+            document.getElementById('vault-overlay').style.display = 'block';
+        }
+        window.onload = init;
+    </script>
+</body>
+</html>
