@@ -1,0 +1,43 @@
+0 HEAD
+1 CHAR UTF-8
+1 SOUR Sovereign Archive
+1 NOTE THE BLOODLINE ARCHIVE - MASTER ALIGNMENT APRIL 2026
+
+0 @BOOK_VANCE_RESEARCH@ INDI
+1 NAME ✶ RESEARCH BOOK: THE VANCE LINE ✶
+2 NOTE Section 4: The Vance Line — From Ireland to the American Frontier.
+2 NOTE 4.1 — Direct Vance Ancestors: The Vance line enters the Chaney family tree through Arminda Vance (b. c. 1935), mother of Oshel and grandmother of Joshua. She married Newman Chaney, uniting the patrilineal line with deep frontier heritage.
+2 NOTE John Hobert Vance (1897–1968) married Lillie Lily Dyer (1901–1982). Together they raised Arminda Vance in the heart of the Appalachian corridor.
+2 NOTE 4.2 — Major William Vance (1718–1788): Part of the great Vance family migration from Ireland to Virginia. Migrated to western Pennsylvania, establishing a stone fort (Fort Vance) for protection against raids. 
+2 NOTE Major Vance served in both the colonial and revolutionary periods and was a founder of the Cross Creek Presbyterian Church. His story represents the Vance family’s transformation from immigrants to frontier leaders.
+2 NOTE 4.3 — Infamous and Notable Vances:
+2 NOTE Abner Vance (c. 1760–1819): Convicted of murder, he composed “Vance’s Song” while awaiting execution—one of the earliest prisoner ballads in American folk tradition.
+2 NOTE Robert Brank Vance (1793–1827): Died in a duel with Samuel Price Carson.
+2 NOTE Zebulon Baird Vance (1830–1894): Governor of North Carolina and U.S. Senator.
+2 NOTE James “Jim” Vance (1832–1888): Killed during the infamous Hatfield–McCoy feud.
+2 NOTE Robert de Vaux: A 12th-century figure who connects the Vance name to the Norman-era "de Vaux" family of Cumberland.
+2 NOTE 4.4 — The de Vaux / de Vans Origins: The surname derives from Norman-French roots in Cumberland and Normandy, providing a bridge between the family’s English and Irish chapters.
+
+0 @I_VANCE_ARM@ INDI
+1 NAME Arminda /Vance/
+2 NOTE Daughter of John Hobert Vance. Paternal Grandmother.
+2 NOTE IMAGE_REF: jenny_wiley_portrait.jpg
+
+0 @I_VANCE_JOHN@ INDI
+1 NAME John Hobert /Vance/
+2 NOTE 1897–1968. Great-grandfather.
+2 NOTE IMAGE_REF: 1000043784.jpg
+
+0 @I_VANCE_MAJ@ INDI
+1 NAME Major William /Vance/
+2 NOTE 1718–1788. Revolutionary War Patriot. Founder of Cross Creek Church.
+
+0 @I_WILEY_JENNY@ INDI
+1 NAME Jenny /Wiley/ (Sellards)
+2 NOTE ANCESTOR: The Weaver. Daughter of Hezekiah Sellards. 
+2 NOTE IMAGE_REF: jenny_wiley_portrait.jpg
+2 NOTE YOUTUBE_REF: DTzSJx4rEKM
+
+0 @I_JOSH@ INDI
+1 NAME Joshua Josh /Chaney/
+2 NOTE SUBJECT: Marysville, Ohio.
