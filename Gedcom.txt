@@ -1,3 +1,65 @@
+0 @HIST_PERRY_FULL@ INDI
+1 NAME PERRY /MASTER CHRONOLOGY/
+2 NOTE GENERATION 25
+2 NOTE PERRY MASTER FILE: From the Pear Orchards of Medieval England to the Virginia Frontier.
+2 NOTE Section I: Origin of the Perry Surname. Derived from Old English "pyrige" (pear tree) or Welsh "ap Herry" (son of Harry). Earliest record: Richard Pirie, Kent (1198).
+2 NOTE Section II: Medieval England. Gilbert atte Pyrie (1263). Heraldic Arms: Quarterly red and gold, silver bend with three black lions.
+2 NOTE Section III: Colonial Virginia. John Perry (1620s) arrived in James City. "Indian Tom Perry" - Mattaponi connection along the Mattaponi River. Nansemond connection in Suffolk.
+2 NOTE Section IV: American History. George Washington Perry, Private Mitchell Perry, Walter Lake Perry, Pansy Perry, and Erma Perry.
+2 NOTE Section VI: Indigenous Heritage. Powhatan Confederacy. The Mattaponi and Nansemond heritage is a central part of the identity, not an addendum.
+2 NOTE Section VII: Symbols. The Pear Tree (fruitfulness) and the lions (courage).
+
+0 @HIST_CHANEY_FULL@ INDI
+1 NAME CHANEY /MASTER CHRONOLOGY/
+2 NOTE GENERATION 25
+2 NOTE CHANEY MASTER FILE: From the Oak Groves of Normandy to the American Frontier.
+2 NOTE Section I: Origin. Variant of Cheney/Chesney. From Norman French "chesne" (oak grove).
+2 NOTE Section II: Norman Ancestors. Lineage: Rollo "The Walker", William Longsword, Richard the Fearless, Richard the Good, Robert the Magnificent, William the Conqueror.
+2 NOTE Section III: Ralph de Caisneto (Ralph I de Chesney) arrived in 1066. Recorded in Domesday Book (1086). Manors: Milton Keynes, Horsted Keynes.
+2 NOTE Section IV: Medieval Magnates. William de Chesney (Oxford Castle), Robert de Chesney (Bishop of Lincoln, 1148).
+2 NOTE Section V: Colonial America. John Cheney (1635, ship Defence), William Cheney (Roxbury, 1639).
+2 NOTE Section VII: Heraldry. Azure, six lions rampant Argent, canton Ermine. Motto: "Fato Prudentia Major" (Prudence is greater than fate).
+
+0 @HIST_VANCE_FULL@ INDI
+1 NAME VANCE /MASTER CHRONOLOGY/
+2 NOTE GENERATION 25
+2 NOTE VANCE MASTER FILE: From the Halls of Normandy to the American Frontier.
+2 NOTE Section I: Origin. From Norman-French "de Vaux" (of the valleys).
+2 NOTE Section II: Ancestors. Served under the House of Normandy from Rollo to the Conqueror.
+2 NOTE Section III: Founders in England. Hubert de Vaux (Barony of Gilsland), Rundolph de Vaux, Robert de Vaux. Knights of the Garter heritage.
+2 NOTE Section IV: Scotland. Adam de Vaux (Carrick) and William de Vaux (Barony of Dirleton).
+2 NOTE Section V: Ireland. Name stabilized as "Vance" during the Plantation of Ulster (c. 1600s).
+2 NOTE Section VI: America. Andrew Vance (1700) and Major William Vance (1718-1788).
+2 NOTE IMAGE_REF: 1000043784.jpg
+
+0 @HIST_CLAY_FULL@ INDI
+1 NAME CLAY /MASTER CHRONOLOGY/
+2 NOTE GENERATION 25
+2 NOTE CLAY MASTER FILE: From the Clay Soils of Medieval England to the Virginia Colony.
+2 NOTE Section I: Origin. From Old English "claeg" (clay). Topographic name for those who worked the soil.
+2 NOTE Section II: Medieval England. Roots in Yorkshire (1190s). Robert del Clay (1270). Edmund de Clay (1300s Arms).
+2 NOTE Section IV: Colonial Virginia. John Thomas Clay I (1613, ship Treasurer). John Thomas Clay II and Charles Clay (Bacon's Rebellion era).
+2 NOTE Section V: American History. Henry Clay (The Great Compromiser) and Cassius Marcellus Clay.
+2 NOTE Section VI: Heraldry. Argent, a chevron between three trefoils slipped sable.
+
+0 @HIST_SELLARDS_FULL@ INDI
+1 NAME SELLARDS /MASTER CHRONOLOGY/
+2 NOTE GENERATION 25
+2 NOTE SELLARDS MASTER FILE: From the Pictish Highlands to the American Frontier.
+2 NOTE Section I: Origin. Occupational name (Merchant, Cellarer, Saddler, or Cottager).
+2 NOTE Section II: Pictish Heritage. Indigenous people of northeastern Scotland (Aberdeenshire).
+2 NOTE Section III: Earliest Records. Alriz Sellere (1086). William Sellerarius (Knight Templar, 12th C).
+2 NOTE Section V: America. Kentucky frontier settlement. Intermarriage with Native American lines.
+2 NOTE IMAGE_REF: Jenny Wiley.jpg
+
+0 @HIST_WILLIAMSON_FULL@ INDI
+1 NAME WILLIAMSON /MASTER CHRONOLOGY/
+2 NOTE GENERATION 25
+2 NOTE WILLIAMSON MASTER FILE: From Germanic Warlords to the American Frontier.
+2 NOTE Section I: Origin. Patronymic "son of William" (Resolute Protector).
+2 NOTE Section IV: Border Clan. Williamsons of Peebles. Part of the fierce "riding families" of the Scottish-English frontier.
+2 NOTE Section VII: Clan Gunn. Recognized as a sept of Clan Gunn (Viking bloodline of the far north).
+2 NOTE Section V: Heraldry. Motto: "Murus aeneus conscientia sana" (A sound conscience is a wall of brass).
 70 HEAD
 1 CHAR UTF-8
 1 SOUR Sovereign Archive
