@@ -1,0 +1,46 @@
+0 HEAD
+1 CHAR UTF-8
+1 SOUR Sovereign Archive
+1 NOTE THE BLOODLINE ARCHIVE - MASTER ALIGNMENT APRIL 2026
+
+0 @BOOK_INTRO@ INDI
+1 NAME ✶ GENEALOGICAL ARCHIVE: THE BLOODLINE SCROLL ✶
+2 NOTE This constitutes the master Bloodline Scroll — a unified archive spanning fifty generations across multiple continents. Documented from Joshua Chaney of Marysville, Ohio, back through American frontier families, Colonial Virginia, medieval England, and into ancient royal lines. 
+
+0 @BOOK_PERRY@ INDI
+1 NAME ✶ RESEARCH BOOK: THE PERRY LINE (5 PAGES) ✶
+2 NOTE Section 5.1 — Direct Perry Ancestors: Tracing back to early 19th-century Kentucky. George Washington Perry (1810) and Private Mitchell Perry (1834) are the earliest documented in Floyd and Pike County.
+2 NOTE Section 5.2 — The Perry-Indigenous Connection: John Perry died in James City, VA, in the 1620s. Captain William Perry presented a Native American boy in court during probate. During the 1622 Powhatan uprising, an Indian under Perry’s care warned colonists, saving Jamestown.
+2 NOTE Section 5.3 — Nansemond Connection: Tribal researcher Marilyn Mejorado confirms Perry as an Indigenous surname among Nansemond descendants. Oral tradition and maternal kinship networks maintain this identity where formal records are thin.
+2 NOTE Section 5.4 — Geographic Migration: The corridor flows through Floyd and Pike Counties, KY, to Wayne County and East Lynn, WV.
+2 NOTE LINK: https://copilot.microsoft.com/shares/artifacts/VjH6Jj7PfmUMgvni9j5rr
+
+0 @BOOK_VANCE@ INDI
+1 NAME ✶ RESEARCH BOOK: THE VANCE LINE (5 PAGES) ✶
+2 NOTE Section 4.1 — Direct Vance Ancestors: Newman Chaney married Arminda Vance, uniting the Chaney line with the Scots-Irish frontier. John Hobert Vance (1897-1968) and Lillie Lily Dyer (1901-1982) are the pillars of this branch.
+2 NOTE Section 4.2 — Major William Vance (1718–1788): A frontier leader who migrated from Ireland to Virginia and then to western Pennsylvania. He founded the Cross Creek Presbyterian Church and led defenses during the Revolutionary period.
+2 NOTE Section 4.3 — Infamous and Notable Vances: Abner Vance (c. 1760-1819) composed "Vance’s Song" in prison. Robert Brank Vance died in a duel in 1827. Zebulon Baird Vance was a Governor and Senator. Jim Vance was killed during the Hatfield–McCoy feud.
+2 NOTE Section 4.4 — The de Vaux Origins: Derived from the Norman-French "de Vaux" or "de Vans" family of Cumberland, England.
+
+0 @BOOK_CHANEY@ INDI
+1 NAME ✶ RESEARCH BOOK: THE CHANEY LINE (5 PAGES) ✶
+2 NOTE Section 3 — Direct Patrilineal Descent: Leonard Chaney (1895-1975) is the earliest confirmed patriarch. He lived through two World Wars and the transition to the Space Age.
+2 NOTE Newman Chaney (d. 2017) served as the paternal grandfather to Joshua. Oshel Chaney (b. 1949) carried the name into the current era.
+2 NOTE Pre-1895 Origins: Surname variants appear in Appalachian records across Kentucky, West Virginia, and Virginia, extending potentially to the 17th century.
+
+0 @BOOK_CLAY@ INDI
+1 NAME ✶ RESEARCH BOOK: THE CLAY LINE (5 PAGES) ✶
+2 NOTE Section 6.1 — The Yorkshire Clay Lineage (c. 1190–1350): Records include William de Clay, Thomas de la Clay, and Richard del Clay of Beverley and Etton.
+2 NOTE Section 6.3 — Colonial Virginia: John Thomas Clay II arrived in 1613 aboard the ship 'Treasurer'. He was an "Ancient Planter," arriving only six years after Jamestown.
+2 NOTE Section 6.4 — Charles Clay & Bacon's Rebellion: Charles (1638-1686) lived in Henrico County during the first major armed uprising against colonial authority in 1676.
+2 NOTE Section 6.5 — Migration: Corridor through Halifax, VA to Lawrence County, KY, and Wayne County, WV.
+
+0 @BOOK_TEMPLAR@ INDI
+1 NAME ✶ RESEARCH BOOK: KNIGHTS TEMPLAR & ROYAL ✶
+2 NOTE Section 10 — Godfrey de Saint-Omer: Co-founded the Knights Templar in 1119 with Hugues de Payens.
+2 NOTE Section 11 — Alfred the Great (848–899): King of Wessex who unified England. Traced lineage connects through Matilda of Flanders to the House of Wessex.
+2 NOTE Section 11.5 — Biblical Lineage: Genealogical claims tracing from the European royal houses back to the Davidic Dynasty.
+
+0 @I_JOSH@ INDI
+1 NAME Joshua Josh /Chaney/
+2 NOTE Born 1978. Marysville, Ohio. Bloodline: Chaney / Vance / Perry / Clay / Sellards.
