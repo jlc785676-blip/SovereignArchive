@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>THE SOVEREIGN ARCHIVE</title>
+    <style>
+        body { background-color: #050505; color: #e0c097; font-family: 'Georgia', serif; margin: 0; padding: 0; overflow-x: hidden; font-size: 14px; }
+        
+        /* THE STICKY HEADER - TWO SEARCH BARS */
+        .header-fixed {
+            position: fixed; top: 0; width: 100%; z-index: 2000;
+            background: rgba(15, 15, 15, 0.98); border-bottom: 2px solid #d4af37;
+            padding: 8px 0; backdrop-filter: blur(8px);
+        }
+
+        .search-container { display: flex; flex-direction: column; align-items: center; gap: 5px; width: 100%; }
+        input { 
+            padding: 8px; width: 90%; background: #000; border: 1px solid #444; 
+            color: #fff; border-radius: 3px; font-size: 0.85em; outline: none; 
+        }
+        .main-btn { 
+            padding: 8px; width: 93%; background: #d4af37; color: #000; 
+            border: none; font-weight: bold; cursor: pointer; border-radius: 3px; 
+            font-size: 0.8em; text-transform: uppercase; margin-bottom: 5px;
+        }
+        .indian-btn { background: #8b0000; color: #fff; border: 1px solid #ff4500; }
+
+        /* CONTENT PADDING - Stops content from hiding under search bars */
+        #content-wrapper { margin-top: 170px; margin-bottom: 160px; padding: 10px; }
+        
+        .tree-node { 
+            background: #111; border-left: 5px solid #d4af37; padding: 12px; 
+            margin-bottom: 12px; border-radius: 0 4px 4px 0; text-align: left;
+        }
+        .name-banner { font-size: 1.1em; color: #fff; font-weight: bold; text-transform: uppercase; border-bottom: 1px solid #333; margin-bottom: 5px; }
+        .story-box { color: #ccc; font-size: 0.9em; line-height: 1.4; }
+
+        /* THE FIXED FOOTER - SURNAME BUTTONS */
+        .footer-fixed {
+            position: fixed; bottom: 0; width: 100%; z-index: 2000;
+            background: #1a1a1a; border-top: 2px solid #d4af37;
+            padding: 8px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px;
+        }
+        .nav-btn { 
+            background: #222; color: #d4af37; border: 1px solid #d4af37; 
+            padding: 6px 10px; font-size: 0.7em; font-weight: bold; 
+            border-radius: 2px; text-transform: uppercase;
+        }
+
+        /* OVERLAY VAULT */
+        #full-history-vault { 
+            display:none; position: fixed; top: 10%; left: 5%; width: 90%; height: 75%;
+            background: #0c0c0c; border: 2px solid #d4af37; z-index: 3000; 
+            overflow-y: auto; padding: 15px; box-shadow: 0 0 30px #000;
+        }
+        
+        .indian-highlight { background: rgba(139, 0, 0, 0.2); border-left: 3px solid #ff4500; padding: 8px; margin: 8px 0; font-size: 0.85em; }
+    </style>
+</head>
+<body>
+
+    <div class="header-fixed">
+        <div class="search-container">
+            <input type="text" id="nameSearch" placeholder="Search Names (Perry, Vance, etc)...">
+            <button class="main-btn" onclick="searchVault('name')">Trace Bloodline</button>
+            <input type="text" id="indianSearch" placeholder="Search Indian History (Tribes, etc)...">
+            <button class="main-btn indian-btn" onclick="searchVault('indian')">Explore Heritage</button>
+        </div>
+    </div>
+
+    <div id="content-wrapper">
+        <div id="output-area"></div>
+    </div>
+
+    <div id="full-history-vault">
+        <h3 id="vault-title" style="color:#d4af37; text-align:center; font-size: 1em;"></h3>
+        <div id="vault-body" style="font-size: 0.85em; line-height: 1.4;"></div>
+        <button onclick="document.getElementById('full-history-vault').style.display='none'" style="width:100%; margin-top:15px; background:#d4af37; padding:8px; border:none; font-weight:bold;">CLOSE RECORD</button>
+    </div>
+
+    <div class="footer-fixed">
+        <button class="nav-btn" onclick="displaySovereignStory('CHANEY')">CHANEY</button>
+        <button class="nav-btn" onclick="displaySovereignStory('VANCE')">VANCE</button>
+        <button class="nav-btn" onclick="displaySovereignStory('PERRY')">PERRY</button>
+        <button class="nav-btn" onclick="displaySovereignStory('CLAY')">CLAY</button>
+        <button class="nav-btn" onclick="displaySovereignStory('SELLARDS')">SELLARDS</button>
+        <button class="nav-btn" onclick="displaySovereignStory('WILLIAMSON')">WILLIAMSON</button>
+    </div>
+
+    <audio id="bgMusic" loop><source src="mohicans.mp3" type="audio/mpeg"></audio>
+
+    <script>
+        let gedcomData = [];
+
+        async function loadDatabase() {
+            const response = await fetch('Gedcom.txt?v=' + new Date().getTime());
+            const text = await response.text();
+            const rawItems = text.replace(/\r/g, '').split('0 @').filter(item => item.trim().length > 0);
+            gedcomData = rawItems.map(item => {
+                const nameMatch = item.match(/1 NAME (.*)/);
+                const cleanName = nameMatch ? nameMatch[1].replace(/\//g, '').trim() : "Unknown Record";
+                let notes = [...item.matchAll(/[1-3] NOTE (.*)/g)].map(m => m[1]).join('\n\n');
+                return { name: cleanName, rawText: item, rawLower: item.toLowerCase(), notes: notes };
+            });
+        }
+
+        function formatHistory(text) {
+            let formatted = text.replace(/IMAGE_REF: (.*?)\.jpg/g, "<img src='$1.jpg' style='width:100%; border: 1px solid #d4af37; margin: 10px 0;'>");
+            formatted = formatted.replace(/(INDIAN HISTORY:.*?)(?=\n|$)/g, "<div class='indian-highlight'>$1</div>");
+            const boldRegex = /(SECTION.*?|GENERATION.*?|HISTORY:|MOTTO:|I\.|II\.|III\.|IV\.|V\.|VI\.)/g;
+            formatted = formatted.replace(boldRegex, "<strong>$1</strong>");
+            return formatted;
+        }
+
+        function displaySovereignStory(surname) {
+            const record = gedcomData.find(r => r.rawLower.includes("hist_" + surname.toLowerCase() + "_full"));
+            if (record) {
+                document.getElementById('vault-title').innerText = surname + " MASTER CHRONOLOGY";
+                document.getElementById('vault-body').innerHTML = formatHistory(record.notes);
+                document.getElementById('full-history-vault').style.display = 'block';
+            }
+        }
+
+        function searchVault(mode) {
+            const query = (mode === 'name') ? document.getElementById('nameSearch').value.toLowerCase() : document.getElementById('indianSearch').value.toLowerCase();
+            const output = document.getElementById('output-area');
+            let matches = gedcomData.filter(r => mode === 'name' ? r.name.toLowerCase().includes(query) : r.rawLower.includes(query));
+            let html = "";
+            matches.forEach(r => {
+                html += `<div class="tree-node"><div class="name-banner">${r.name}</div><div class="story-box">${formatHistory(r.notes)}</div></div>`;
+            });
+            output.innerHTML = html || "<p style='text-align:center;'>Record not found.</p>";
+        }
+
+        // MUSIC START & SLOW FADE
+        document.addEventListener('click', function() {
+            const music = document.getElementById('bgMusic');
+            if (music.paused) {
+                music.volume = 0; music.play();
+                let fadeTime = 25000; // 25 seconds fade
+                let steps = 100;
+                let volumeIncrement = 0.5 / steps;
+                let interval = fadeTime / steps;
+                let fade = setInterval(() => {
+                    if (music.volume < 0.5) { music.volume += volumeIncrement; } 
+                    else { clearInterval(fade); }
+                }, interval);
+            }
+        }, { once: true });
+
+        window.onload = loadDatabase;
+    </script>
+</body>
+</html>
