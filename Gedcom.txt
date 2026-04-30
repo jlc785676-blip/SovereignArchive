@@ -1,0 +1,80 @@
+0 HEAD
+1 CHAR UTF-8
+1 SOUR Sovereign Archive
+1 NOTE THE BLOODLINE ARCHIVE - MASTER ALIGNMENT APRIL 2026
+
+0 @HIST_CHANEY_FULL@ INDI
+1 NAME CHENEY /MASTER CHRONOLOGY/
+2 NOTE MOTTO: "Fato Prudentia Major" — Prudence Is Greater Than Fate.
+2 NOTE THE VIKING ORIGIN: The lineage begins with the Norse chieftains. Ragnar and the raiders of the North Sea forged the spirit of the line.
+2 NOTE IMAGE_REF: viking-ships-painting.jpg
+2 NOTE IMAGE_REF: Rollo Ragnar.jpeg
+2 NOTE THE FOUNDER: Rollo (Hrólfr) "The Walker" (c. 835–933). He was the first ruler of Normandy and the direct ancestor of the Cheney knights.
+2 NOTE IMAGE_REF: ROLLO TOO BIG FOR HORSE .jpeg
+2 NOTE IMAGE_REF: Rollo Knights templar.jpeg
+2 NOTE THE CONQUEROR: Six generations from Rollo came William the Conqueror (1066). He is the standard-bearer who took the Viking spirit and built a kingdom in England.
+2 NOTE IMAGE_REF: William the Conqueror king portr.jpg
+2 NOTE IMAGE_REF: William the Conqueror staue 1 .jpg
+2 NOTE THE KNIGHTS: From William's conquest, Ralph de Caisneto (Cheney) established the family in Norfolk and eventually the great seat of Shurland Hall, Isle of Sheppey.
+2 NOTE SOVEREIGN LOGIC: To be a Cheney is to be a son of the Conqueror and the Viking. It is a legacy of total determination.
+
+0 @HIST_CLAY_FULL@ INDI
+1 NAME CLAY /MASTER CHRONOLOGY/
+2 NOTE MOTTO: "Fato Prudentia Major"
+2 NOTE I. ORIGIN: Derived from Old English "claeg." Topographic name for those who worked heavy clay soil.
+2 NOTE III. VIRGINIA FOUNDERS: John Thomas Clay I (1613) arrived on the 'Treasurer.'
+2 NOTE V. AMERICAN HISTORY: Henry Clay (The Great Compromiser) and Cassius Marcellus Clay.
+
+0 @HIST_PERRY_FULL@ INDI
+1 NAME PERRY /MASTER CHRONOLOGY/
+2 NOTE I. ORIGIN: English "Pear Tree" or Welsh "Son of Harry."
+2 NOTE II. COLONIAL VIRGINIA: John Perry (1620s).
+2 NOTE VI. INDIGENOUS HERITAGE: The "Indian Tom Perry" connection to Mattaponi and Nansemond tribes.
+
+0 @HIST_SELLARDS_FULL@ INDI
+1 NAME SELLARDS /MASTER CHRONOLOGY/
+2 NOTE I. PICTISH HERITAGE: Rooted in the ancient Pictish civilization of Aberdeenshire, Scotland.
+2 NOTE III. TEMPLAR CONNECTION: William Sellerarius recorded in the Knights Templar registers (12th C).
+
+0 @HIST_WILLIAMSON_FULL@ INDI
+1 NAME WILLIAMSON /MASTER CHRONOLOGY/
+2 NOTE MOTTO: "Murus aeneus conscientia sana"
+2 NOTE II. THE CONQUEROR: Linked to William the Conqueror (1066) and the Norman legacy.
+2 NOTE IV. BORDER CLAN: The Williamsons of Peebles—fierce, independent riding families.
+
+0 @HIST_VANCE_FULL@ INDI
+1 NAME VANCE /MASTER CHRONOLOGY/
+2 NOTE THE NAVIGATORS: Roots in the "De Vaux" family of Normandy and France. The name signifies "of the valleys."
+2 NOTE I. THE ANCIENT ORIGIN: Historically linked to the Lords of Vaux in Normandy. This lineage was part of the elite administrative and military class.
+2 NOTE II. THE HIDDEN RECORDS: Specific documentation exists in the Jerusalem and Vatican archives.
+2 NOTE III. ARRIVAL IN THE COLONIES: Established early in Virginia and North Carolina. They were surveyors and woodsmen.
+2 NOTE IV. THE TUG VALLEY SETTLEMENT: Abner Vance Sr. (c. 1759–1838) is the primary patriarch.
+2 NOTE V. THE SOVEREIGN CONNECTION: Link between settling families and tribal leadership of the Cherokee and Shawnee.
+2 NOTE SOVEREIGN LOGIC: The Vance blood is the "Compass" of our family.
+
+0 @I_WILEY_JENNY@ INDI
+1 NAME Jenny /Wiley/ (Sellards)
+2 NOTE THE WEAVER: Daughter of Hezekiah Sellards.
+2 NOTE INDIAN HISTORY: Captured by the Shawnee in 1789. She survived a 10-month ordeal.
+2 NOTE IMAGE_REF: JENNY_PORTRAIT
+2 NOTE HISTORY: Her final resting place in Kentucky.
+2 NOTE IMAGE_REF: JENNY_GRAVE
+2 NOTE SOVEREIGN LOGIC: She is a symbol of the unbreakable connection between the settlers and the spirit of the land.
+
+0 @I_HERITAGE_WATIE@ INDI
+1 NAME Stand Watie /Degataga/
+2 NOTE INDIAN HISTORY: Born 1806, Died 1871. Cherokee leader and signer of the Treaty of New Echota.
+2 NOTE SOVEREIGN LOGIC: A high-ranking Freemason and Confederate Brigadier General.
+
+0 @I_HERITAGE_CORNSTALK@ INDI
+1 NAME Chief /Cornstalk/ (Hokolesqua)
+2 NOTE INDIAN HISTORY: Shawnee strategist who mentored Tecumseh. Death at Point Pleasant in 1774.
+
+0 @I_HERITAGE_MASONIC@ INDI
+1 NAME Masonic /Frontier Lodge/
+2 NOTE HISTORY: The Freemasons and Knights Templar provided a silent network on the frontier to protect bloodlines.
+
+0 @I_CHANEY_JOSHUA@ INDI
+1 NAME Joshua Josh /Chaney/
+2 NOTE GENERATION 1 (SUBJECT): Born 1978. Residence: Marysville, Ohio.
+2 NOTE PARENTS: Oshel Chaney, Erma Perry
