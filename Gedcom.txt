@@ -1,0 +1,25 @@
+0 HEAD
+1 CHAR UTF-8
+1 SOUR Sovereign Archive
+
+0 @HIST_CHANEY@ INDI
+1 NAME CHANEY /MASTER CHRONOLOGY/
+2 NOTE Section II: Norman Ancestors. Lineage: Rollo "The Walker", William the Conqueror.
+
+0 @HIST_PERRY@ INDI
+1 NAME PERRY /MASTER CHRONOLOGY/
+2 NOTE Section I: Origin of the Perry Surname. Derived from Old English "pyrige".
+2 NOTE The Mattaponi Connection: "Indian Tom Perry" - ancestor connected to the Mattaponi people.
+
+0 @HIST_SELLARDS@ INDI
+1 NAME SELLARDS /MASTER CHRONOLOGY/
+2 NOTE Pictish Heritage. Indigenous people of northeastern Scotland.
+
+0 @I_WILEY@ INDI
+1 NAME Jenny /Wiley/ (Sellards)
+2 NOTE THE WEAVER: Captured by the Shawnee in 1789. Her story remains a testament to the frontier spirit.
+2 NOTE YOUTUBE_REF: DTzSJx4rEKM
+
+0 @I_JOSHUA@ INDI
+1 NAME Joshua Josh /Chaney/
+2 NOTE PARENTS: Oshel Chaney, Erma Perry.
