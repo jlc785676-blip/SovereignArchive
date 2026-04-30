@@ -1,0 +1,80 @@
+0 HEAD
+1 CHAR UTF-8
+1 SOUR Sovereign Archive
+1 NOTE THE BLOODLINE ARCHIVE - MASTER ALIGNMENT APRIL 2026
+
+0 @HIST_PERRY_FULL@ INDI
+1 NAME PERRY /MASTER CHRONOLOGY/
+2 NOTE GENERATION 30
+2 NOTE PERRY MASTER FILE: From the Pear Orchards of Medieval England to the Virginia Frontier.
+2 NOTE Section I: Origin of the Perry Surname. Derived from Old English "pyrige" (pear tree) or Welsh "ap Herry" (son of Harry). 
+2 NOTE Earliest Recorded Bearers: 1198 - Richard Pirie (Kent), 1263 - Gilbert atte Pyrie (Surrey), 1392 - Richard atte Perye (Sussex).
+2 NOTE Heraldic Achievement (1639, Gloucester): "Quarterly red and gold, on a silver bend three black lions passant."
+2 NOTE Section III: Colonial Virginia. John Perry (1620s) arrived in James City.
+2 NOTE The Mattaponi Connection: "Indian Tom Perry" - ancestor connected to the Mattaponi people.
+2 NOTE Section VI: Indigenous Heritage. The blending of English settler and Virginia Native bloodlines is foundational.
+2 NOTE Section VII: Symbols. The Pear Tree and the lions of courage.
+
+0 @HIST_CHANEY_FULL@ INDI
+1 NAME CHANEY /MASTER CHRONOLOGY/
+2 NOTE GENERATION 30
+2 NOTE MOTTO: "Fato Prudentia Major" — Prudence Is Greater Than Fate.
+2 NOTE Section I: Origin. Variant of Cheney/Chesney (Oak Grove).
+2 NOTE Section II: Norman Ancestors. Lineage: Rollo "The Walker", William I Longsword, Richard the Fearless.
+2 NOTE IMAGE_REF: Rollo.jpeg
+2 NOTE Section III: The Conqueror. William II (1066). Invaded England.
+2 NOTE IMAGE_REF: WilliamConquerorPortrait.jpg
+2 NOTE Section IV: The Knights. Ralph de Caisneto (Ralph I de Chesney) arrived in 1066.
+2 NOTE Seat: Shurland Hall, Isle of Sheppey. 
+
+0 @HIST_VANCE_FULL@ INDI
+1 NAME VANCE /MASTER CHRONOLOGY/
+2 NOTE GENERATION 30
+2 NOTE VANCE MASTER FILE: From the Halls of Normandy to the American Frontier.
+2 NOTE Section II: The Norman Ancestors. Vassals of the Norman dukes since the time of Rollo.
+2 NOTE Section VI: America. Andrew Vance (1700, Virginia) and Major William Vance (1718–1788).
+2 NOTE IMAGE_REF: 1000043784.jpg
+
+0 @HIST_CLAY_FULL@ INDI
+1 NAME CLAY /MASTER CHRONOLOGY/
+2 NOTE GENERATION 30
+2 NOTE CLAY MASTER FILE: From the Clay Soils of Medieval England to the Virginia Colony.
+2 NOTE Section IV: Colonial Virginia. John Thomas Clay I arrived in 1613 aboard the ship 'Treasurer.'
+2 NOTE Section V: American History. Henry Clay (The Great Compromiser).
+
+0 @HIST_SELLARDS_FULL@ INDI
+1 NAME SELLARDS /MASTER CHRONOLOGY/
+2 NOTE GENERATION 30
+2 NOTE SELLARDS MASTER FILE: From the Pictish Highlands to the American Frontier.
+2 NOTE Section II: Pictish Heritage. Indigenous people of northeastern Scotland.
+2 NOTE Templar Connection: William Sellerarius recorded in the Knights Templar registers (12th C).
+2 NOTE Section V: America. Frontier settlement in Kentucky. 
+2 NOTE IMAGE_REF: JennyWileyPortrait.jpg
+
+0 @HIST_WILLIAMSON_FULL@ INDI
+1 NAME WILLIAMSON /MASTER CHRONOLOGY/
+2 NOTE GENERATION 30
+2 NOTE WILLIAMSON MASTER FILE: From Germanic Warlords to the American Frontier.
+2 NOTE Section IV: Border Clan. The Williamsons of Peebles—fierce riding families.
+2 NOTE Section VII: Clan Gunn. Recognized as a sept of Clan Gunn.
+2 NOTE Motto: "Murus aeneus conscientia sana"
+
+0 @I_PERRY_WALTER@ INDI
+1 NAME Walter Lake /Perry/
+2 NOTE GENERATION 10
+2 NOTE Paternal grandfather of the Perry line.
+
+0 @I_PERRY_ERMA@ INDI
+1 NAME Erma /Perry/
+2 NOTE GENERATION 5
+2 NOTE Daughter of Walter Lake Perry. Mother of Joshua Chaney.
+
+0 @I_WILEY_JENNY@ INDI
+1 NAME Jenny /Wiley/ (Sellards)
+2 NOTE THE WEAVER: Daughter of Hezekiah Sellards. Captured by the Shawnee in 1789.
+2 NOTE IMAGE_REF: JennyWileyPortrait.jpg
+
+0 @I_CHANEY_JOSHUA@ INDI
+1 NAME Joshua Josh /Chaney/
+2 NOTE GENERATION 1 (SUBJECT): Born 1978. Residence: Marysville, Ohio.
+2 NOTE PARENTS: Oshel Chaney, Erma Perry
