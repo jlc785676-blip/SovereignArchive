@@ -1,0 +1,96 @@
+0 HEAD
+1 CHAR UTF-8
+1 SOUR Sovereign Archive
+
+0 @I_JOSH@ INDI
+1 NAME Joshua Josh /Chaney/
+2 NOTE Born 1978. Bloodline: Chaney, Perry, Vance, Sellards, Clay, Williamson.
+
+0 @I_ERMA@ INDI
+1 NAME Erma /Perry/
+2 NOTE Mother of Joshua Chaney. Daughter of Walter Lake Perry.
+2 NOTE IMAGE_REF: jenny_wiley_portrait.jpg
+
+0 @I_OSHEL@ INDI
+1 NAME Oshel /Chaney/
+2 NOTE Father of Joshua Chaney. U.S. Army Veteran.
+
+0 @I_JENNY1@ INDI
+1 NAME Jenny /Wiley/
+2 NOTE ANCESTOR: The Weaver. Captured 1789. 
+2 NOTE IMAGE_REF: jenny_wiley_portrait.jpg
+2 NOTE YOUTUBE_REF: DTzSJx4rEKM
+
+0 @I_JENNY2@ INDI
+1 NAME Jenny Wiley /Painting/
+2 NOTE IMAGE_REF: jenny_painting.jpeg
+
+0 @I_JENNY3@ INDI
+1 NAME Jenny Wiley /Gravesite/
+2 NOTE IMAGE_REF: jenny_wiley_gravesite.jpg
+
+0 @I_ROLLO1@ INDI
+1 NAME Rollo /The Walker/
+2 NOTE 1st Duke of Normandy. Viking Leader.
+2 NOTE IMAGE_REF: rollo_horse.jpeg
+
+0 @I_ROLLO2@ INDI
+1 NAME Rollo /on Ship/
+2 NOTE IMAGE_REF: rollo_ship.jpeg
+
+0 @I_ROLLO3@ INDI
+1 NAME Rollo /Ragnar/
+2 NOTE IMAGE_REF: rollo_ragnar.jpeg
+
+0 @I_WILL1@ INDI
+1 NAME William /The Conqueror/
+2 NOTE King of England 1066. 
+2 NOTE IMAGE_REF: william_king_portrait4.jpg
+
+0 @I_WILL2@ INDI
+1 NAME William /Statue/
+2 NOTE IMAGE_REF: william_conqueror_statue2.jpg
+
+0 @I_WILL3@ INDI
+1 NAME William /Invasion Ship/
+2 NOTE IMAGE_REF: william_conqueror_ship3.jpg
+
+0 @I_RALPH@ INDI
+1 NAME Ralph /de Caisneto/
+2 NOTE Norman Knight (1066). First of the Chaney lineage.
+
+0 @I_VANCE1@ INDI
+1 NAME Andrew /Vance/
+2 NOTE VANCE LINE: Immigrant (1700).
+
+0 @I_VANCE2@ INDI
+1 NAME Major William /Vance/
+2 NOTE VANCE LINE: Frontier leader (1718-1788).
+
+0 @I_CLAY1@ INDI
+1 NAME John Thomas /Clay I/
+2 NOTE CLAY LINE: Arrived 1613 on the ship 'Treasurer'.
+
+0 @I_CLAY2@ INDI
+1 NAME Henry /Clay/
+2 NOTE CLAY LINE: American Statesman.
+
+0 @I_HEZ@ INDI
+1 NAME Hezekiah /Sellards/
+2 NOTE SELLARDS LINE: Father of Jenny Wiley.
+
+0 @I_SELL@ INDI
+1 NAME William /Sellerarius/
+2 NOTE SELLARDS LINE: Knights Templar registers (12th Century).
+
+0 @I_WILLIAMSON@ INDI
+1 NAME Williamsons of /Peebles/
+2 NOTE WILLIAMSON LINE: Scottish Border family.
+
+0 @I_GUNN@ INDI
+1 NAME Clan /Gunn/
+2 NOTE WILLIAMSON LINE: Highland Sept.
+
+0 @I_AMOS@ INDI
+1 NAME Amos /Keener/
+2 NOTE LATE STEP-FATHER: WWII Veteran. Worthington Cylinders. 
