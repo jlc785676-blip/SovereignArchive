@@ -1,0 +1,92 @@
+0 HEAD
+1 CHAR UTF-8
+1 SOUR Sovereign Archive
+
+0 @I_1@ INDI
+1 NAME Joshua Josh /Chaney/
+2 NOTE Born 1978. Bloodline: Chaney, Perry, Vance, Sellards, Clay, Williamson.
+
+0 @I_2@ INDI
+1 NAME Erma /Perry/
+2 NOTE Mother of Joshua Chaney. Daughter of Walter Lake Perry.
+
+0 @I_3@ INDI
+1 NAME Oshel /Chaney/
+2 NOTE Father of Joshua Chaney. U.S. Army Veteran.
+
+0 @I_4@ INDI
+1 NAME Jenny /Wiley/
+2 NOTE ANCESTOR: The Weaver. Captured 1789. Daughter of Hezekiah Sellards.
+2 NOTE YOUTUBE_REF: DTzSJx4rEKM
+
+0 @I_5@ INDI
+1 NAME Rollo /The Walker/
+2 NOTE NORMAN LINE: Viking leader and 1st Duke of Normandy.
+
+0 @I_6@ INDI
+1 NAME William /Longsword/
+2 NOTE NORMAN LINE: 2nd Duke of Normandy.
+
+0 @I_7@ INDI
+1 NAME Richard /The Fearless/
+2 NOTE NORMAN LINE: 3rd Duke of Normandy.
+
+0 @I_8@ INDI
+1 NAME William /The Conqueror/
+2 NOTE NORMAN LINE: King of England (1066).
+
+0 @I_9@ INDI
+1 NAME Ralph /de Caisneto/
+2 NOTE NORMAN LINE: Knight of the 1066 Invasion. 
+
+0 @I_10@ INDI
+1 NAME Indian Tom /Perry/
+2 NOTE VIRGINIA LINE: Mattaponi connection. Indigenous bloodline.
+
+0 @I_11@ INDI
+1 NAME Walter Lake /Perry/
+2 NOTE PERRY LINE: Paternal grandfather.
+
+0 @I_12@ INDI
+1 NAME Andrew /Vance/
+2 NOTE VANCE LINE: Immigrant ancestor (1700).
+
+0 @I_13@ INDI
+1 NAME Major William /Vance/
+2 NOTE VANCE LINE: Frontier leader (1718-1788).
+
+0 @I_14@ INDI
+1 NAME John Thomas /Clay I/
+2 NOTE CLAY LINE: Arrived 1613 on the ship 'Treasurer'.
+
+0 @I_15@ INDI
+1 NAME Henry /Clay/
+2 NOTE CLAY LINE: American Statesman.
+
+0 @I_16@ INDI
+1 NAME Hezekiah /Sellards/
+2 NOTE SELLARDS LINE: Father of Jenny Wiley.
+
+0 @I_17@ INDI
+1 NAME William /Sellerarius/
+2 NOTE SELLARDS LINE: Knights Templar registers (12th Century).
+
+0 @I_18@ INDI
+1 NAME Williamsons of /Peebles/
+2 NOTE WILLIAMSON LINE: Fierce riding families of the Border.
+
+0 @I_19@ INDI
+1 NAME Clan /Gunn/
+2 NOTE WILLIAMSON LINE: Sept of the Gunn Clan.
+
+0 @I_20@ INDI
+1 NAME Amos /Keener/
+2 NOTE LATE STEP-FATHER: WWII Veteran. "Slow speaking, heart on fire."
+
+0 @I_21@ INDI
+1 NAME The /Vance/ Patriarchs
+2 NOTE VANCE LINE: Tracing back through the Scotch-Irish settlers.
+
+0 @I_22@ INDI
+1 NAME The /Clay/ Settlers
+2 NOTE CLAY LINE: From English Midlands to Jamestown.
