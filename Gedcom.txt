@@ -1,0 +1,45 @@
+0 HEAD
+1 CHAR UTF-8
+1 SOUR Sovereign Archive
+1 NOTE THE BLOODLINE SCROLL - FULL ARCHIVE APRIL 2026
+
+0 @BOOK_INTRO@ INDI
+1 NAME ✶ SECTION 1: THE BLOODLINE SCROLL INTRODUCTION ✶
+2 NOTE This document constitutes the master Bloodline Scroll — a single, unified archive of the Chaney family heritage spanning approximately fifty generations. It is the definitive consolidated record of every ancestor, every family line, and every historical connection documented within the Chaney genealogical project.
+2 NOTE The Scroll traces documented and traditionally claimed lineage from Joshua Chaney backward through American frontier families, Colonial Virginia settlers, medieval English nobility, Knights Templar crusaders, Anglo-Saxon kings, and biblical royal lines.
+2 NOTE LINK: https://copilot.microsoft.com/shares/artifacts/goSUBh38AGuJhhURaCXAD
+
+0 @BOOK_PEDIGREE@ INDI
+1 NAME ✶ SECTION 2: COMPLETE FOUR-GENERATION PEDIGREE ✶
+2 NOTE GEN 1: Joshua “Josh” Chaney (c. 1978, Marysville, Ohio).
+2 NOTE GEN 2: Oshel Chaney (Father, 1949) and Erma Perry (Mother, 1955).
+2 NOTE GEN 3: Newman Chaney & Arminda Vance (Paternal); Walter Lake Perry & Pansey Perry (Maternal).
+2 NOTE GEN 4: Leonard Chaney (1895-1975), John Hobert Vance (1897-1968), Lillie Lily Dyer (1901-1982), Ira Perry (1884-1974), Thomas John Clay (1884), Clara Davis (1887-1974), Erie Elmer Watts (1907-2005).
+2 NOTE LINK: https://copilot.microsoft.com/shares/artifacts/goSUBh38AGuJhhURaCXAD
+
+0 @BOOK_CHANEY@ INDI
+1 NAME ✶ SECTION 3: THE CHANEY LINE - PATRILINEAL DESCENT ✶
+2 NOTE LEONARD CHANEY (1895–1975): Earliest confirmed patriarch. Born June 12, 1895. His life spanned from the horse-and-buggy era through two World Wars to the Space Age. Identifying his spouse is a critical research priority.
+2 NOTE NEWMAN CHANEY (d. 2017): Son of Leonard. Married Arminda Vance, uniting the Chaney line with deep Scots-Irish frontier heritage.
+2 NOTE OSHEL CHANEY (b. 1949): Son of Newman. Witnessed the postwar transformation of Appalachian and rural Ohio communities.
+2 NOTE JOSHUA CHANEY (b. 1978): The compiler and custodian of this archive.
+2 NOTE PRE-1895 ORIGINS: Tracing backward from Leonard requires searching Appalachian records in KY, WV, and VA.
+2 NOTE LINK: https://copilot.microsoft.com/shares/artifacts/goSUBh38AGuJhhURaCXAD
+
+0 @BOOK_VANCE@ INDI
+1 NAME ✶ SECTION 4: THE VANCE LINE - IRELAND TO THE FRONTIER ✶
+2 NOTE 4.1 DIRECT ANCESTORS: John Hobert Vance and Lillie Lily Dyer. Their daughter Arminda married Newman Chaney.
+2 NOTE 4.2 MAJOR WILLIAM VANCE (1718–1788): Part of the great Vance migration from Ireland to Virginia and western Pennsylvania. He establish the family presence beyond the Allegheny Mountains and founded the Cross Creek Presbyterian Church.
+2 NOTE 4.3 NOTABLE VANCES: Abner Vance (c. 1760-1819) composed “Vance’s Song” in prison. Robert Brank Vance died in a duel in 1827. Zebulon Baird Vance was a NC Governor and Senator. Jim Vance was killed during the Hatfield–McCoy feud.
+2 NOTE 4.4 ORIGINS: Derived from Norman-French “de Vaux” or “de Vans” families of Cumberland and Normandy.
+2 NOTE LINK: https://copilot.microsoft.com/shares/artifacts/goSUBh38AGuJhhURaCXAD
+
+0 @BOOK_PERRY@ INDI
+1 NAME ✶ SECTION 5: THE PERRY LINE - INDIGENOUS & COLONIAL ✶
+2 NOTE 5.1 DIRECT ANCESTORS: George Washington Perry (b. 1810), Mitchell Perry (b. 1834), Ira Perry (1884-1974), Walter Lake Perry.
+2 NOTE 5.2 JAMESTOWN ERA (1620s): John Perry died in James City. Captain William Perry presented a Native boy in court. During the 1622 uprising, an Indian under Perry’s care warned Jamestown, saving it from destruction.
+2 NOTE 5.3 INDIGENOUS CONNECTIONS: Tom Perry (Mattaponi) adopted the surname. Tribal researcher Marilyn Mejorado confirms Perry as an Indigenous surname among Nansemond descendants.
+2 NOTE 5.4 MIGRATION: Floyd County, KY → Pike County, KY → Wayne County, WV → East Lynn, WV.
+2 NOTE LINK: https://copilot.microsoft.com/shares/artifacts/goSUBh38AGuJhhURaCXAD
+
+0 @BOOK_CLAY@ INDI
