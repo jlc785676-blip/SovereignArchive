@@ -1,0 +1,21 @@
+0 HEAD
+1 CHAR UTF-8
+1 SOUR Sovereign Archive
+
+0 @HIST_CHANEY@ INDI
+1 NAME CHANEY /MASTER CHRONOLOGY/
+2 NOTE IMAGE_REF: Rollo.jpeg
+2 NOTE IMAGE_REF: William the conqueror king portrait.jpg
+
+0 @HIST_SELLARDS@ INDI
+1 NAME SELLARDS /MASTER CHRONOLOGY/
+2 NOTE IMAGE_REF: Jenny wileyportrait.jpg.jpg
+
+0 @I_WILEY@ INDI
+1 NAME Jenny /Wiley/
+2 NOTE IMAGE_REF: Jenny wileyportrait.jpg.jpg
+2 NOTE YOUTUBE_REF: DTzSJx4rEKM
+
+0 @I_PERRY@ INDI
+1 NAME Erma /Perry/
+2 NOTE Mother of Joshua Chaney.
