@@ -1,0 +1,36 @@
+0 HEAD
+1 CHAR UTF-8
+1 SOUR Sovereign Archive
+1 NOTE THE BLOODLINE ARCHIVE - MASTER ALIGNMENT APRIL 2026
+
+0 @BOOK_PERRY_RESEARCH@ INDI
+1 NAME ✶ RESEARCH BOOK: THE PERRY LINE ✶
+2 NOTE EXTERNAL RESEARCH: https://copilot.microsoft.com/shares/artifacts/VjH6Jj7PfmUMgvni9j5rr
+2 NOTE Section 5: The Perry Line — Indigenous Connections & Colonial Roots.
+2 NOTE 5.1 — Direct Perry Ancestors: Documentation reaches back to early 19th-century Kentucky (Floyd/Pike County).
+2 NOTE George Washington Perry (b. 1810) and Private Mitchell Perry (b. 1834) are among the earliest documented.
+2 NOTE 5.2 — The Perry-Indigenous Connection: John Perry died in James City, Virginia, in the 1620s. Captain William Perry presented a Native American boy in court during John's probate.
+2 NOTE During the 1622 Powhatan uprising, an Indian under Perry’s care warned colonists, saving Jamestown from destruction. 
+2 NOTE A Mattaponi Indian named Tom Perry adopted the surname, establishing an Indigenous line.
+2 NOTE 5.3 — Nansemond Connection: Researcher Marilyn Mejorado confirmed Perry as an Indigenous surname among Nansemond descendants. Deanna reported living Nansemond cousins with the Perry name in Virginia Beach.
+2 NOTE 5.4 — Migration Corridor: Floyd County, KY → Pike County, KY → Wayne County, WV → East Lynn, WV.
+
+0 @I_PERRY_ERMA@ INDI
+1 NAME Erma /Perry/
+2 NOTE Mother of Joshua Chaney. Daughter of Walter Lake Perry and Pansey Perry.
+2 NOTE IMAGE_REF: jenny_wiley_portrait.jpg
+
+0 @I_PERRY_WALTER@ INDI
+1 NAME Walter Lake /Perry/
+2 NOTE Maternal grandfather. East Lynn, WV.
+2 NOTE IMAGE_REF: jenny_wiley_portrait.jpg
+
+0 @I_WILEY_JENNY@ INDI
+1 NAME Jenny /Wiley/ (Sellards)
+2 NOTE ANCESTOR: The Weaver. Captured 1789. 
+2 NOTE IMAGE_REF: jenny_wiley_portrait.jpg
+2 NOTE YOUTUBE_REF: DTzSJx4rEKM
+
+0 @I_JOSH@ INDI
+1 NAME Joshua Josh /Chaney/
+2 NOTE SUBJECT: Marysville, Ohio.
