@@ -3,6 +3,15 @@
 1 SOUR Sovereign Archive
 1 NOTE THE BLOODLINE SCROLL - FULL ARCHIVE APRIL 2026
 
+0 @BOOK_INTRO@ INDI
+1 NAME ✶ THE BLOODLINE OF ERMA PERRY KEENER & JENNY WILEY ✶
+2 NOTE This saga documents a heritage that spans fifty generations—from the hollows of Appalachia to the courts of Europe, stretching all the way back to the foundations of Jerusalem. 
+2 NOTE LINK: https://copilot.microsoft.com/shares/artifacts/goSUBh38AGuJhhURaCXAD
+0 HEAD
+1 CHAR UTF-8
+1 SOUR Sovereign Archive
+1 NOTE THE BLOODLINE SCROLL - FULL ARCHIVE APRIL 2026
+
 0 @BOOK_SELLARDS@ INDI
 1 NAME ✶ SECTION 8: THE SELLARDS LINE - PICTISH HIGHLANDS ✶
 2 NOTE Section 8.1 — The Pictish Origins: The Sellards name is rooted in the Pictish Highlands of Scotland—the indigenous people of northeastern Scotland.
