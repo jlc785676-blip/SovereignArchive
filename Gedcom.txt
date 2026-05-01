@@ -1,0 +1,27 @@
+0 HEAD
+1 CHAR UTF-8
+1 SOUR Sovereign Archive
+
+0 @BOOK_CHANEY@ INDI
+1 NAME ✶ THE CHANEY LINE: ROLLO & WILLIAM THE CONQUEROR ✶
+2 NOTE Descended from the Norse Chieftain Rollo (The Walker) and William the Conqueror.
+2 NOTE IMAGE_REF: rollo_william.jpg
+2 NOTE LINK: https://copilot.microsoft.com/shares/artifacts/goSUBh38AGuJhhURaCXAD
+
+0 @BOOK_VANCE@ INDI
+1 NAME ✶ THE VANCE LINE: RAYMOND VANCE ✶
+2 NOTE Major William Vance and Raymond Vance, the Crusader. Carrying the warrior spirit.
+2 NOTE IMAGE_REF: raymond_vance.jpg
+2 NOTE LINK: https://copilot.microsoft.com/shares/artifacts/goSUBh38AGuJhhURaCXAD
+
+0 @BOOK_PERRY@ INDI
+1 NAME ✶ THE PERRY LINE: ERMA PERRY KEENER & JENNY WILEY ✶
+2 NOTE The combined resilient spirit of Erma Perry Keener and the legendary Jenny Wiley.
+2 NOTE IMAGE_REF: erma_jenny_combined.jpg
+2 NOTE LINK: https://copilot.microsoft.com/shares/artifacts/goSUBh38AGuJhhURaCXAD
+
+0 @BOOK_CLAY@ INDI
+1 NAME ✶ THE CLAY LINE: ANCIENT PLANTERS ✶
+2 NOTE The "Ancient Planters" of Virginia. Arrived in 1613 on the Treasurer.
+2 NOTE IMAGE_REF: clay_lineage.jpg
+2 NOTE LINK: https://copilot.microsoft.com/shares/artifacts/goSUBh38AGuJhhURaCXAD
