@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>THE SOVEREIGN ARCHIVE: MASTER ARC</title>
+    <style>
+        html, body { 
+            background-color:#050505; color:#e0c097; font-family:'Georgia',serif; 
+            margin:0; padding:0; min-height: 100%; 
+            background-image:url('https://www.transparenttextures.com/patterns/dark-wood.png');
+        }
+
+        #splash { 
+            position: fixed; top:0; left:0; width:100%; height:100%; z-index:9999; 
+            background-color: #050505; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; transition: opacity 0.4s ease;
+        }
+        .splash-art-frame { width: 90%; max-width: 900px; border: 4px solid #d4af37; box-shadow: 0 0 40px #000; margin-bottom: 25px; }
+        .splash-image { width: 100%; height: auto; display: block; }
+
+        .gate-btn { 
+            padding: 18px 40px; background: linear-gradient(#8b0000, #4a0000); color: #ffffff; 
+            border: 3px solid #d4af37; font-weight: bold; border-radius: 8px; cursor: pointer; 
+            text-transform: uppercase; letter-spacing: 2px; font-size: 1.2em;
+        }
+
+        #main-ui { 
+            display:none; text-align: center; max-width: 1200px; margin: 0 auto; 
+            opacity: 0; transition: opacity 0.5s ease; padding: 10px;
+        }
+        
+        .header-box { padding: 10px; background: rgba(26, 15, 0, 0.95); border-bottom: 3px solid #ff0000; margin-bottom: 20px; }
+        .main-title { color: #ffffff; margin: 0; font-size: 1.8em; letter-spacing: 2px; text-transform: uppercase; }
+
+        .search-group { width: 100%; max-width: 800px; margin: 0 auto 25px auto; }
+        input[type="text"] { 
+            padding: 15px; width: 100%; background: #000; color: #fff; 
+            border: 2px solid #ff0000; border-radius: 4px; font-size: 18px; text-align: center; 
+            box-sizing: border-box;
+        }
+        .red-btn {
+            padding: 12px 30px; background: #ff0000; color: #ffffff; margin-top: 10px;
+            border: 1px solid #ffffff; font-weight: bold; border-radius: 4px;
+            cursor: pointer; text-transform: uppercase; width: 100%;
+        }
+
+        .archive-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        @media (min-width: 1000px) { .archive-grid { grid-template-columns: 300px 1fr 300px; } }
+        
+        .side-column { display: flex; flex-direction: column; gap: 30px; align-items: center; } 
+        .family-thumb { width: 100%; max-width: 350px; border: 3px solid #d4af37; box-shadow: 0 10px 20px #000; }
+        
+        #vault-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:10000; overflow-y:auto; padding: 15px; box-sizing: border-box; }
+        .vault-content { background:#1a0f00; border:3px solid #d4af37; padding:20px; border-radius:10px; text-align: left; max-width: 800px; margin: 20px auto; color: #e0c097; }
+        .history-entry { border-bottom: 1px solid #d4af37; padding: 15px 0; margin-bottom: 10px; }
+        .entry-name { color: #ff0000; font-size: 1.4em; font-weight: bold; margin-bottom: 5px; }
+        .history-section { margin-bottom: 20px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+
+    <div id="splash">
+        <div class="splash-art-frame"><img src="movie_splash.png" class="splash-image"></div>
+        <button class="gate-btn" onclick="enterArchive()">ENTER THE SAGA</button>
+    </div>
+
+    <div id="main-ui">
+        <div class="header-box"><h1 class="main-title">THE SOVEREIGN ARCHIVE</h1></div>
+
+        <div class="archive-grid">
+            <div class="side-column">
+                <div><img src="william_surname.jpg" class="family-thumb"><button class="gate-btn" style="width:100%; padding:10px; font-size:0.9em;" onclick="openArchive('CHANEY')">CHANEY HISTORY</button></div>
+                <div><img src="raymond_surname.jpeg" class="family-thumb"><button class="gate-btn" style="width:100%; padding:10px; font-size:0.9em;" onclick="openArchive('VANCE')">VANCE HISTORY</button></div>
+            </div>
+
+            <div class="central-container">
+                <h2 style="color:#ff0000; font-size: 2em; text-shadow: 1px 1px 0 #fff;">CHOOSE YOUR DESTINY</h2>
+                
+                <div class="search-group">
+                    <input type="text" id="nameSearch" placeholder="SEARCH ANCESTOR NAMES (ERMA, ROLLO, JAMESTOWN...)">
+                    <button class="red-btn" onclick="trace('main')">SEARCH ANCESTRY REPORT</button>
+                </div>
+
+                <div class="search-group" style="margin-top: 40px;">
+                    <div style="border: 2px solid #d4af37; padding: 10px; margin-bottom: 10px; background: rgba(0,0,0,0.5);">
+                        <img src="Indians_search.png" style="width:100%; height:auto;">
+                    </div>
+                    <input type="text" id="indianSearch" placeholder="SEARCH INDIGENOUS KINSHIP">
+                    <button class="gate-btn" style="width:100%; margin-top:10px;" onclick="trace('indian')">INDIAN RESEARCH SEARCH</button>
+                </div>
+            </div>
+
+            <div class="side-column">
+                <div><img src="Perry_surname2.jpeg" class="family-thumb"><button class="gate-btn" style="width:100%; padding:10px; font-size:0.9em;" onclick="openArchive('PERRY')">PERRY HISTORY</button></div>
+                <div><img src="henry_clay_surname.jpg" class="family-thumb"><button class="gate-btn" style="width:100%; padding:10px; font-size:0.9em;" onclick="openArchive('CLAY')">CLAY HISTORY</button></div>
+            </div>
+        </div>
+
+        <div id="vault-overlay"><div class="vault-content">
+            <h2 id="v-title" style="color:#ff0000; border-bottom: 2px solid #ff0000;"></h2>
+            <div id="v-body"></div>
+            <button class="gate-btn" style="width: 100%; margin-top: 20px;" onclick="document.getElementById('vault-overlay').style.display='none'">RETURN</button>
+        </div></div>
+    </div>
+
+    <script>
+        function enterArchive() {
+            const splash = document.getElementById('splash');
+            const ui = document.getElementById('main-ui');
+            splash.style.opacity = '0';
+            setTimeout(() => {
+                splash.style.display = 'none';
+                ui.style.display = 'block';
+                setTimeout(() => { ui.style.opacity = '1'; document.body.style.overflow = 'auto'; }, 50);
+            }, 400);
+        }
+
+        const ancestryRecords = [
+            // VANCE LINE (FROM REPORT)
+            { name: "Rollo, Duke of Normandy", info: "Viking chieftain (c. 860-930). Founded Normandy at the Treaty of Saint-Clair-sur-Epte. Ancestor of the Vance bloodline." },
+            { name: "William the Conqueror", info: "Duke of Normandy/King of England. Descended from Rollo. Redistributed English lands to the de Vaux (Vance) family." },
+            { name: "Matilda of Flanders", info: "Wife of William the Conqueror. Descended from Alfred the Great and the House of Wessex royal lines." },
+            { name: "Robert de Vaux of Cumberland", info: "12th-century Norman-English border lord in Cumberland. Key ancestor of the Vance lineage." },
+            { name: "Abner Vance", info: "Revolutionary soldier (c. 1759-1819). Patriarch of the Tug River Vances; known for his historic legal trials." },
+            
+            // CLAY LINE (FROM REPORT)
+            { name: "John Clay", info: "Known as 'The English Planter.' Arrived at Jamestown in 1613 aboard the ship 'The Treasurer.' Earliest Clay in America." },
+            { name: "Henry Clay", info: "Famous U.S. Statesman known as 'The Great Compromiser.' Direct kin to the Kentucky Clay branch." },
+            { name: "Charles Clay", info: "Early Virginia pioneer; grandson of John Clay. Expanded the family into colonial Virginia." },
+            
+            // PERRIES & ERMA
+            { name: "Erma Perry", info: "Matriarch of the Florida branch. Core link to the Perry navigation legacy and Erma Perry's ancestors." },
+            { name: "Joshua Lee Chaney", info: "Born 1978. Technical Lead for the State of Ohio. Son of Erma Perry & Oshel Chaney." },
+            { name: "William Perry", info: "Frontier scout in the rugged hills of Kentucky; established deep family roots." },
+            
+            // NEW FAMILIES FROM REPORT
+            { name: "Godfrey de Saint-Omer", info: "Norman knight and co-founder of the Knights Templar in 1119. Shared Norman feudal world with de Vaux family." },
+            { name: "Alden Williamson", info: "Revolutionary War Scout (1750-1816). Pioneer navigator of the Tug River Valley." },
+            { name: "Hezekiah Sellards", info: "Frontier explorer and father of Jenny Wiley. Patriarch of the Big Sandy Sellards line." },
+            { name: "Amos Keener", info: "German Palatine military heritage. WWII Veteran and mentor to Joshua Chaney." },
+            { name: "Dyer Family", info: "English origins; heritage in the medieval cloth trade." },
+            { name: "Davis Family", info: "Welsh patronymic line; established in Wayne County, West Virginia." },
+            { name: "Watts Family", info: "English origins; early settlers of the Appalachian frontier." }
+        ];
+
+        const indianRecords = [
+            { name: "Jenny Sellards Wiley", info: "Frontier heroine captured in 1789. Her year-long captivity documented Shawnee/Cherokee territory." },
+            { name: "Chief Cornstalk (Hokolesqua)", info: "Shawnee leader during the era of frontier intertwining with the Perry and Sellards lines." },
+            { name: "The Perry 'Indian-Adopted' Boy", info: "Ancestral record of a child taken into tribal life, later returning to the family lineage." }
+        ];
+
+        function trace(type) {
+            let q, records, titlePrefix;
+            if(type === 'main') {
+                q = document.getElementById('nameSearch').value.toLowerCase().trim();
+                records = ancestryRecords;
+                titlePrefix = "ANCESTRY REPORT: ";
+            } else {
+                q = document.getElementById('indianSearch').value.toLowerCase().trim();
+                records = indianRecords;
+                titlePrefix = "INDIAN RESEARCH REPORT: ";
+            }
+
+            if (!q) return;
+            const res = records.filter(r => r.name.toLowerCase().includes(q) || r.info.toLowerCase().includes(q));
+            let h = "";
+            res.forEach(r => { h += `<div class="history-entry"><div class="entry-name">${r.name}</div><div>${r.info}</div></div>`; });
+            document.getElementById('v-title').innerText = titlePrefix + q.toUpperCase();
+            document.getElementById('v-body').innerHTML = h || "No specific records found.";
+            document.getElementById('vault-overlay').style.display = 'block';
+        }
+
+        function openArchive(key) {
+            const h = { 
+                'VANCE': "The Vance surname traces its origins to the Norman-French nobility of the eleventh century (de Vaux). This line includes Rollo the Viking, William the Conqueror, and the lords of Cumberland. After migrating through Ulster, Ireland, they settled in the American Appalachian frontier.",
+                'CLAY': "The Clay family emerged in Yorkshire, England. John Clay arrived at Jamestown in 1613. The line produced famous statesman Henry Clay and various pioneers who cleared the Kentucky wilderness.",
+                'CHANEY': "The Chaneys represent the core Appalachian heart of the archive, spanning from medieval roots to the modern technical leaders in Marysville, Ohio.",
+                'PERRY': "The Perrys were navigators and rebels of the colonial era, deeply involved in land exploration and possessing significant indigenous connections through frontier adoptions.",
+                'INDIAN': "Deep research into the Shawnee and Cherokee adoptions within the Perry and Sellards families."
+            };
+            document.getElementById('v-title').innerText = key + " SURNAME HISTORY";
+            document.getElementById('v-body').innerHTML = `<div class="history-section">${h[key]}</div>`;
+            document.getElementById('vault-overlay').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
