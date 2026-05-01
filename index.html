@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>THE SOVEREIGN ARCHIVE: MASTER ARC</title>
+    <style>
+        /* LOCK SCROLLING UNTIL ENTERED */
+        html, body { 
+            background-color:#050505; color:#e0c097; font-family:'Georgia',serif; 
+            margin:0; padding:0; height: 100%; overflow: hidden; 
+        }
+
+        /* SPLASH SCREEN - TOTAL OVERLAY */
+        #splash { 
+            position: fixed; top:0; left:0; width:100%; height:100%; z-index:9000; 
+            background-color: #050505;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 1s ease, visibility 1s;
+            overflow: hidden;
+            background-image:url('https://www.transparenttextures.com/patterns/dark-wood.png');
+        }
+
+        .splash-art-frame {
+            width: 90%; max-width: 1100px;
+            border: 6px solid #d4af37; 
+            box-shadow: 0 0 50px #000;
+            margin-bottom: 20px; 
+        }
+        .splash-image { width: 100%; height: auto; display: block; }
+
+        .splash-overlay { 
+            display: flex; justify-content: center; align-items: center; 
+            gap: 30px; flex-wrap: wrap; padding: 20px;
+            width: 100%; background: rgba(0,0,0,0.85);
+        }
+
+        .counter-panel { 
+            background: rgba(0, 0, 0, 0.9); border: 2px solid #d4af37; 
+            padding: 10px 20px; border-radius: 8px; color: #d4af37; 
+            font-family: 'Courier New', monospace; font-size: 1.1em; font-weight: bold; 
+        }
+
+        /* MAIN ARCHIVE - HIDDEN BY DEFAULT */
+        #main-ui { 
+            display:none; text-align: center; padding-top: 5px; 
+            background-image:url('https://www.transparenttextures.com/patterns/dark-wood.png');
+            min-height: 100vh;
+        }
+
+        .header-box { padding: 15px; background: rgba(26, 15, 0, 0.95); border-bottom: 4px solid #ff0000; margin-bottom: 25px; }
+        .main-title {
+            color: #ffffff; margin: 0; letter-spacing: 4px; font-size: 2em; text-transform: uppercase;
+            text-shadow: -2px -2px 0 #ff0000, 2px -2px 0 #ff0000, -2px 2px 0 #ff0000, 2px 2px 0 #ff0000;
+        }
+
+        .wood-btn { 
+            padding: 14px 28px; background: linear-gradient(#5d4037, #1a0f00); color: #fbe9e7; 
+            border: 2px solid #d4af37; font-weight: bold; border-radius: 4px; cursor: pointer; 
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .red-btn {
+            padding: 16px 30px; background: #ff0000; color: #ffffff; 
+            border: 3px solid #ff0000; font-weight: bold; border-radius: 4px;
+            cursor: pointer; text-transform: uppercase; letter-spacing: 1px; font-size: 1.1em;
+        }
+
+        .archive-grid { 
+            display: grid; grid-template-columns: 1fr 1.3fr 1fr; align-items: start; 
+            max-width: 2400px; margin: 0 auto; gap: 50px; padding: 0 20px;
+        }
+        
+        .side-column { display: flex; flex-direction: column; gap: 100px; } 
+        .family-btn-group { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .family-thumb { width: 380px; border-radius: 4px; border: 4px solid #d4af37; object-fit: cover; box-shadow: 0 15px 35px #000; }
+
+        .central-container { display: flex; flex-direction: column; align-items: center; gap: 35px; } 
+        .destiny-text { 
+            color: #ff0000; font-size: 3.8em; font-weight: bold; letter-spacing: 12px; text-transform: uppercase; 
+            text-shadow: -2px -2px 0 #ffffff, 2px -2px 0 #ffffff, -2px 2px 0 #ffffff, 2px 2px 0 #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .search-group { width: 100%; max-width: 600px; display: flex; flex-direction: column; gap: 15px; }
+        .indian-visual-frame { width: 100%; max-width: 650px; border: 5px solid #d4af37; border-radius: 8px; overflow: hidden; }
+        .indian-img { width: 100%; display: block; }
+        input[type="text"] { padding: 18px; width: 100%; background: #000; color: #fff; border: 2px solid #ff0000; border-radius: 4px; font-size: 18px; text-align: center; }
+        .instruction-text { color: #ffffff; font-size: 1.2em; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
+        .central-portrait { border: 4px solid #d4af37; border-radius: 8px; width: 100%; max-width: 550px; box-shadow: 0 10px 30px #000; margin-top: 50px; }
+
+        #vault-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:9999; overflow-y:auto; padding:20px; }
+        .vault-content { background:#0a0a0a; border:2px solid #d4af37; padding:40px; border-radius:10px; text-align: left; max-width: 1100px; margin: 40px auto; color: #fff; }
+
+        @media (max-width: 1500px) {
+            .archive-grid { grid-template-columns: 1fr; }
+            .side-column { margin-top: 20px; gap: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="splash">
+        <div class="splash-art-frame">
+            <img src="movie_splash.png" class="splash-image">
+        </div>
+        <div class="splash-overlay">
+            <button class="wood-btn" style="padding: 18px 45px; font-size: 1.2em;" onclick="enterArchive()">ENTER THE SAGA</button>
+            <div class="counter-panel">VISITORS: <span id="v-count">0</span></div>
+        </div>
+    </div>
+
+    <div id="main-ui">
+        <div class="header-box">
+            <h1 class="main-title">THE SOVEREIGN ARCHIVE</h1>
+        </div>
+
+        <div class="archive-grid">
+            <div class="side-column">
+                <div class="family-btn-group">
+                    <img src="william_surname.jpg" class="family-thumb" style="height: 480px;">
+                    <button class="wood-btn" onclick="openArchive('CHANEY')">CHANEY SURNAME HISTORY</button>
+                </div>
+                <div class="family-btn-group">
+                    <img src="raymond_surname.jpeg" class="family-thumb" style="height: 480px;">
+                    <button class="wood-btn" onclick="openArchive('VANCE')">VANCE SURNAME HISTORY</button>
+                </div>
+                <div class="family-btn-group">
+                    <img src="Sellards_surname.jpg" class="family-thumb" style="height: 580px;">
+                    <button class="wood-btn" onclick="openArchive('SELLARDS')">SELLARDS SURNAME HISTORY</button>
+                </div>
+            </div>
+
+            <div class="central-container">
+                <div class="destiny-text">CHOOSE YOUR DESTINY</div>
+                
+                <div class="search-group">
+                    <div class="instruction-text">Search Ancestry</div>
+                    <input type="text" id="nameSearch" placeholder="First Name and Last Name">
+                    <button class="red-btn" onclick="trace()">SEARCH ANCESTRY</button>
+                </div>
+
+                <div class="search-group">
+                    <div class="indian-visual-frame">
+                        <img src="Indians_search.png" class="indian-img">
+                    </div>
+                    <div class="instruction-text" style="margin-top: 10px;">Deep Indian Research</div>
+                    <input type="text" id="indianSearch" placeholder="Cross Reference Families">
+                    <button class="wood-btn" onclick="openArchive('INDIAN')">INDIAN RESEARCH ANCESTRY NOTES</button>
+                </div>
+
+                <div class="search-group" style="margin-top: 40px;">
+                    <div class="destiny-text" style="font-size: 2em; letter-spacing: 4px;">THE STORY OF JENNY WILEY</div>
+                    <div class="music-panel-small" style="width: 100%; background: #111; border: 1px solid #d4af37; padding: 5px;">
+                        <iframe width="100%" height="280" src="https://www.youtube.com/embed/STORY_VIDEO_ID?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <img src="jenny_wiley_portrait.jpg" class="central-portrait" style="margin-top: 15px;">
+                </div>
+                
+                <div class="search-group" style="margin-top: 60px;">
+                    <div class="instruction-text">Frontier Atmosphere</div>
+                    <div class="music-panel-small" style="width: 100%; background: #111; border: 1px solid #ff0000; padding: 5px;">
+                        <iframe width="100%" height="100" src="https://www.youtube.com/embed/MUSIC_VIDEO_ID?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="side-column">
+                <div class="family-btn-group">
+                    <img src="jenny_wiley_ surname.jpeg" class="family-thumb" style="height: 480px;">
+                    <button class="wood-btn" onclick="openArchive('PERRY')">PERRY SURNAME HISTORY</button>
+                </div>
+                <div class="family-btn-group">
+                    <img src="henry_clay_surname.jpg" class="family-thumb" style="height: 480px;">
+                    <button class="wood-btn" onclick="openArchive('CLAY')">CLAY SURNAME HISTORY</button>
+                </div>
+                <div class="family-btn-group">
+                    <img src="Alden_Williamson_Surname.jpeg" class="family-thumb" style="height: 580px;">
+                    <button class="wood-btn" onclick="openArchive('WILLIAMSON')">WILLIAMSON SURNAME HISTORY</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="vault-overlay"><div class="vault-content">
+            <h2 id="v-title" style="color:#ff0000; text-shadow: 1px 1px 0 #fff;"></h2>
+            <div id="v-body"></div>
+            <button class="wood-btn" style="width: 100%; margin-top: 40px;" onclick="document.getElementById('vault-overlay').style.display='none'">RETURN</button>
+        </div></div>
+    </div>
+
+    <script>
+        function updateCounter() {
+            let count = localStorage.getItem('visitorCount') || 15248;
+            count = parseInt(count) + 1;
+            localStorage.setItem('visitorCount', count);
+            document.getElementById('v-count').innerText = count.toLocaleString();
+        }
+        window.onload = updateCounter;
+
+        function enterArchive() {
+            const splash = document.getElementById('splash');
+            const main = document.getElementById('main-ui');
+            
+            splash.style.opacity = '0';
+            setTimeout(() => {
+                splash.style.display = 'none';
+                main.style.display = 'block';
+                // RE-ENABLE SCROLLING
+                document.body.style.overflow = 'auto';
+                document.documentElement.style.overflow = 'auto';
+                load();
+            }, 1000);
+        }
+
+        let db = [];
+        async function load() {
+            try {
+                const r = await fetch('Gedcom.txt?v=' + Date.now());
+                const t = await r.text();
+                db = t.split('0 @').filter(x => x.trim()).map(x => {
+                    const n = x.match(/1 NAME (.*)/);
+                    const notes = [...x.matchAll(/[1-3] NOTE (.*)/g)].map(m => m[1]).join('\n');
+                    return { name: n ? n[1].replace(/\//g, '').trim() : "Record", raw: x.toLowerCase(), notes: notes };
+                });
+            } catch (e) { console.log("Syncing..."); }
+        }
+
+        function openArchive(key) {
+            const familyData = {
+                'CHANEY': { title: "CHANEY SURNAME HISTORY", content: `History entry here...` },
+                'VANCE': { title: "VANCE SURNAME HISTORY", content: `History entry here...` },
+                'SELLARDS': { title: "SELLARDS SURNAME HISTORY", content: `History entry here...` },
+                'PERRY': { title: "PERRY SURNAME HISTORY", content: `History entry here...` },
+                'CLAY': { title: "CLAY SURNAME HISTORY", content: `History entry here...` },
+                'WILLIAMSON': { title: "WILLIAMSON SURNAME HISTORY", content: `History entry here...` },
+                'INDIAN': { title: "INDIAN RESEARCH ANCESTRY NOTES", content: `History entry here...` }
+            };
+            const data = familyData[key];
+            if (data) {
+                document.getElementById('v-title').innerText = data.title;
+                document.getElementById('v-body').innerHTML = data.content;
+                document.getElementById('vault-overlay').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
