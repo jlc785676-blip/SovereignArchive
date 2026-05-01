@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE SOVEREIGN ARCHIVE</title>
+    <style>
+        body { background-color:#050505; color:#e0c097; font-family:'Georgia',serif; margin:0; padding:0; overflow-x: hidden; background-image:url('https://www.transparenttextures.com/patterns/dark-wood.png'); }
+        
+        /* Splash Screen (Staying exactly as it is) */
+        #splash { 
+            position: fixed; top:0; left:0; width:100%; height:100%; z-index:5000; 
+            background-color: #050505;
+            background-image: url('movie_splash.png'); 
+            background-size: cover; background-position: center center; background-repeat: no-repeat;
+            transition: opacity 1s ease;
+        }
+
+        .splash-overlay {
+            position: absolute; bottom: 50px; left: 0; width: 100%;
+            display: flex; justify-content: center; align-items: center;
+            z-index: 5001; gap: 30px;
+        }
+
+        .counter-panel { background: rgba(0, 0, 0, 0.7); border: 2px solid #d4af37; padding: 12px 20px; border-radius: 8px; color: #d4af37; font-family: 'Courier New', monospace; font-size: 1.1em; font-weight: bold; }
+
+        /* Main Dashboard Organization */
+        #main-ui { display:none; text-align: center; padding-top: 10px; }
+        .header-box { padding: 15px; background: rgba(26, 15, 0, 0.9); border-bottom: 3px solid #3e2723; margin-bottom: 20px; }
+
+        /* THE NEW CONTROL BAR: Small Player Left, Long Search Right */
+        .control-row {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1200px; margin: 0 auto 30px auto; gap: 40px; padding: 0 30px;
+        }
+
+        .music-panel-small { flex: 0 0 300px; background: #211510; border: 2px solid #d4af37; border-radius: 8px; padding: 8px; }
+        .search-panel-long { flex: 1; display: flex; flex-direction: column; align-items: stretch; }
+
+        input[type="text"] { 
+            padding: 18px; width: 100%; background: #000; color: #fff; 
+            border: 2px solid #d4af37; border-radius: 8px; font-size: 18px; 
+            box-shadow: inset 0 0 10px #000;
+        }
+
+        /* Surname Grid - Spread Out */
+        .archive-grid { 
+            display: grid; grid-template-columns: 1fr 1.5fr 1fr; align-items: start; 
+            max-width: 1300px; margin: auto; gap: 40px; padding: 20px;
+        }
+        
+        .family-btn-group { display: flex; align-items: center; gap: 20px; margin-bottom: 40px; justify-content: center; }
+        .family-thumb { width: 90px; height: 90px; border-radius: 8px; border: 2px solid #d4af37; object-fit: cover; box-shadow: 0 0 15px rgba(212,175,55,0.4); }
+        
+        .central-container { position: relative; }
+        .welcome-caption { 
+            color: #d4af37; font-weight: bold; font-size: 1.2em; margin-bottom: 10px;
+            text-shadow: 2px 2px 4px #000; letter-spacing: 1px;
+        }
+
+        .wood-btn { 
+            padding:15px 30px; background:linear-gradient(#5d4037, #211510); color:#fbe9e7; 
+            border:2px solid #d4af37; font-weight:bold; border-radius:8px; cursor:pointer; 
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+        .wood-btn:hover { border-color: #fff; box-shadow: 0 0 15px #d4af37; }
+
+        .central-portrait { border: 4px solid #d4af37; border-radius: 10px; width: 100%; max-width: 450px; }
+
+        #vault-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:6000; overflow-y:auto; padding:20px; }
+        .vault-content { background:#111; border:2px solid #d4af37; padding:35px; border-radius:8px; text-align: left; max-width: 900px; margin: auto; }
+    </style>
+</head>
+<body>
+
+    <div id="splash">
+        <div class="splash-overlay">
+            <button class="wood-btn" style="font-size: 1.4em;" onclick="enterArchive()">ENTER THE SAGA</button>
+            <div class="counter-panel">VISITORS: <span id="v-count">0</span></div>
+        </div>
+        <div style="position: absolute; bottom: 15px; width: 100%; text-align: center; color: #e0c097; font-style: italic;">By Josh Chaney</div>
+    </div>
+
+    <div id="main-ui">
+        <div class="header-box">
+            <h1 style="color:#d4af37; margin:0; letter-spacing: 4px;">THE SOVEREIGN ARCHIVE</h1>
+            <p style="color:#888; font-style: italic;">"Amos Keener: Slow Speaking, Heart on Fire"</p>
+        </div>
+
+        <div class="control-row">
+            <div class="music-panel-small">
+                <iframe width="100%" height="150" src="https://www.youtube.com/embed/9tjdswqGGVg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            <div class="search-panel-long">
+                <input type="text" id="nameSearch" placeholder="Trace the bloodline here...">
+                <button class="wood-btn" style="margin-top: 15px; align-self: flex-end;" onclick="trace()">TRACE BLOODLINE</button>
+            </div>
+        </div>
+
+        <div class="archive-grid">
+            <div class="side-column">
+                <div class="family-btn-group">
+                    <img src="chaney_ancestor.jpg" class="family-thumb">
+                    <button class="wood-btn" onclick="quick('CHANEY')">CHANEY</button>
+                </div>
+                <div class="family-btn-group">
+                    <img src="vance_ancestor.jpg" class="family-thumb">
+                    <button class="wood-btn" onclick="quick('VANCE')">VANCE</button>
+                </div>
+            </div>
+
+            <div class="central-container">
+                <div class="welcome-caption">Welcome to the Jenny Wiley Bloodline</div>
+                <img src="jenny_wiley_portrait.jpg" class="central-portrait">
+            </div>
+
+            <div class="side-column">
+                <div class="family-btn-group">
+                    <button class="wood-btn" onclick="quick('PERRY')">PERRY</button>
+                    <img src="perry_ancestor.jpg" class="family-thumb">
+                </div>
+                <div class="family-btn-group">
+                    <button class="wood-btn" onclick="quick('CLAY')">CLAY</button>
+                    <img src="clay_ancestor.jpg" class="family-thumb">
+                </div>
+            </div>
+        </div>
+
+        <div id="vault-overlay"><div class="vault-content">
+            <h2 id="v-title" style="color:#d4af37;"></h2>
+            <div id="v-body"></div>
+            <button class="wood-btn" style="width: 100%; margin-top: 20px;" onclick="document.getElementById('vault-overlay').style.display='none'">RETURN</button>
+        </div></div>
+    </div>
+
+    <script>
+        let db = [];
+        function updateCounter() {
+            let count = localStorage.getItem('visitorCount') || 15248;
+            count = parseInt(count) + 1;
+            localStorage.setItem('visitorCount', count);
+            document.getElementById('v-count').innerText = count.toLocaleString();
+        }
+        window.onload = updateCounter;
+
+        function enterArchive() {
+            document.getElementById('splash').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('splash').style.display = 'none';
+                document.getElementById('main-ui').style.display = 'block';
+                load();
+            }, 1000);
+        }
+
+        async function load() {
+            const r = await fetch('Gedcom.txt?v=' + Date.now());
+            const t = await r.text();
+            db = t.split('0 @').filter(x => x.trim()).map(x => {
+                const n = x.match(/1 NAME (.*)/);
+                const notes = [...x.matchAll(/[1-3] NOTE (.*)/g)].map(m => m[1]).join('\n');
+                return { name: n ? n[1].replace(/\//g, '').trim() : "Record", raw: x.toLowerCase(), notes: notes };
+            });
+        }
+
+        function quick(n) { document.getElementById('nameSearch').value = n; trace(); }
+
+        function trace() {
+            const q = document.getElementById('nameSearch').value.toLowerCase().trim();
+            if (!q) return;
+            const res = db.filter(x => x.raw.includes(q));
+            let h = "";
+            res.forEach(x => {
+                h += `<div style="border: 1px solid #d4af37; padding: 20px; background: #0a0a0a; margin-bottom: 20px;"><div style="font-size:1.3em; color:#fff;">${x.name}</div><div style="white-space:pre-wrap;">${x.notes}</div></div>`;
+            });
+            document.getElementById('v-title').innerText = "DEEP TRACE: " + q.toUpperCase();
+            document.getElementById('v-body').innerHTML = h || "No records found.";
+            document.getElementById('vault-overlay').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
