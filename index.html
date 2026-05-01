@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE SOVEREIGN ARCHIVE: MASTER ARC</title>
+    <style>
+        html, body { 
+            background-color:#050505; color:#e0c097; font-family:'Georgia',serif; 
+            margin:0; padding:0; height: 100%; overflow: hidden; 
+            background-image:url('https://www.transparenttextures.com/patterns/dark-wood.png');
+        }
+
+        /* SPLASH GATE - FIXED MECHANICS */
+        #splash { 
+            position: fixed; top:0; left:0; width:100%; height:100%; z-index:9999; 
+            background-color: #050505; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; transition: opacity 0.4s ease;
+        }
+        .splash-art-frame { width: 85%; max-width: 900px; border: 5px solid #d4af37; box-shadow: 0 0 50px #000; margin-bottom: 30px; }
+        .splash-image { width: 100%; height: auto; display: block; }
+
+        /* THE BUTTON - SOUND & VISUAL FEEDBACK */
+        .gate-btn { 
+            padding: 20px 50px; background: linear-gradient(#8b0000, #4a0000); color: #ffffff; 
+            border: 3px solid #d4af37; font-weight: bold; border-radius: 8px; cursor: pointer; 
+            text-transform: uppercase; letter-spacing: 3px; font-size: 1.4em;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: transform 0.1s, background 0.3s;
+        }
+        .gate-btn:active { transform: scale(0.95); background: #ff0000; }
+        .gate-btn:hover { background: #a00000; box-shadow: 0 0 20px #ff0000; }
+
+        /* MAIN UI - PC OPTIMIZED */
+        #main-ui { 
+            display:none; text-align: center; height: 100vh; 
+            max-width: 1600px; margin: 0 auto; opacity: 0; transition: opacity 0.5s ease;
+            overflow-y: auto; padding-bottom: 100px;
+        }
+        
+        .header-box { padding: 10px; background: rgba(26, 15, 0, 0.95); border-bottom: 4px solid #ff0000; margin-bottom: 25px; }
+        .main-title { color: #ffffff; margin: 0; font-size: 2.2em; letter-spacing: 4px; text-transform: uppercase; }
+
+        /* SEARCH AREA - RESTORED LARGE SCALE */
+        .search-group { width: 95%; max-width: 1000px; margin: 0 auto 30px auto; }
+        input[type="text"] { 
+            padding: 20px; width: 100%; background: #000; color: #fff; 
+            border: 3px solid #ff0000; border-radius: 4px; font-size: 24px; text-align: center; 
+            box-sizing: border-box; box-shadow: inset 0 0 10px #ff0000;
+        }
+        .red-btn {
+            padding: 15px 40px; background: #ff0000; color: #ffffff; margin-top: 15px;
+            border: 2px solid #ffffff; font-weight: bold; border-radius: 4px;
+            cursor: pointer; text-transform: uppercase; font-size: 1.2em;
+        }
+
+        .archive-grid { 
+            display: grid; grid-template-columns: 380px 1fr 380px; align-items: start; 
+            gap: 30px; padding: 0 20px;
+        }
+        
+        .side-column { display: flex; flex-direction: column; gap: 50px; } 
+        .family-thumb { width: 100%; border: 4px solid #d4af37; box-shadow: 0 15px 30px #000; }
+        .perry-zoom { object-fit: contain !important; background: #000; height: 450px; }
+
+        /* VAULT FOR HISTORY */
+        #vault-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:10000; overflow-y:auto; }
+        .vault-content { background:#1a0f00; border:4px solid #d4af37; padding:50px; border-radius:10px; text-align: left; max-width: 1000px; margin: 40px auto; color: #e0c097; line-height: 1.6; }
+        .history-entry { border-bottom: 1px solid #d4af37; padding: 25px 0; }
+        .entry-name { color: #ff0000; font-size: 1.8em; font-weight: bold; text-shadow: 1px 1px 0 #fff; }
+    </style>
+</head>
+<body>
+
+    <div id="splash">
+        <div class="splash-art-frame"><img src="movie_splash.png" class="splash-image"></div>
+        <button class="gate-btn" onclick="playGateSound()">ENTER THE SAGA</button>
+    </div>
+
+    <div id="main-ui">
+        <div class="header-box"><h1 class="main-title">THE SOVEREIGN ARCHIVE</h1></div>
+
+        <div class="archive-grid">
+            <div class="side-column">
+                <img src="william_surname.jpg" class="family-thumb"><button class="gate-btn" style="font-size:1em; padding:10px;" onclick="openArchive('CHANEY')">CHANEY</button>
+                <img src="raymond_surname.jpeg" class="family-thumb"><button class="gate-btn" style="font-size:1em; padding:10px;" onclick="openArchive('VANCE')">VANCE</button>
+            </div>
+
+            <div class="central-container">
+                <div style="color:#ff0000; font-size: 3.5em; font-weight:bold; margin-bottom: 20px; text-shadow: 2px 2px 0 #fff;">CHOOSE YOUR DESTINY</div>
+                <div class="search-group">
+                    <input type="text" id="nameSearch" placeholder="ENTER SURNAME OR ANCESTOR NAME">
+                    <button class="red-btn" onclick="trace()">GENERATE ANCESTRY REPORT</button>
+                </div>
+                
+                <div style="margin-top: 30px; border: 5px solid #d4af37;">
+                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/t6x7gy60CO8" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="side-column">
+                <img src="Perry_surname2.jpeg" class="family-thumb perry-zoom"><button class="gate-btn" style="font-size:1em; padding:10px;" onclick="openArchive('PERRY')">PERRY</button>
+                <img src="henry_clay_surname.jpg" class="family-thumb"><button class="gate-btn" style="font-size:1em; padding:10px;" onclick="openArchive('CLAY')">CLAY</button>
+            </div>
+        </div>
+
+        <div id="vault-overlay"><div class="vault-content">
+            <h2 id="v-title" style="color:#ff0000; font-size: 2.5em; border-bottom: 3px solid #ff0000; padding-bottom:10px;"></h2>
+            <div id="v-body"></div>
+            <button class="gate-btn" style="width: 100%; margin-top: 30px;" onclick="document.getElementById('vault-overlay').style.display='none'">RETURN TO ARCHIVE</button>
+        </div></div>
+    </div>
+
+    <script>
+        // SOUND ENGINE
+        const clickSound = new Audio('https://www.soundjay.com/buttons/button-09.mp3');
+
+        function playGateSound() {
+            clickSound.play();
+            enterArchive();
+        }
+
+        function enterArchive() {
+            const splash = document.getElementById('splash');
+            const ui = document.getElementById('main-ui');
+            splash.style.opacity = '0';
+            setTimeout(() => {
+                splash.style.display = 'none';
+                ui.style.display = 'block';
+                setTimeout(() => { ui.style.opacity = '1'; document.body.style.overflow = 'auto'; }, 50);
+            }, 400);
+        }
+
+        // FULL SEARCHABLE HISTORY
+        const ancestryRecords = [
+            { name: "Joshua Lee Chaney", info: "Born 1978. Technical Lead for the State of Ohio. Direct descendant of the Perry and Chaney lines." },
+            { name: "Irma Perry Chaney", info: "Matriarch of the Florida branch. Core link to the Perry navigation lineage." },
+            { name: "Oshel Chaney", info: "Patriarch of the West Virginia/Kentucky branch. Known for the rugged Appalachian heritage." },
+            { name: "Alden Williamson", info: "Revolutionary War Scout (1750-1816). Founder of the Tug River settlement and frontier navigator." },
+            { name: "Jenny Sellards Wiley", info: "Legendary frontier survivor. Captured by Shawnee/Cherokee in 1789. Daughter of Hezekiah Sellards." },
+            { name: "Hezekiah Sellards", info: "The Navigator of the Big Sandy. Father of Jenny Wiley and frontier explorer." },
+            { name: "Henry Clay", info: "U.S. Statesman 'The Great Compromiser'. Kin to the Kentucky Clay pioneers." },
+            { name: "Abner Vance", info: "Revolutionary soldier. Patriarch of the Tug River Vances and defender of the frontier." },
+            { name: "Amos Keener", info: "WWII Veteran. Navigator and mentor to the Sovereign line." }
+        ];
+
+        function trace() {
+            const q = document.getElementById('nameSearch').value.toLowerCase().trim();
+            if (!q) return;
+            const res = ancestryRecords.filter(r => r.name.toLowerCase().includes(q) || r.info.toLowerCase().includes(q));
+            let h = "";
+            res.forEach(r => { h += `<div class="history-entry"><div class="entry-name">${r.name}</div><div style="font-size:1.2em;">${r.info}</div></div>`; });
+            document.getElementById('v-title').innerText = "ARCHIVE REPORT: " + q.toUpperCase();
+            document.getElementById('v-body').innerHTML = h || "No records found in this sector.";
+            document.getElementById('vault-overlay').style.display = 'block';
+        }
+
+        function openArchive(key) {
+            const h = { 'CHANEY': "The Chaneys: From the Norman Conquest to the Tug River Valley. Pioneers of engineering and maintenance.", 'VANCE': "The Vances: Defenders of the Abbs Valley and the Scotch-Irish heritage of Appalachia.", 'PERRY': "The Perrys: Navigators and explorers who survived the frontiers of the 1700s.", 'CLAY': "The Clays: Orators and pioneers who settled the heart of Kentucky." };
+            document.getElementById('v-title').innerText = key + " SURNAME HISTORY";
+            document.getElementById('v-body').innerHTML = `<div style="font-size:1.4em;">${h[key]}</div>`;
+            document.getElementById('vault-overlay').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
