@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>THE SOVEREIGN ARCHIVE: MASTER ARC</title>
+    <style>
+        html, body { 
+            background-color:#050505; color:#e0c097; font-family:'Georgia',serif; 
+            margin:0; padding:0; min-height: 100%; 
+            background-image:url('https://www.transparenttextures.com/patterns/dark-wood.png');
+        }
+
+        #splash { 
+            position: fixed; top:0; left:0; width:100%; height:100%; z-index:9999; 
+            background-color: #050505; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; transition: opacity 0.4s ease;
+        }
+        .splash-art-frame { width: 90%; max-width: 900px; border: 4px solid #d4af37; box-shadow: 0 0 40px #000; margin-bottom: 25px; }
+        .splash-image { width: 100%; height: auto; display: block; }
+
+        .gate-btn { 
+            padding: 18px 40px; background: linear-gradient(#8b0000, #4a0000); color: #ffffff; 
+            border: 3px solid #d4af37; font-weight: bold; border-radius: 8px; cursor: pointer; 
+            text-transform: uppercase; letter-spacing: 2px; font-size: 1.2em;
+        }
+
+        #main-ui { 
+            display:none; text-align: center; max-width: 1200px; margin: 0 auto; 
+            opacity: 0; transition: opacity 0.5s ease; padding: 10px;
+        }
+        
+        .header-box { padding: 10px; background: rgba(26, 15, 0, 0.95); border-bottom: 3px solid #ff0000; margin-bottom: 20px; }
+        .main-title { color: #ffffff; margin: 0; font-size: 1.8em; letter-spacing: 2px; text-transform: uppercase; }
+
+        .search-group { width: 100%; max-width: 800px; margin: 0 auto 25px auto; }
+        .search-group label { display: block; color: #fff; margin-bottom: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        input[type="text"] { 
+            padding: 15px; width: 100%; background: #000; color: #fff; 
+            border: 2px solid #ff0000; border-radius: 4px; font-size: 18px; text-align: center; 
+            box-sizing: border-box;
+        }
+        .red-btn {
+            padding: 12px 30px; background: #ff0000; color: #ffffff; margin-top: 10px;
+            border: 1px solid #ffffff; font-weight: bold; border-radius: 4px;
+            cursor: pointer; text-transform: uppercase; width: 100%;
+        }
+
+        .archive-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        @media (min-width: 1000px) { .archive-grid { grid-template-columns: 320px 1fr 320px; } }
+        
+        .side-column { display: flex; flex-direction: column; gap: 35px; align-items: center; } 
+        .family-thumb { width: 100%; max-width: 350px; border: 3px solid #d4af37; box-shadow: 0 10px 20px #000; transition: transform 0.2s; }
+        .family-thumb:hover { transform: scale(1.02); }
+        
+        #vault-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:10000; overflow-y:auto; padding: 15px; box-sizing: border-box; }
+        .vault-content { background:#1a0f00; border:3px solid #d4af37; padding:25px; border-radius:10px; text-align: left; max-width: 900px; margin: 20px auto; color: #e0c097; box-shadow: 0 0 50px #000; }
+        .history-entry { border-bottom: 1px solid #444; padding: 20px 0; }
+        .entry-name { color: #ff0000; font-size: 1.6em; font-weight: bold; text-shadow: 1px 1px 0 #000; }
+        .history-title { color: #ff0000; font-size: 2.2em; border-bottom: 3px solid #ff0000; margin-bottom: 20px; padding-bottom: 10px; text-transform: uppercase; }
+        .history-p { margin-bottom: 15px; line-height: 1.7; font-size: 1.1em; }
+    </style>
+</head>
+<body>
+
+    <div id="splash">
+        <div class="splash-art-frame"><img src="movie_splash.png" class="splash-image"></div>
+        <button class="gate-btn" onclick="enterArchive()">ENTER THE SAGA</button>
+    </div>
+
+    <div id="main-ui">
+        <div class="header-box"><h1 class="main-title">THE SOVEREIGN ARCHIVE</h1></div>
+
+        <div class="archive-grid">
+            <div class="side-column">
+                <div><img src="william_surname.jpg" class="family-thumb"><button class="gate-btn" style="width:100%; padding:10px; font-size:0.9em;" onclick="openArchive('CHANEY')">CHANEY HISTORY</button></div>
+                <div><img src="raymond_surname.jpeg" class="family-thumb"><button class="gate-btn" style="width:100%; padding:10px; font-size:0.9em;" onclick="openArchive('VANCE')">VANCE HISTORY</button></div>
+                <div><img src="Sellards_surname.jpg" class="family-thumb"><button class="gate-btn" style="width:100%; padding:10px; font-size:0.9em;" onclick="openArchive('SELLARDS')">SELLARDS HISTORY</button></div>
+            </div>
+
+            <div class="central-container">
+                <h2 style="color:#ff0000; font-size: 2em; text-shadow: 1px 1px 0 #fff; margin-top: 0;">CHOOSE YOUR DESTINY</h2>
+                
+                <div class="search-group">
+                    <label>Search Ancestry Report</label>
+                    <input type="text" id="nameSearch" placeholder="Type Name: ERMA, ROLLO, ALDEN...">
+                    <button class="red-btn" onclick="trace('main')">GENERATE REPORT</button>
+                </div>
+
+                <div class="search-group" style="margin-top: 30px;">
+                    <div style="border: 2px solid #d4af37; padding: 10px; margin-bottom: 10px; background: rgba(0,0,0,0.5);">
+                        <img src="Indians_search.png" style="width:100%; height:auto;">
+                    </div>
+                    <label>Indigenous Research Search</label>
+                    <input type="text" id="indianSearch" placeholder="Type: SHAWNEE, CHEROKEE, JENNY...">
+                    <button class="gate-btn" style="width:100%; margin-top:10px;" onclick="trace('indian')">GENERATE INDIAN NOTES</button>
+                </div>
+            </div>
+
+            <div class="side-column">
+                <div><img src="Perry_surname2.jpeg" class="family-thumb"><button class="gate-btn" style="width:100%; padding:10px; font-size:0.9em;" onclick="openArchive('PERRY')">PERRY HISTORY</button></div>
+                <div><img src="henry_clay_surname.jpg" class="family-thumb"><button class="gate-btn" style="width:100%; padding:10px; font-size:0.9em;" onclick="openArchive('CLAY')">CLAY HISTORY</button></div>
+                <div><img src="Alden_Williamson_Surname.jpeg" class="family-thumb"><button class="gate-btn" style="width:100%; padding:10px; font-size:0.9em;" onclick="openArchive('KEENER')">KEENER HISTORY</button></div>
+            </div>
+        </div>
+
+        <div id="vault-overlay"><div class="vault-content">
+            <h2 id="v-title" class="history-title"></h2>
+            <div id="v-body"></div>
+            <button class="gate-btn" style="width: 100%; margin-top: 25px;" onclick="document.getElementById('vault-overlay').style.display='none'">RETURN TO ARCHIVE</button>
+        </div></div>
+    </div>
+
+    <script>
+        function enterArchive() {
+            const splash = document.getElementById('splash');
+            const ui = document.getElementById('main-ui');
+            splash.style.opacity = '0';
+            setTimeout(() => {
+                splash.style.display = 'none';
+                ui.style.display = 'block';
+                setTimeout(() => { ui.style.opacity = '1'; document.body.style.overflow = 'auto'; }, 50);
+            }, 400);
+        }
+
+        // --- MASTER DATA SECTION ---
+        const ancestryRecords = [
+            // ERMA PERRY ANCESTORS (10+ names)
+            { name: "Erma Perry", info: "Matriarch of the Florida branch. Born 1930s. Daughter of the Perry line; central navigator of the family's migration legacy. Mother of Joshua Lee Chaney." },
+            { name: "Philip Perry", info: "Born c. 1599 in London. Settled in Isle of Wight, Virginia. The earliest proven Perry ancestor in America." },
+            { name: "John Perry I", info: "Born 1650, London. Son of Philip and Grace Perry. Established the line in colonial Virginia." },
+            { name: "Jacob Perry Sr.", info: "Born 1696, Perquimans Co, NC. Son of John. Joined the Quaker faith." },
+            { name: "Benjamin Perry Sr.", info: "Born c. 1705, Perquimans Co. Ancestor of the Southern Perry branches." },
+            { name: "Reuben Perry I", info: "Born 1734, NC. A key navigator and settler in the North Carolina territory." },
+            { name: "Reuben Perry Sr.", info: "Born 1760. Revolutionary era patriarch. Migrated toward the frontier." },
+            { name: "Thomas Perry", info: "18th-century navigator of the Tug River region. Known for establishing boundary lines in the Appalachian wilderness." },
+            { name: "William Perry", info: "Frontier scout who traversed the rugged passages of the Big Sandy River." },
+            { name: "The 'Indian-Adopted' Perry Boy", info: "A Perry child documented in family lore as having been adopted into tribal life during the 1700s frontier raids, later returning to the family." },
+
+            // JOSH CHANEY ANCESTORS (10+ names)
+            { name: "Joshua Lee Chaney", info: "Born 1978. Maintenance professional and Engineering student. Son of Erma Perry & Oshel Chaney." },
+            { name: "Oshel Chaney", info: "Patriarch of the West Virginia/Kentucky branch. Known as a rugged hunter and defender of the family property." },
+            { name: "Lon Chaney", info: "The Man of a Thousand Faces (1883-1930). Famous actor and distant kin to the Maryland/West Virginia Chaney branch." },
+            { name: "Gilbert de Quesnay", info: "Norman ancestor (Cheney/Chaney). Part of the Norman knightly class that arrived with the Conquest." },
+            { name: "William de Chesney", info: "Lord of the Manor in 12th-century England. Descendant of the Norman invaders." },
+            { name: "Charles Chaney", info: "Early 18th-century pioneer in Maryland. Migrated the line toward the Appalachian frontier." },
+            { name: "Green Chaney", info: "Settled in the Big Sandy region. Known for his resilience during the Civil War era in Kentucky." },
+            { name: "Hezekiah Chaney", info: "Ancestor of the Marysville branch. Established roots in Ohio agriculture." },
+
+            // VANCE LINE (ROLLO/NORMANS)
+            { name: "Rollo, Duke of Normandy", info: "Viking Chieftain (c. 860-932). First Duke of Normandy. Ancestor of the Vance (de Vaux) line." },
+            { name: "William the Conqueror", info: "Duke of Normandy/King of England. Descended from Rollo. Founder of the modern English state." },
+            { name: "Hubert de Vaux", info: "Baron of Gilsland, Cumbria. Granted lands after the Battle of Hastings (1066)." },
+            { name: "Abner Vance", info: "Revolutionary soldier (1759-1819). Tug River Valley patriarch. Known for the historic legal cases in VA/WV." },
+            { name: "Elizabeth Vance", info: "Matriarch of the Vance line in Abbs Valley; survivor of frontier hardships." },
+
+            // CLAY LINE
+            { name: "John Clay", info: "The English Planter. Arrived Jamestown 1613 on 'The Treasurer.' Built some of the first permanent English settlements." },
+            { name: "Captain Charles Clay", info: "The Grenadier (1645-1686). Soldier and planter in colonial Virginia." },
+            { name: "Henry Clay", info: "Statesman (1777-1852). 'The Great Compromiser.' Kin to the Kentucky Clay pioneers." },
+
+            // WILLIAMSON / SELLARDS
+            { name: "Alden Williamson", info: "Revolutionary War Scout (1750-1816). Pioneer of the Tug River Valley. Had 14 children who settled the Big Sandy." },
+            { name: "Hezekiah Sellards", info: "Frontier explorer (c. 1730). Patriarch of the Sellards family and father of Jenny Wiley." },
+            { name: "Jenny Sellards Wiley", info: "Frontier heroine. Captured 1789. Survived 11 months of captivity among the Shawnee/Cherokee." }
+        ];
+
+        const indianRecords = [
+            { name: "Shawnee Captivity", info: "Detailed records of the 1789 capture of Jenny Wiley and the migration paths of the Shawnee through Kentucky." },
+            { name: "Cherokee Kinship", info: "Documentation of the 'Indian Blood' and adoptions within the Perry and Vance lineages during the frontier wars." },
+            { name: "Chief Cornstalk", info: "Hokolesqua (c. 1720-1777). Shawnee leader. His history is central to the frontier peace treaties involving our ancestors." },
+            { name: "Trail of Heritage", info: "The specific cultural intertwining of the Vance, Perry, and Sellards families with the indigenous nations of Appalachia." }
+        ];
+
+        const familyHistory = {
+            'VANCE': `<p class="history-p">The Vance surname is among the most storied in the Chaney tree, tracing origins to the Norman-French nobility of the 11th century. Originally "de Vaux" or "de Vans," the name marks the family as lords of the valley. The story begins with **Rollo, Duke of Normandy (c. 860–930)**, a Viking chieftain who founded Normandy. His descendants, including **William the Conqueror**, invaded England in 1066. The de Vaux lords were granted lands in **Cumberland**, along the volatile Anglo-Scottish border.</p><p class="history-p">After the Crusades, where family members joined the Knights Templar movement, the line migrated to Ireland during the **Plantation of Ulster (1600s)**. They arrived in America during the massive Scots-Irish migration of the 1700s, traveling the **Great Wagon Road** to settle in the Appalachian wilderness. Notable patriarch **Abner Vance** eventually established the line in the Tug River Valley.</p>`,
+            'CLAY': `<p class="history-p">The Clay family (originally de Clay) emerged in **Yorkshire, England**, during the Middle Ages as sturdy land-owning yeoman farmers. The American story begins in **1613** when **John Clay**, "The English Planter," arrived at **Jamestown** on the ship *The Treasurer*—seven years before the Mayflower. He was a soldier and planter who helped secure the first permanent English presence in America.</p><p class="history-p">The family pushed westward into Kentucky, where they produced famous statesman **Henry Clay**, "The Great Compromiser." Meanwhile, our direct ancestors served as the frontier scouts who cleared the wilderness for settlement in what is now Ohio and West Virginia.</p>`,
+            'PERRY': `<p class="history-p">The Perrys were firebrands and navigators in colonial Virginia, with roots tracing back to **Philip Perry (b. 1599)**. They were sailors and explorers who eventually settled the rugged hills of Kentucky. The Perry name is famously linked to deep indigenous connections—stories of "Indian-adopted" children and marriages that intertwined our bloodline with the native nations of the frontier.</p><p class="history-p">From **Irma Perry** in Florida back to the 1700s scouts, the Perry line represents the navigational heart of our ancestry, mapping the wilderness for those who followed.</p>`,
+            'CHANEY': `<p class="history-p">The Chaney line (Cheney/Quesnay) traces back to Norman knights who established manors in medieval England. In America, the Chaneys were early pioneers in Maryland before moving to the Big Sandy region of Kentucky and West Virginia. This is a line of builders and technical minds, from the early pioneers to **Oshel Chaney** and the modern descendants in **Marysville, Ohio**.</p>`,
+            'SELLARDS': `<p class="history-p">**Hezekiah Sellards** was a patriarch of the Big Sandy frontier, a Scotch-Irish pioneer who arrived in PA in 1732. His daughter, **Jenny Wiley (Jean Sellards)**, is a legend of survival after her 1789 capture by Shawnee and Cherokee raiding parties. The Sellards name is a symbol of frontier endurance and the deep cultural history of the Appalachian people.</p>`,
+            'KEENER': `<p class="history-p">The Keener family history reflects German Palatine roots and a legacy of military service. **Amos Keener**, a WWII veteran who served in the 27th Infantry at Pearl Harbor and Luzon, served as the "Navigator" of the family's modern history. The name Keener was a significant correction in military records that helped unlock our full 20th-century history.</p>`
+        };
+
+        function openArchive(key) {
+            document.getElementById('v-title').innerText = key + " SURNAME HISTORY";
+            document.getElementById('v-body').innerHTML = familyHistory[key] || "Record still being compiled...";
+            document.getElementById('vault-overlay').style.display = 'block';
+        }
+
+        function trace(type) {
+            let q = (type === 'main') ? document.getElementById('nameSearch').value.toLowerCase().trim() : document.getElementById('indianSearch').value.toLowerCase().trim();
+            let records = (type === 'main') ? ancestryRecords : indianRecords;
+            if (!q) return;
+            
+            const res = records.filter(r => r.name.toLowerCase().includes(q) || r.info.toLowerCase().includes(q));
+            let html = "";
+            res.forEach(r => {
+                html += `<div class="history-entry"><div class="entry-name">${r.name}</div><div class="history-p">${r.info}</div></div>`;
+            });
+            document.getElementById('v-title').innerText = (type === 'main' ? "ANCESTRY REPORT: " : "INDIAN RESEARCH: ") + q.toUpperCase();
+            document.getElementById('v-body').innerHTML = html || "<p>No specific records found in this sector.</p>";
+            document.getElementById('vault-overlay').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
