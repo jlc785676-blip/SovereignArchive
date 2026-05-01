@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>THE SOVEREIGN ARCHIVE</title>
+    <style>
+        body { background-color:#050505; color:#e0c097; font-family:'Georgia',serif; margin:0; padding:0; overflow-x: hidden; background-image:url('https://www.transparenttextures.com/patterns/dark-wood.png'); }
+        
+        /* SPLASH SCREEN - DROPPED IMAGE & RAISED BUTTONS */
+        #splash { 
+            position: fixed; top:0; left:0; width:100%; height:100%; z-index:5000; 
+            background-color: #050505;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 1s ease;
+        }
+
+        .splash-art-frame {
+            width: 98%; max-width: 1350px;
+            border: 6px solid #d4af37; 
+            box-shadow: 0 0 50px #000;
+            margin-top: 60px; /* MOVED DOWN ANOTHER HALF INCH TO SHOW TOP BORDER */
+            margin-bottom: 40px; 
+        }
+
+        .splash-image { width: 100%; height: auto; display: block; }
+
+        .splash-overlay { 
+            display: flex; justify-content: center; align-items: center; z-index: 5001; 
+            gap: 30px; flex-wrap: wrap; padding: 25px 15px;
+            width: 100%; box-sizing: border-box;
+            background: rgba(0,0,0,0.85);
+            margin-bottom: 20px; /* RAISED UP ABOUT HALF AN INCH */
+        }
+
+        .counter-panel { 
+            background: rgba(0, 0, 0, 0.9); border: 2px solid #d4af37; 
+            padding: 10px 20px; border-radius: 8px; color: #d4af37; 
+            font-family: 'Courier New', monospace; font-size: 1.1em; font-weight: bold; 
+        }
+
+        /* MAIN UI */
+        #main-ui { display:none; text-align: center; padding-top: 5px; }
+        .header-box { padding: 15px; background: rgba(26, 15, 0, 0.95); border-bottom: 3px solid #d4af37; margin-bottom: 25px; }
+
+        .wood-btn { 
+            padding: 14px 28px; background: linear-gradient(#5d4037, #1a0f00); color: #fbe9e7; 
+            border: 2px solid #d4af37; font-weight: bold; border-radius: 4px; cursor: pointer; 
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .wood-btn:hover { border-color: #fff; box-shadow: 0 0 20px #d4af37; }
+
+        /* GRID LAYOUT */
+        .archive-grid { 
+            display: grid; grid-template-columns: 1fr 1.1fr 1fr; align-items: start; 
+            max-width: 2200px; margin: 0 auto; gap: 40px; padding: 0 15px;
+        }
+        
+        .side-column { display: flex; flex-direction: column; } 
+        .family-btn-group { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        
+        /* PICTURE ADJUSTMENTS */
+        .family-thumb { 
+            width: 350px; border-radius: 4px; border: 4px solid #d4af37; 
+            object-fit: cover; background: #111; box-shadow: 0 15px 35px #000; 
+        }
+
+        /* CENTER COLUMN RE-STACK */
+        .central-container { 
+            display: flex; flex-direction: column; align-items: center; gap: 20px; margin-top: 0;
+        } 
+        
+        .destiny-text { 
+            color: #d4af37; font-size: 2.8em; font-weight: bold; letter-spacing: 8px; 
+            text-transform: uppercase; text-shadow: 3px 3px 10px #000; margin-bottom: 10px;
+        }
+
+        .search-group { width: 100%; max-width: 500px; display: flex; flex-direction: column; gap: 10px; }
+
+        input[type="text"] { 
+            padding: 15px; width: 100%; background: #000; color: #fff; 
+            border: 2px solid #d4af37; border-radius: 4px; font-size: 18px; text-align: center;
+        }
+
+        .instruction-text { color: #d4af37; font-size: 1.1em; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+
+        .central-portrait { border: 4px solid #d4af37; border-radius: 8px; width: 100%; max-width: 520px; box-shadow: 0 10px 30px #000; }
+
+        /* VAULT */
+        #vault-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:6000; overflow-y:auto; padding:20px; }
+        .vault-content { background:#0a0a0a; border:2px solid #d4af37; padding:40px; border-radius:10px; text-align: left; max-width: 1200px; margin: 40px auto; color: #fff; }
+        .history-entry { border-bottom: 1px solid #3e2723; padding: 25px 0; line-height: 2.2; font-size: 1.2em; white-space: pre-wrap; }
+
+        @media (max-width: 1400px) {
+            .archive-grid { grid-template-columns: 1fr; }
+            .side-column { margin-top: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="splash">
+        <div class="splash-art-frame">
+            <img src="movie_splash.png" class="splash-image">
+        </div>
+        <div class="splash-overlay">
+            <button class="wood-btn" style="padding: 18px 45px; font-size: 1.2em;" onclick="enterArchive()">ENTER THE SAGA</button>
+            <div class="counter-panel">VISITORS: <span id="v-count">0</span></div>
+        </div>
+    </div>
+
+    <div id="main-ui">
+        <div class="header-box">
+            <h1 style="color:#d4af37; margin:0; letter-spacing: 3px; font-size: 1.5em;">THE SOVEREIGN ARCHIVE</h1>
+        </div>
+
+        <div class="archive-grid">
+            <div class="side-column">
+                <div class="family-btn-group" style="margin-top: 10px;">
+                    <img src="william_surname.jpg" class="family-thumb" style="height: 440px;">
+                    <button class="wood-btn" onclick="openArchive('CHANEY')">CHANEY SURNAME HISTORY</button>
+                </div>
+                <div class="family-btn-group" style="margin-top: 40px;">
+                    <img src="raymond_surname.jpeg" class="family-thumb" style="height: 440px;">
+                    <button class="wood-btn" onclick="openArchive('VANCE')">VANCE SURNAME HISTORY</button>
+                </div>
+                <div class="family-btn-group" style="margin-top: 40px;">
+                    <img src="Sellards_surname.jpg" class="family-thumb" style="height: 520px;">
+                    <button class="wood-btn" onclick="openArchive('SELLARDS')">SELLARDS SURNAME HISTORY</button>
+                </div>
+            </div>
+
+            <div class="central-container">
+                <div class="destiny-text">CHOOSE YOUR DESTINY</div>
+                
+                <div class="search-group">
+                    <div class="instruction-text">Search Ancestry (First & Last Name)</div>
+                    <input type="text" id="nameSearch" placeholder="First Name and Last Name">
+                    <button class="wood-btn" onclick="trace()">SEARCH ANCESTRY</button>
+                </div>
+
+                <div class="search-group">
+                    <div class="instruction-text">Deep Indian Research</div>
+                    <input type="text" id="indianSearch" placeholder="Cross Reference Families">
+                    <button class="wood-btn" onclick="openArchive('INDIAN')">CROSS REFERENCE ANCESTRY</button>
+                </div>
+
+                <img src="jenny_wiley_portrait.jpg" class="central-portrait" style="margin-top: 20px;">
+                
+                <div class="music-panel-small" style="width: 100%; background: #111; border: 1px solid #d4af37; padding: 5px; margin-top: 20px;">
+                    <iframe width="100%" height="220" src="https://www.youtube.com/embed/s3W6GSlZ0Vs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="side-column">
+                <div class="family-btn-group" style="margin-top: 10px;">
+                    <img src="jenny_wiley_ surname.jpeg" class="family-thumb" style="height: 440px;">
+                    <button class="wood-btn" onclick="openArchive('PERRY')">PERRY SURNAME HISTORY</button>
+                </div>
+                <div class="family-btn-group" style="margin-top: 40px;">
+                    <img src="henry_clay_surname.jpg" class="family-thumb" style="height: 440px;">
+                    <button class="wood-btn" onclick="openArchive('CLAY')">CLAY SURNAME HISTORY</button>
+                </div>
+                <div class="family-btn-group" style="margin-top: 40px;">
+                    <img src="Alden_Williamson_Surname.jpeg" class="family-thumb" style="height: 520px;">
+                    <button class="wood-btn" onclick="openArchive('WILLIAMSON')">WILLIAMSON SURNAME HISTORY</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="vault-overlay"><div class="vault-content">
+            <h2 id="v-title" style="color:#d4af37;"></h2>
+            <div id="v-body"></div>
+            <button class="wood-btn" style="width: 100%; margin-top: 40px;" onclick="document.getElementById('vault-overlay').style.display='none'">RETURN</button>
+        </div></div>
+    </div>
+
+    <script>
+        let db = [];
+        const familyData = {
+            'CHANEY': { title: "CHANEY SURNAME HISTORY", content: `<div class="history-section-title">THE NORTHMEN SAGA</div><div class="history-entry">Originating with Rollo of Normandy. Knights and Templars who rode with the Conqueror in 1066.</div>` },
+            'VANCE': { title: "VANCE SURNAME HISTORY", content: `<div class="history-section-title">CRUSADERS</div><div class="history-entry">Raymond Vance of Jerusalem. Later Andrew Jackson and Governor Zebulon Vance.</div>` },
+            'SELLARDS': { title: "SELLARDS SURNAME HISTORY", content: `<div class="history-section-title">BIG SANDY RESILIENCE</div><div class="history-entry">Foundation of the Kentucky frontier. The legacy of Jenny Wiley.</div>` },
+            'PERRY': { title: "PERRY SURNAME HISTORY", content: `<div class="history-section-title">BACON'S REBELLION</div><div class="history-entry">Firebrands in 1676 Virginia. Includes the record of the Indian-adopted boy.</div>` },
+            'CLAY': { title: "CLAY SURNAME HISTORY", content: `<div class="history-section-title">STATESMEN</div><div class="history-entry">From Yorkshire estates to Henry Clay, "The Great Compromiser."</div>` },
+            'WILLIAMSON': { title: "WILLIAMSON SURNAME HISTORY", content: `<div class="history-section-title">FRONTIER SCROLLS</div><div class="history-entry">Alden Williamson, the scout who secured the Kentucky wilderness.</div>` },
+            'INDIAN': { title: "DEEP INDIAN RESEARCH", content: `<div class="history-section-title">CROSS REFERENCE RECORDS</div><div class="history-entry">Tracing blood ties between the Sellards, Perry, and Vance lines through Indigenous lineage.</div>` }
+        };
+
+        function updateCounter() {
+            let count = localStorage.getItem('visitorCount') || 15248;
+            count = parseInt(count) + 1;
+            localStorage.setItem('visitorCount', count);
+            document.getElementById('v-count').innerText = count.toLocaleString();
+        }
+        window.onload = updateCounter;
+
+        function enterArchive() {
+            document.getElementById('splash').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('splash').style.display = 'none';
+                document.getElementById('main-ui').style.display = 'block';
+                load();
+            }, 1000);
+        }
+
+        async function load() {
+            try {
+                const r = await fetch('Gedcom.txt?v=' + Date.now());
+                const t = await r.text();
+                db = t.split('0 @').filter(x => x.trim()).map(x => {
+                    const n = x.match(/1 NAME (.*)/);
+                    const notes = [...x.matchAll(/[1-3] NOTE (.*)/g)].map(m => m[1]).join('\n');
+                    return { name: n ? n[1].replace(/\//g, '').trim() : "Record", raw: x.toLowerCase(), notes: notes };
+                });
+            } catch (e) { console.log("Syncing..."); }
+        }
+
+        function openArchive(key) {
+            const data = familyData[key];
+            if (data) {
+                document.getElementById('v-title').innerText = data.title;
+                document.getElementById('v-body').innerHTML = data.content;
+                document.getElementById('vault-overlay').style.display = 'block';
+            }
+        }
+
+        function trace() {
+            const q = document.getElementById('nameSearch').value.toLowerCase().trim();
+            if (!q) return;
+            const res = db.filter(x => x.raw.includes(q));
+            let h = "";
+            res.forEach(x => {
+                h += `<div class="history-entry"><h3 style="color:#d4af37;">${x.name}</h3>${x.notes}</div>`;
+            });
+            document.getElementById('v-title').innerText = "ARCHIVE TRACE: " + q.toUpperCase();
+            document.getElementById('v-body').innerHTML = h || "No records found.";
+            document.getElementById('vault-overlay').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
