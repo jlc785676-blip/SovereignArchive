@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>THE SOVEREIGN ARCHIVE: MASTER ARC</title>
+    
+    <style>
+        /* CRITICAL CSS - LOADED FIRST */
+        html, body { 
+            background-color:#050505; color:#e0c097; font-family:'Georgia',serif; 
+            margin:0; padding:0; height: 100%; overflow: hidden; 
+            background-image:url('https://www.transparenttextures.com/patterns/dark-wood.png');
+        }
+
+        #splash { 
+            position: fixed; top:0; left:0; width:100%; height:100%; z-index:999999; 
+            background-color: #050505; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; transition: opacity 0.5s ease;
+        }
+
+        .splash-image { width: 95%; max-width: 1400px; height: auto; border: 2px solid #d4af37; box-shadow: 0 0 50px #000; }
+
+        .gate-btn { 
+            margin-top: 25px; padding: 18px 50px; 
+            background: linear-gradient(135deg, #1a0101 0%, #a00000 100%), url('https://www.transparenttextures.com/patterns/dark-wood.png');
+            color: #ffffff; border: 3px solid #d4af37; font-weight: 900; border-radius: 8px; cursor: pointer; 
+            text-transform: uppercase; letter-spacing: 4px; font-size: 1.3em; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        #main-ui { display:none; text-align: center; max-width: 800px; margin: 0 auto; opacity: 0; padding: 15px; overflow-y: auto; height: 100vh; }
+        .header-box { padding: 15px; background: rgba(26, 15, 0, 0.95); border-bottom: 4px solid #ff0000; margin-bottom: 25px; }
+        .main-title { color: #ffffff; font-size: 2.2em; letter-spacing: 4px; text-transform: uppercase; margin: 0; }
+        .section-container { display: flex; flex-direction: column; gap: 30px; align-items: center; padding-bottom: 100px; }
+        .archive-item { width: 100%; max-width: 500px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .family-thumb { width: 100%; border: 4px solid #d4af37; box-shadow: 0 15px 35px #000; }
+        .search-group { width: 100%; max-width: 500px; margin: 10px 0; }
+        input[type="text"] { padding: 18px; width: 100%; background: #000; color: #fff; border: 3px solid #ff0000; border-radius: 4px; font-size: 18px; text-align: center; box-sizing: border-box; }
+        .red-btn { padding: 15px 30px; background: linear-gradient(135deg, #1a0101 0%, #a00000 100%), url('https://www.transparenttextures.com/patterns/dark-wood.png'); color: #ffffff; border: 2px solid #d4af37; font-weight: bold; border-radius: 4px; cursor: pointer; text-transform: uppercase; width: 100%; }
+        .video-panel { width: 100%; max-width: 500px; background: #111; border: 3px solid #d4af37; padding: 5px; margin: 10px 0; box-shadow: 0 10px 30px #000; }
+        #vault-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:9999999; overflow-y:auto; padding: 20px; }
+        .vault-content { background:#ffffff; border:6px solid #d4af37; padding:25px; border-radius:10px; text-align: left; max-width: 900px; margin: 20px auto; color: #000000; box-shadow: 0 0 50px #ff0000; }
+        .ledger-text { font-size: 1.1em; line-height: 1.7; white-space: pre-wrap; color: #000; }
+    </style>
+</head>
+<body>
+
+    <div id="splash">
+        <img src="movie_splash.png" class="splash-image">
+        <button class="gate-btn" onclick="openGate()">ENTER THE SAGA</button>
+    </div>
+
+    <div id="main-ui">
+        <div class="header-box"><h1 class="main-title">THE SOVEREIGN ARCHIVE</h1></div>
+        
+        <div class="section-container">
+            <div class="search-group">
+                <input type="text" id="nameSearch" placeholder="SEARCH ANCESTRY...">
+                <button class="red-btn" style="margin-top:10px;" onclick="trace('main')">SEARCH ARCHIVE</button>
+            </div>
+            
+            <div class="archive-item">
+                <img src="ship_arrival.jpg" class="family-thumb">
+                <button class="red-btn" onclick="openArchive('SHIPS')">
