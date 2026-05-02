@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Global Maritime & Fellowship Chronicle</title>
+    <style>
+        :root {
+            --primary-gold: #c5a059;
+            --deep-blue: #0a192f;
+            --parchment: #f4ece1;
+            --text-dark: #2c2c2c;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background-color: var(--deep-blue);
+            color: var(--parchment);
+            scroll-behavior: smooth;
+            height: 100%;
+        }
+
+        /* --- Splash Page with Movie_splash2.png --- */
+        #splash-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Using your requested filename here */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Movie_splash2.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            text-align: center;
+            transition: opacity 1s ease-out;
+        }
+
+        #splash-page h1 {
+            font-size: 3.5rem;
+            color: var(--primary-gold);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            margin-bottom: 10px;
+            padding: 0 20px;
+        }
+
+        .password-container {
+            background: rgba(10, 25, 47, 0.85);
+            padding: 30px;
+            border: 2px solid var(--primary-gold);
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        .password-container p {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        #pass-input {
+            padding: 12px;
+            font-size: 1.1rem;
+            border: 1px solid var(--primary-gold);
+            background: #f4ece1;
+            width: 250px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .enter-btn {
+            display: block;
+            margin: 0 auto;
+            padding: 12px 40px;
+            font-size: 1.2rem;
+            background-color: var(--primary-gold);
+            color: var(--deep-blue);
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+            text-transform: uppercase;
+            transition: transform 0.2s;
+        }
+
+        .enter-btn:hover {
+            transform: scale(1.05);
+        }
+
+        #error-msg {
+            color: #ff4d4d;
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
+        }
+
+        /* --- Main Content --- */
+        #main-content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: none; /* Hidden until password is correct */
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 0;
+            border-bottom: 2px solid var(--primary-gold);
+        }
+
+        .video-container {
+            margin: 40px auto;
+            max-width: 800px;
+            border: 5px solid var(--primary-gold);
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .control-btn {
+            background-color: #162a4a;
+            border: 1px solid var(--primary-gold);
+            color: var(--primary-gold);
+            padding: 20px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .control-btn:hover {
+            background-color: var(--primary-gold);
+            color: var(--deep-blue);
+        }
+
+        #encyclopedia-viewer {
+            background-color: var(--parchment);
+            color: var(--text-dark);
+            padding: 40px;
+            border-radius: 8px;
+            line-height: 1.6;
+            min-height: 400px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .ledger-entry {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+        }
+
+        .ledger-entry h2 {
+            color: #8b0000;
+            border-bottom: 2px solid #8b0000;
+            display: inline-block;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: #444;
+        }
+
+        .hidden { display: none; }
+    </style>
+</
