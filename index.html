@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>THE SOVEREIGN ARCHIVE: MASTER ARC</title>
+    
+    <script>
+        function playGateAction() {
+            const splash = document.getElementById('splash');
+            const ui = document.getElementById('main-ui');
+            if (splash && ui) {
+                splash.style.opacity = '0';
+                setTimeout(() => { 
+                    splash.style.display = 'none'; 
+                    ui.style.display = 'block'; 
+                    setTimeout(() => { 
+                        ui.style.opacity = '1'; 
+                        document.body.style.overflow = 'auto'; 
+                    }, 50); 
+                }, 500);
+            }
+        }
+    </script>
+
+    <style>
+        html, body { 
+            background-color:#050505; color:#e0c097; font-family:'Georgia',serif; 
+            margin:0; padding:0; height: 100%; overflow: hidden; 
+            background-image:url('
