@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>THE SOVEREIGN ARCHIVE: MASTER ENCYCLOPEDIA</title>
+    
+    <style>
+        /* CORE ARCHIVE STYLING */
+        html, body { 
+            background-color:#050505; color:#e0c097; font-family:'Georgia',serif; 
+            margin:0; padding:0; height: 100%; width: 100%; overflow: hidden; 
+            background-image:url('https://www.transparenttextures.com/patterns/dark-wood.png');
+        }
+
+        /* FAILSAFE TALL SPLASH SCREEN */
+        #splash { 
+            position: fixed; top:0; left:0; width:100%; height:100%; z-index:999999999; 
+            background-color: #050505; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; text-align: center;
+        }
+        .splash-image { 
+            width: 90%; max-width: 700px; height: auto; max-height: 50vh; 
+            object-fit: contain; border: 2px solid #d4af37; box-shadow: 0 0 30px #000;
+        }
+        .splash-text {
+            color: #e0c097; padding: 20px; font-size: 1.1em; max-width: 600px; 
+            line-height: 1.5; font-style: italic; font-weight: bold;
+        }
+        .gate-btn { 
+            margin-top: 10px; padding: 15px 50px; 
+            background: linear-gradient(135deg, #1a0101 0%, #a00000 100%);
+            color: #ffffff; border: 3px solid #d4af37; font-weight: 900; border-radius: 8px; cursor: pointer; 
+            text-transform: uppercase; letter-spacing: 3px; font-size: 1.2em; box-shadow: 0 0 25px #ff0000;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* MAIN UI */
+        #main-ui { display:none; text-align: center; max-width: 800px; margin: 0 auto; padding: 15px; overflow-y: auto; height: 100vh; }
+        .header-box { padding: 15px; background: rgba(26, 15, 0, 0.95); border-bottom: 4px solid #ff0000; margin-bottom: 25px; }
+        .main-title { color: #ffffff; font-size: 2.2em; letter-spacing: 4px; text-transform: uppercase; margin: 0; }
+        
+        .section-container { display: flex; flex-direction: column; gap: 40px; align-items: center; padding-bottom: 150px; }
+        .archive-item { width: 100%; max-width: 500px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .family-thumb { width: 100%; border: 4px solid #d4af37; box-shadow: 0 15px 35px #000; }
+        
+        input[type="text"] { padding: 20px; width: 100%; background: #000; color: #fff; border: 3px solid #ff0000; border-radius: 4px; font-size: 20px; text-align: center; box-sizing: border-box; }
+        .red-btn { padding: 18px 35px; background: linear-gradient(135deg, #1a0101 0%, #a00000 100%); color: #ffffff; border: 2px solid #d4af37; font-weight: bold; border-radius: 4px; cursor: pointer; text-transform: uppercase; width: 100%; font-size: 1.1em; }
+        
+        /* DATA VAULT OVERLAY */
+        #vault-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:1000000000; overflow-y:auto; padding: 20px; }
+        .vault-content { background:#ffffff; border:6px solid #d4af37; padding:30px; border-radius:10px; text-align: left; max-width: 900px; margin: 20px auto; color: #000; }
+        .ledger-text { font-size: 1.2em; line-height: 1.8; color: #000; white-space: pre-wrap; font-family: serif; }
+        .video-panel { width: 100%; max-width: 500px; background: #111; border: 3px solid #d4af37; padding: 5px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+
+    <div id="splash">
+        <img src="Movie_splash2.png" class="splash-image" onerror="this.src='https://via.placeholder.com/800x600?text=IMAGE+NOT+FOUND+-+CHECK+FILENAME'">
+        <div class="splash-text">
+            Follow along with the saga of an amazing adventure and save, follow the bloodline.
+        </div>
+        <button class="gate-btn" onclick="directUnlock()">ENTER THE SAGA</button>
+    </div>
+
+    <div id="main-ui">
+        <div class="header-box"><h1 class="main-title">THE SOVEREIGN ARCHIVE</h1></div>
+        
+        <div class="section-container">
+            <div style="width: 100%; max-width: 500px;">
+                <input type="text" id="mainSearch" placeholder="SEARCH ALL RECORDS & NAMES...">
+                <button class="red-btn" style="margin-top:10px;" onclick="runSearch()">TRACE LINEAGE</button>
+            </div>
+
+            <div class="archive-item">
+                <img src="ship_arrival.jpg" class="family-thumb">
+                <button class="red-btn" onclick="openVault('SHIPS')">THE GLOBAL MARITIME & FELLOWSHIP CHRONICLE: 1135–1750</button>
+            </div>
+
+            <div class="archive-item">
+                <h2 style="color:#ff0000; margin:0;">INDIAN HERITAGE RESEARCH</h2>
+                <div style="border: 3px solid #d4af37; padding: 10px; background:rgba(0,0,0,0.5);">
+                    <img src="Indians_search.png" style="width:100%;">
+                </div>
+                <button class="red-btn" style="margin-top:10px;" onclick="openVault('INDIAN_CHRONO')">GENERATE INDIAN CHRONOLOGICAL REPORT</button>
+            </div>
+
+            <div class="archive-item"><img src="william_surname.jpg" class="family-thumb"><button class="red-btn" onclick="openVault('CHANEY')">CHANEY HISTORY & ANCIENT PLANTER RECORDS</button></div>
+            <div class="archive-item"><img src="raymond_surname.jpeg" class="family-thumb"><button class="red-btn" onclick="openVault('VANCE')">VANCE HISTORY & TEMPLAR KNIGHT SERVICE</button></div>
+            <div class="archive-item"><img src="Perry_surname2.jpeg" class="family-thumb"><button class="red-btn" onclick="openVault('PERRY')">PERRY HISTORY & ROYAL NAVIGATOR LOGS</button></div>
+            <div class="archive-item"><img src="henry_clay_surname.jpg" class="family-thumb"><button class="red-btn" onclick="openVault('CLAY')">CLAY HISTORY & ARMED MERCHANT DEFENSE</button></div>
+            <div class="archive-item"><img src="Alden_Williamson_Surname.jpeg" class="family-thumb"><button class="red-btn" onclick="openVault('WILLIAMSON')">WILLIAMSON HISTORY & TRAIL-KEEPER ROLLS</button></div>
+            
+            <div class="video-panel">
+                <div style="color:#ff0000; font-weight:bold; padding: 10px;">THE STORY OF JENNY WILEY</div>
+                <iframe width="100%" height="300" src="https://www.youtube.com/embed/t6x7gy60CO8" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-panel" style="border-color:#ff0000;">
+                <div style="color:#ffffff; font-weight:bold; padding: 10px;">THE LAST OF THE MOHICANS</div>
+                <iframe width="100%" height="300" src="https://www.youtube.com/embed/s3W6GSlZ0Vs" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="vault-overlay">
+        <div class="vault-content">
+            <div id="v-title" style="color:#ff0000; font-size: 2em; border-bottom: 3px solid #ff0000; margin-bottom: 25px; text-transform: uppercase; font-weight: 900;"></div>
+            <div id="v-body" class="ledger-text"></div>
+            <button class="red-btn" style="margin-top: 35px; border: 3px solid #000;" onclick="document.getElementById('vault-overlay').style.display='none'">RETURN TO ARCHIVE</button>
+        </div>
+    </div>
+
+    <script>
+        // DIRECT FAILSAFE COMMAND
+        function directUnlock() {
+            document.getElementById('splash').style.display = 'none';
+            document.getElementById('main-ui').style.display = 'block';
+            document.body.style.overflow = 'auto';
+        }
+
+        // ENCYCLOPEDIA MASTER DATA - UNABBREVIATED
+        const vaultData = {
+            'SHIPS': `THE GLOBAL MARITIME & FELLOWSHIP CHRONICLE: 1135–1750
+FROM THE KINGDOMS OF EUROPE TO THE AMERICAN COLONIES
+
+ADKINS
+Old World Origins: London merchant class. Part of the "Chartered Fellowship."
+Ship Name: Assurance (July 24, 1635)
+Departure: Port of London, England
+Passenger: Thomas Adkins (Age 24)
+Ship Name: Globe (1635) - Richard Adkins.
+
+AKERS
+Old World Origins: Land-surveying guilds. Served as "Provers of Land."
+Ship Name: Frontier Coastal Schooners (c. 1750)
+Passengers: Valentine, Solomon, and Augustine Akers.
+
+BOYCE / CHANEY (CHEYNEY)
+Old World Origins: "Ancient Planters." High standing in the London Company.
+Ship Name: George (March 1617) - Cheney Boyce.
+Ship Name: Sea Flower (1621) - Sarah Boyce. Survival core of Social history.
+Ship Name: Charles (1621) - Richard Cheyney. "Cheney’s Resolution" anchor.
+
+CLAY
+Old World Origins: Military/Maritime defense. Served as "Armed Merchants."
+Ship Name: Treasurer (Feb 1613) - John Clay ("The Immigrant").
+Ship Name: Falcon (1620) - Anne Clay.
+
+PERRY
+Old World Origins: Elite maritime navigators and Royal Merchant ship captains.
+Ship Name: Starr (May 1611) - Captain William Perry. Mapped James River.
+Ship Name: Bona Nova (1619) - John Perry.
+
+SELLARDS
+Old World Origins: Weaver Fellowship of Ulster (Ireland).
+Ship Name: Ulster Brigantines (1732) - Hezekiah Sellards. Father of Jenny Wiley.
+
+VANCE (VANN / VANS)
+Old World Origins: Lords of Barnbarroch (Scotland). Ambassadors to Kings.
+Templar Ties: Allied with Sinclairs of Rosslyn; defense of Rosslyn Chapel.
+Ship Name: Ulster Merchant Transports (1739) - Charles Vance. Indian Spies.
+
+WATTS (WATHES)
+Service to King Stephen (1135): Simon Wathes served as a Knight of the Kingdom.
+Ship Name: London Supply Ships (c. 1640) - Edward Watts I. Defender of frontier.
+
+WILLIAMSON
+Old World Origins: Maritime "Sailing Fleets." Coastal navigators.
+Ship Name: Chesapeake Supply Ships - Alden Williamson kin. Trail-Keepers.`,
+            
+            'CHANEY': `THE CHANEY / BOYCE ENCYCLOPEDIA RECORD:\nExhaustive history of the "Ancient Planters" and the legacy of the George arrival. Sarah Boyce survival 1622.`,
+            'VANCE': `THE VANCE / VANN ENCYCLOPEDIA RECORD:\nLords of Barnbarroch, Sinclair Templar ties, and Backcountry Ranger/Indian Spy service.`,
+            'PERRY': `THE PERRY ENCYCLOPEDIA RECORD:\nNavigational logs for Captain William Perry (1611) and the blood covenant of the James River.`,
+            'CLAY': `THE CLAY ENCYCLOPEDIA RECORD:\nRecords of John Clay (1613 Treasurer) and military defense of the frontier.`,
+            'WILLIAMSON': `THE WILLIAMSON ENCYCLOPEDIA RECORD:\nCoastal navigators, trail-keeping, and the Jenny Wiley survival lineage.`,
+            'INDIAN_CHRONO': `MASTER INDIAN CHRONOLOGICAL REPORT:\nFull records of Tribal Bonds, Masonic Fellowship, and the 9J18 SCJ lineage foundations.`
+        };
+
+        function openVault(key) {
+            document.getElementById('v-title').innerText = key.replace('_', ' ') + " RECORD";
+            document.getElementById('v-body').innerText = vaultData[key];
+            document.getElementById('vault-overlay').style.display = 'block';
+        }
+
+        function runSearch() {
+            let q = document.getElementById('mainSearch').value.toLowerCase().trim();
+            if (!q) return;
+            let res = "";
+            for (let k in vaultData) { if (vaultData[k].toLowerCase().includes(q)) res += vaultData[k] + "\n\n--- DOC ---\n\n"; }
+            document.getElementById('v-title').innerText = "SEARCH: " + q.toUpperCase();
+            document.getElementById('v-body').innerText = res || "No records found.";
+            document.getElementById('vault-overlay').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
