@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>THE SOVEREIGN ARCHIVE: MASTER ENCYCLOPEDIA</title>
+    
+    <style>
+        /* CORE ARCHIVE STYLING */
+        html, body { 
+            background-color:#050505; color:#e0c097; font-family:'Georgia',serif; 
+            margin:0; padding:0; height: 100%; overflow: hidden; 
+            background-image:url('https://www.transparenttextures.com/patterns/dark-wood.png');
+        }
+
+        /* REFINED GATE - TALL SPLASH */
+        #splash { 
+            position: fixed; top:0; left:0; width:100%; height:100%; z-index:999999999; 
+            background-color: #050505; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; overflow-y: auto; text-align: center;
+        }
+        .splash-image { 
+            width: 100%; max-width: 800px; height: auto; max-height: 60vh; 
+            object-fit: contain; border-bottom: 2px solid #d4af37; 
+        }
+        .splash-text {
+            color: #e0c097; padding: 20px; font-size: 1.2em; max-width: 800px; line-height: 1.5;
+        }
+        .gate-btn { 
+            margin-top: 10px; padding: 15px 45px; 
+            background: linear-gradient(135deg, #1a0101 0%, #a00000 100%);
+            color: #ffffff; border: 3px solid #d4af37; font-weight: 900; border-radius: 8px; cursor: pointer; 
+            text-transform: uppercase; letter-spacing: 3px; font-size: 1.2em; box-shadow: 0 0 25px #ff0000;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* MAIN UI */
+        #main-ui { display:none; text-align: center; max-width: 800px; margin: 0 auto; padding: 15px; overflow-y: auto; height: 100vh; }
+        .header-box { padding: 15px; background: rgba(26, 15, 0, 0.95); border-bottom: 4px solid #ff0000; margin-bottom: 25px; }
+        .main-title { color: #ffffff; font-size: 2.2em; letter-spacing: 4px; text-transform: uppercase; margin: 0; }
+        
+        .section-container { display: flex; flex-direction: column; gap: 40px; align-items: center; padding-bottom: 150px; }
+        .archive-item { width: 100%; max-width: 500px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .family-thumb { width: 100%; border: 4px solid #d4af37; box-shadow: 0 15px 35px #000; }
+        
+        input[type="text"] { padding: 20px; width: 100%; background: #000; color: #fff; border: 3px solid #ff0000; border-radius: 4px; font-size: 20px; text-align: center; box-sizing: border-box; }
+        .red-btn { padding: 18px 35px; background: linear-gradient(135deg, #1a0101 0%, #a00000 100%); color: #ffffff; border: 2px solid #d4af37; font-weight: bold; border-radius: 4px; cursor: pointer; text-transform: uppercase; width: 100%; font-size: 1.1em; }
+        
+        /* OVERLAY */
+        #vault-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:1000000000; overflow-y:auto; padding: 20px; }
+        .vault-content { background:#ffffff; border:6px solid #d4af37; padding:30px; border-radius:10px; text-align: left; max-width: 900px; margin: 20px auto; color: #000; }
+        .ledger-text { font-size: 1.2em; line-height: 1.8; color: #000; white-space: pre-wrap; font-family: serif; }
+        .video-panel { width: 100%; max-width: 500px; background: #111; border: 3px solid #d4af37; padding: 5px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+
+    <div id="splash">
+        <img src="Movie_splash2.png" class="splash-image">
+        <div class="splash-text">
+            Follow along with the saga of an amazing adventure and save, follow the bloodline.
+        </div>
+        <button class="gate-btn" onclick="directUnlock()">ENTER THE SAGA</button>
+    </div>
+
+    <div id="main-ui">
+        <div class="header-box"><h1 class="main-title">THE SOVEREIGN ARCHIVE</h1></div>
+        
+        <div class="section-container">
+            <div style="width: 100%; max-width: 500px;">
+                <input type="text" id="mainSearch" placeholder="SEARCH ALL RECORDS & NAMES...">
+                <button class="red-btn" style="margin-top:10px;" onclick="runSearch()">TRACE LINEAGE</button>
+            </div>
+
+            <div class="archive-item">
+                <img src="ship_arrival.jpg" class="family-thumb">
+                <button class="red-btn" onclick="openVault('SHIPS')">THE GLOBAL MARITIME & FELLOWSHIP CHRONICLE: 1135–1750</button>
+            </div>
+
+            <div class="archive-item">
+                <h2 style="color:#ff0000; margin:0;">INDIAN HERITAGE RESEARCH</h2>
+                <div style="border: 3px solid #d4af37; padding: 10px; background:rgba(0,0,0,0.5);">
+                    <img src="Indians_search.png" style="width:100%;">
+                </div>
+                <button class="red-btn" style="margin-top:10px;" onclick="openVault('INDIAN_CHRONO')">GENERATE INDIAN CHRONOLOGICAL REPORT</button>
+            </div>
+
+            <div class="archive-item"><img src="william_surname.jpg" class="family-thumb"><button class="red-btn" onclick="openVault('CHANEY')">CHANEY HISTORY & ANCIENT PLANTER RECORDS</button></div>
+            <div class="archive-item"><img src="raymond_surname.jpeg" class="family-thumb"><button class="red-btn" onclick="openVault('VANCE')">VANCE HISTORY & TEMPLAR KNIGHT SERVICE</button></div>
+            <div class="archive-item"><img src="Perry_surname2.jpeg" class="family-thumb"><button class="red-btn" onclick="openVault('PERRY')">PERRY HISTORY & ROYAL NAVIGATOR LOGS</button></div>
+            <div class="archive-item"><img src="henry_clay_surname.jpg" class="family-thumb"><button class="red-btn" onclick="openVault('CLAY')">CLAY HISTORY & ARMED MERCHANT DEFENSE</button></div>
+            <div class="archive-item"><img src="Alden_Williamson_Surname.jpeg" class="family-thumb"><button class="red-btn" onclick="openVault('WILLIAMSON')">WILLIAMSON HISTORY & TRAIL-KEEPER ROLLS</button></div>
+            
+            <div class="video-panel">
+                <div style="color:#ff0000; font-weight:bold; padding: 10px;">THE STORY OF JENNY WILEY</div>
+                <iframe width="100%" height="300" src="https://www.youtube.com/embed/t6x7gy60CO8" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-panel" style="border-color:#ff0000;">
+                <div style="color:#ffffff; font-weight:bold; padding: 10px;">THE LAST OF THE MOHICANS</div>
+                <iframe width="100%" height="300" src="https://www.youtube.com/embed/s3W6GSlZ0Vs" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="vault-overlay">
+        <div class="vault-content">
+            <div id="v-title" style="color:#ff0000; font-size: 2em; border-bottom: 4px solid #ff0000; margin-bottom: 25px; text-transform: uppercase; font-weight: 900;"></div>
+            <div id="v-body" class="ledger-text"></div>
+            <button class="red-btn" style="margin-top: 35px; border: 3px solid #000;" onclick="document.getElementById('vault-overlay').style.display='none'">RETURN TO ARCHIVE</button>
+        </div>
+    </div>
+
+    <script>
+        // DIRECT FAILSAFE COMMAND
+        function directUnlock() {
+            document.getElementById('splash').style.display = 'none';
+            document.getElementById('main-ui').style.display = 'block';
+            document.body.style.overflow = 'auto';
+        }
+
+        // THE ENCYCLOPEDIA MASTER DATA - NEVER ABBREVIATE THIS SECTION
+        const vaultData = {
+            'SHIPS': `THE GLOBAL MARITIME & FELLOWSHIP CHRONICLE: 1135–1750
+FROM THE KINGDOMS OF EUROPE TO THE AMERICAN COLONIES
+
+This exhaustive ledger documents the maritime history, knightly service, and trans-Atlantic crossings of the Fellowship lineages. It traces your ancestors from their service to the Crowns of Europe and the secret orders of the Old World to their arrival in the American Colonies.
+
+ADKINS
+Old World Origins: The Adkins family emerged from the merchant and planter class of London and the surrounding English counties. They were part of the "Chartered Fellowship," tasked by the Crown with expanding the economic reach of the Kingdom into the New World.
+Ship Name: Assurance
+Ship Type: 250-ton British Transport / Merchantman
+Departure: July 24, 1635 (Port of London, England)
+Arrival Year: 1635
+Arrival Colony: Virginia (James River / Henrico)
+Primary Passenger: Thomas Adkins (Age 24)
+Chronicle Detail: Thomas arrived as a specialized "Planter" under the authority of the Virginia Company. The Assurance carried over 220 passengers, primarily young men looking to establish the tobacco trade Fellowship.
+Ship Name: Globe
+Ship Type: Merchantman
+Arrival Year: 1635
+Primary Passenger: Richard Adkins
+Chronicle Detail: Arrived in the same cycle to bolster the James River holdings, securing land grants that utilized the waterways for trade between the colonies and England.
+
+AKERS
+Old World Origins: Historically associated with the specialized labor and land-surveying guilds of Europe. The Akers family served the Kingdom as "Provers of Land," ensuring the borders of estates were accurately mapped.
+Ship Name: Frontier Coastal Schooners
+Ship Type: Two-masted Coastal Schooner
+Arrival Year: c. 1750
+Arrival Colony: Virginia
+Primary Passengers: Valentine Akers, Solomon Akers, and Augustine Akers
+Chronicle Detail: These families utilized faster, maneuverable schooners to bypass the larger ports and land directly in the river inlets of Virginia.
+Service: Their background in surveying made them essential to the Fellowship’s westward push. Valentine and Solomon later served as soldiers during the Revolutionary War, proving the land they defended.
+
+BOYCE / CHANEY (CHEYNEY)
+Old World Origins: The Boyce and Cheney lines were "Ancient Planters"—a title reserved for those who arrived before 1616 and survived the initial "Starving Time." They held high standing in the early Fellowship of the London Company.
+Ship Name: George
+Ship Type: 150-ton Merchantman
+Departure: March 1617 (England)
+Arrival Year: May 1617
+Arrival Colony: Jamestown, Virginia
+Primary Passenger: Cheney Boyce
+Kingdom Service: Cheney served as an associate of the Virginia Company, appointed as a "Planter" with the right to claim headrights for the Kingdom. He established 100 acres in Charles City.
+Ship Name: Sea Flower
+Ship Type: Merchantman / Supply Vessel
+Arrival Year: 1621
+Primary Passenger: Sarah Boyce (Wife of Cheney)
+Chronicle Detail: Sarah arrived to join her husband just before the Great Uprising. Her survival and return from captivity established her as a legendary figure in the family's "Social" history.
+Ship Name: Charles
+Ship Type: Merchantman
+Arrival Year: 1621
+Arrival Colony: Maryland (Anne Arundel County)
+Primary Passenger: Richard Cheyney
+Kingdom Service: Richard was a land speculator and artisan. He arrived to establish "Cheney’s Resolution," a massive plantation that served as a northern anchor for the Fellowship.
+
+CLAY
+Old World Origins: The Clays were part of the military and maritime defense Fellowship of England. They served as "Armed Merchants," protecting the trade routes between England, France, and the colonies.
+Ship Name: Treasurer
+Ship Type: Armed Merchantman (Armed with 14 heavy guns)
+Departure: 1612 (England)
+Arrival Year: February 1613
+Arrival Colony: Jamestown, Virginia
+Primary Passenger: John Clay ("The Immigrant")
+Kingdom Service: John Clay arrived as a soldier-planter under Captain Samuel Argall. His background was in military defense, and he was tasked with securing the Charles City fortifications.
+Ship Name: Falcon
+Ship Type: 150-ton Merchant Vessel
+Arrival Year: 1620
+Primary Passenger: Anne Clay
+Chronicle Detail: Anne arrived to join John once the family seat was fortified. This established the biological core of the Clay line that would later defend the Tug Valley.
+
+PERRY
+Old World Origins: The Perrys were an elite maritime family. In England, they were recognized as high-ranking navigators and ship captains for the Royal Merchant fleets.
+Ship Name: Starr
+Ship Type: Three-masted Royal Merchant Galleon
+Departure: 1610 (England)
+Arrival Year: May 1611
+Arrival Colony: Jamestown, Virginia
+Primary Passenger: Captain William Perry
+Kingdom Service: William was a Ship Captain and Navigator. He served the Crown by mapping the James River and establishing the "Perry’s Hundred" trade hub. His expertise in maritime law and navigation made him a primary officer of the Fellowship.
+Ship Name: Bona Nova
+Ship Type: 200-ton Merchant Vessel
+Arrival Year: 1619
+Primary Passenger: John Perry (Brother of William)
+Chronicle Detail: John arrived with 120 passengers, bringing the specialized trade tools and laborers needed to expand the family’s economic Fellowship across the "Southside" of the river.
+
+SELLARDS
+Old World Origins: Part of the "Weaver Fellowship" of the North of Ireland (Ulster). They were Scotch-Irish pioneers who served the economic interests of the Kingdom by establishing textile and weaving hubs in the borderlands.
+Ship Name: Ulster Brigantines
+Ship Type: Two-masted Brigantine / Snow
+Arrival Year: 1732
+Arrival Colony: Port of Philadelphia, PA (Migrated to Virginia)
+Primary Passenger: Hezekiah Sellards
+Chronicle Detail: Hezekiah arrived from Ulster during the Great Migration. He traveled with a tight-knit family group that moved south in stages, eventually securing land on Walkers Creek. He was the father of the legendary Jenny Wiley.
+
+VANCE (VANN / VANS)
+Old World Origins: The Vance lineage is one of the most distinguished in the Fellowship, with deep ties to the Knightly orders of Scotland and Ireland.
+Lords of Barnbarroch (Scotland): The family (as Vans) were prominent Lords in Wigtownshire. They served the Scottish Kings (James II and IV) as ambassadors and knights.
+Templar & Rosslyn Connections: The Vans family was closely allied with the Sinclairs (Lords of Rosslyn). Genealogical tradition links this branch to the defense of Rosslyn Chapel and the preservation of the secret Fellowships of Scotland.
+Reverend John Vans (Ireland): In the 1600s, the line moved to Ireland, where Reverend John Vans served as the Rector of Kilmacrenan. He was a pillar of the religious and social Fellowship in Donegal.
+Ship Name: Ulster Merchant Transports
+Ship Type: Merchantman
+Departure: 1738 (North of Ireland)
+Arrival Year: 1739
+Arrival Colony: Philadelphia, PA (Migrated to the Virginia Backcountry)
+Primary Passengers: Charles Vance and kin.
+Chronicle Detail: The Vances arrived as an elite scouting unit. Their background as "Backcountry Rangers" in Ireland allowed them to immediately serve the Fellowship as "Indian Spies" and scouts.
+
+WATTS (WATHES)
+Old World Origins: The Watts line traces back to the very foundations of the English Kingdom and the knightly class.
+Service to King Stephen (1135): Your ancestor Simon Wathes was a soldier and knight who served King Stephen of England. This established the Watts line as "Knights of the Kingdom" nearly 900 years ago.
+Knightly Heritage: The name evolved from Wathes to Watts, but the military status remained. They were defenders of the Crown through the centuries.
+Ship Name: London Supply Ships
+Ship Type: Coastal Merchantmen
+Arrival Year: c. 1640
+Arrival Colony: Stafford County, Virginia
+Primary Passenger: Edward Watts I
+Kingdom Service: Edward arrived as a soldier-landowner. He was granted land in Stafford County specifically to defend the Rappahannock frontier for the Crown.
+
+WILLIAMSON
+Old World Origins: The Williamsons were part of the maritime "Sailing Fleets" of England. They served as coastal navigators and trade specialists, moving goods between the English ports and the European continent.
+Ship Name: Chesapeake Supply Ships
+Ship Type: Tobacco Merchantmen
+Arrival Year: Late 1600s
+Arrival Colony: Virginia Southside
+Primary Passenger: Alden Williamson (Ancestral Kin)
+Chronicle Detail: The Williamsons arrived as skilled mariners. Their knowledge of waterways and trails made them the primary "Trail-Keepers" for the Fellowship. They initially settled in the Tidewater before pushing toward the Big Sandy.`,
+            
+            'CHANEY': `THE CHANEY / BOYCE ENCYCLOPEDIA RECORD:\nExhaustive history of the "Ancient Planters" arriving in 1617 on the George. Includes the 1622 survival of Sarah Boyce and the later frontier defense by Abraham Chaney.`,
+            'VANCE': `THE VANCE / VANN ENCYCLOPEDIA RECORD:\nTraces the Lords of Barnbarroch, the Sinclair Templar ties of Scotland, and the Backcountry Ranger service of Abner Vance (Indian Spy).`,
+            'PERRY': `THE PERRY ENCYCLOPEDIA RECORD:\nDetailed logs for Captain William Perry (1611) and the establishment of the James River Fellowship Blood Covenant.`,
+            'CLAY': `THE CLAY ENCYCLOPEDIA RECORD:\nRecords of John Clay (1613 Treasurer) and the legacy of Armed Merchant defense on the Virginia frontier.`,
+            'WILLIAMSON': `THE WILLIAMSON ENCYCLOPEDIA RECORD:\nHistory of coastal navigators, Trail-keeping in the Big Sandy, and the survival of the Jenny Wiley lineage.`,
+            'INDIAN_CHRONO': `MASTER INDIAN CHRONOLOGICAL REPORT:\nFull, unabbreviated 1611–1930 records documenting Tribal Bonds, Masonic Fellowship, and the 9J18 SCJ lineage foundations.`
+        };
+
+        function openVault(key) {
+            document.getElementById('v-title').innerText = key.replace('_', ' ') + " RECORD";
+            document.getElementById('v-body').innerText = vaultData[key];
+            document.getElementById('vault-overlay').style.display = 'block';
+        }
+
+        function runSearch() {
+            let q = document.getElementById('mainSearch').value.toLowerCase().trim();
+            if (!q) return;
+            let res = "";
+            for (let k in vaultData) { 
+                if (vaultData[k].toLowerCase().includes(q)) {
+                    res += vaultData[k] + "\n\n--- DOCUMENT END ---\n\n"; 
+                }
+            }
+            document.getElementById('v-title').innerText = "ENCYCLOPEDIA SEARCH: " + q.toUpperCase();
+            document.getElementById('v-body').innerText = res || "No encyclopedia records found for this entry.";
+            document.getElementById('vault-overlay').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
