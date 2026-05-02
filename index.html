@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>THE SOVEREIGN ARCHIVE: MASTER ARC</title>
+    
+    <script>
+        // THE GATE KEEPER - ENSURES SPLASH WORKS EVERY TIME
+        function playGateAction() {
+            var splash = document.getElementById('splash');
+            var ui = document.getElementById('main-ui');
+            if (splash) {
+                splash.style.opacity = '0';
+                splash.style.pointerEvents = 'none';
+                setTimeout(function() { 
+                    splash.style.display = 'none'; 
+                    if (ui) {
+                        ui.style.display = 'block'; 
+                        setTimeout(function() { 
+                            ui.style.opacity = '1'; 
+                            document.body.style.overflow = 'auto'; 
+                        }, 50);
+                    }
+                }, 500);
+            }
+        }
+
+        // THE MASTER DATA REPOSITORY (EVERY WORD PRESERVED)
+        const archiveData = {
+            'SHIPS': `<strong>ANCESTORS; SAILING SHIP TO THE AMERICAS</strong><br><br>
+                      <ul>
+                        <li><strong>1611: The Ship Starr</strong> - Carried Captain William Perry (Navigator) to the James River settlements.</li>
+                        <li><strong>1613: The Ship Treasurer</strong> - Carried John Clay (The Immigrant), an "Ancient Planter."</li>
+                        <li><strong>1617: The Ship George</strong> - Carried Cheney Boyce, neighbor to the Perry and Clay estates.</li>
+                        <li><strong>1619: The Ship Bona Nova</strong> - Carried John Perry, brother of William.</li>
+                        <li><strong>1620: The Ship Falcon</strong> - Carried Anne Clay to join her husband in the Virginia Fellowship.</li>
+                        <li><strong>1621: The Ship Charles</strong> - Carried the associated kin of Richard Cheyney.</li>
+                      </ul>`,
+            
+            'PERRY': `<strong>I. THE PERRY LINEAGE: THE NAVIGATORS & THE COVENANT</strong><br><br>
+                      <strong>Domain: Trade, Diplomacy, and the Spirit of Adoption.</strong><br>
+                      <ul>
+                        <li><strong>1611 (Arrival):</strong> Captain William Perry arrives on the <strong>Starr</strong>. He maps the early James River settlements.</li>
+                        <li><strong>1622 (Conflict):</strong> The Jamestown Uprising. The Perry household is saved by <strong>Chanko</strong>, the Native boy who warned the colony.</li>
+                        <li><strong>1624 (Fellowship):</strong> William Perry petitions to adopt Chanko as his son, establishing the line's first <strong>Blood Covenant</strong>.</li>
+                        <li><strong>1774 (Conflict):</strong> George Pearis (Perry) serves as a lieutenant in Lord Dunmore’s War.</li>
+                        <li><strong>1780s (Blood):</strong> George Pearis marries <strong>Rebecca Clay</strong>, uniting the two powerful frontier lineages.</li>
+                        <li><strong>1835 (Records):</strong> Robin Perry is documented on the Cherokee Census Roll (Grant Foreman Archive).</li>
+                        <li><strong>Post-1930:</strong> Erma Perry Keener is born, merging the "Trader" line into the modern era.</li>
+                      </ul>`,
+
+            'CLAY': `<strong>II. THE CLAY LINEAGE: THE GUARDIANS & THE BLOOD PRICE</strong><br><br>
+                     <strong>Domain: Physical Defense, Land Law, and the Masonic Shield.</strong><br>
+                     <ul>
+                        <li><strong>1613 (Arrival):</strong> John Clay arrives on the <strong>Treasurer</strong>. Recognized as an "Ancient Planter."</li>
+                        <li><strong>1676 (Conflict):</strong> Charles Clay fights in <strong>Bacon’s Rebellion</strong>, moving the line toward the mountain frontier.</li>
+                        <li><strong>1774 (Conflict):</strong> Mitchell Clay fights Chief Cornstalk at the Battle of Point Pleasant.</li>
+                        <li><strong>1783 (Casualty):</strong> The <strong>Clover Bottom Massacre</strong>. Bartley and Tabitha Clay killed; Ezekiel Clay kidnapped and executed.</li>
+                        <li><strong>1820s (Fellowship):</strong> Henry Clay serves as Grand Master of Masons in KY, using the Lodge for tribal sovereignty.</li>
+                        <li><strong>1860s (Conflict):</strong> The Clay brothers serve in <strong>Stand Watie’s</strong> Cherokee Mounted Rifles.</li>
+                        <li><strong>1864 (Casualty):</strong> Clay ancestors die in Texas defending Cherokee borders.</li>
+                     </ul>`,
+
+            'CHANEY': `<strong>III. THE CHANEY (CHENEY) LINEAGE: THE COVENANT SURVIVORS</strong><br><br>
+                       <strong>Domain: Social Identity, Fortification, and Loyalty.</strong><br>
+                       <ul>
+                        <li><strong>1617 (Arrival):</strong> Cheney Boyce arrives on the <strong>George</strong>. Peer to William Perry.</li>
+                        <li><strong>1622 (Kidnapping):</strong> Sarah Boyce kidnapped by Powhatan warriors; returns as a "Queen" in Native regalia.</li>
+                        <li><strong>1778 (Conflict):</strong> Abraham Chaney drafted to guard <strong>Hatfield’s Fort</strong> on the New River.</li>
+                        <li><strong>1800s (Fellowship):</strong> The "Fellowship Chaneys" (Social Chaneys) established in Pike County hollows.</li>
+                        <li><strong>1900:</strong> Newman Chaney becomes steward of the family history.</li>
+                        <li><strong>Josh Chaney (1978):</strong> Direct descendant and keeper of this Master Archive.</li>
+                       </ul>`,
+
+            'VANCE': `<strong>IV. THE VANCE LINEAGE: THE SCOUTS & THE SPIES</strong><br><br>
+                      <strong>Domain: Woodcraft, Guerrilla Warfare, and Tribal Integration.</strong><br>
+                      <ul>
+                        <li><strong>1756 (Conflict):</strong> Ephraim Vance defends <strong>Fort Vause</strong> (Vance); fort destroyed by French/Shawnee forces.</li>
+                        <li><strong>1760–1819 (Fellowship):</strong> Abner Vance, legendary <strong>"Indian Spy"</strong> (Scout) and master of the Warrior's Path.</li>
+                        <li><strong>Blood:</strong> Line linked to the <strong>Cherokee Wolf Clan</strong>. Vance is the Anglicized version of Vann.</li>
+                        <li><strong>1819 (Conflict):</strong> Abner Vance executed by the state; solidifies mountain Fellowship against Eastern law.</li>
+                      </ul>`,
+
+            'WILLIAMSON': `<strong>V. THE WILLIAMSON & WILEY LINEAGE: THE BLOOD COVENANT</strong><br><br>
+                            <strong>Domain: Survival, Tribal Blood, and Oral Tradition.</strong><br>
+                            <ul>
+                                <li><strong>1774:</strong> Alden Williamson serves at the Battle of Point Pleasant.</li>
+                                <li><strong>1789 (Casualty):</strong> The <strong>Walker’s Creek Raid</strong>. Jenny Wiley kidnapped; 4 children killed.</li>
+                                <li><strong>1790 (Blood):</strong> Jenny Wiley held by <strong>Chief Bob Benge</strong>. Returns pregnant with Mary Jane Wiley.</li>
+                                <li><strong>1800s:</strong> Mary Jane Wiley marries Richard Williamson, merging the Benge and Williamson lines.</li>
+                            </ul>`,
+
+            'SELLARDS': `<strong>THE SELLARDS FELLOWSHIP & THE WILEY LEGACY</strong><br><br>
+                          <ul>
+                            <li><strong>Hezekiah Sellards:</strong> Founder of the line and source of the Jenny Wiley saga.</li>
+                            <li><strong>Captivity Ordeal:</strong> Jenny Sellards Wiley’s 11-month survival is the defining anchor of the line.</li>
+                            <li><strong>Biological Fellowship:</strong> The merger of Sellards and Cherokee bloodlines through the Chief Benge era.</li>
+                          </ul>`,
+
+            'INDIAN_CHRONO': `<strong>THE MASTER CHRONICLE ARCHIVE: 1611–1930</strong><br><br>
+                              This exhaustive ledger links arrival ships, military engagements, and Fellowship events.<br><br>
+                              <strong>MASONIC UNIVERSAL FELLOWSHIP:</strong><br>
+                              <ul>
+                                <li><strong>Tecumseh (1813):</strong> Recognized the Masonic Fellowship at Fort Meigs to save prisoners.</li>
+                                <li><strong>Stand Watie:</strong> Royal Arch Mason and General who protected tribal sovereignty.</li>
+                                <li><strong>Ely S. Parker:</strong> Seneca Chief and Mason who drafted the Civil War surrender.</li>
+                              </ul><br>
+                              <strong>Archive Status: Complete. Heart on Fire.</strong>`,
+
+            'INDIAN_LEGENDS': `<strong>INDIAN LEGENDS & TRIBAL TIES</strong><br><br>
+                               Oral histories from the Perry, Sellards, and Vance lines regarding the hidden wisdom of the Cherokee and Shawnee nations.`
+        };
+
+        function openArchive(key) {
+            document.getElementById('v-title').innerText = key.replace(/_/g, ' ') + " LEDGER";
+            document.getElementById('v-body').innerHTML = archiveData[key];
+            document.getElementById('
