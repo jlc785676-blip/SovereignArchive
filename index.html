@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>THE SOVEREIGN ARCHIVE: MASTER LIBRARY</title>
+    
+    <style>
+        /* THE FOUNDATION - DARK WOOD & GOLD */
+        html, body { 
+            background-color:#050505; color:#e0c097; font-family:'Georgia',serif; 
+            margin:0; padding:0; height: 100%; width: 100%; overflow: hidden; 
+            background-image:url('https://www.transparenttextures.com/patterns/dark-wood.png');
+        }
+
+        /* MOBILE-FIRST SPLASH GATE */
+        #splash { 
+            position: fixed; top:0; left:0; width:100%; height:100%; 
+            z-index: 9999999999; background-color: #050505; 
+            display: flex; flex-direction: column; justify-content: center; 
+            align-items: center; text-align: center; padding: 20px; box-sizing: border-box;
+        }
+        .splash-image { 
+            width: 100%; max-width: 450px; height: auto; max-height: 40vh; 
+            object-fit: contain; border: 2px solid #d4af37; box-shadow: 0 0 30px #000; margin-bottom: 20px;
+        }
+        .splash-text { color: #e0c097; padding: 0 10px 20px 10px; font-size: 1em; max-width: 500px; line-height: 1.4; font-style: italic; font-weight: bold; }
+        .pass-input { padding: 15px; width: 90%; max-width: 280px; background: #111; color: #fff; border: 2px solid #d4af37; border-radius: 8px; font-size: 1.2em; text-align: center; margin-bottom: 15px; outline: none; }
+        .gate-btn { padding: 18px 0; width: 90%; max-width: 280px; background: linear-gradient(135deg, #1a0101 0%, #a00000 100%); color: #ffffff; border: 3px solid #d4af37; font-weight: 900; border-radius: 10px; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; font-size: 1.2em; box-shadow: 0 0 25px #ff0000; }
+
+        /* MAIN LIBRARY INTERFACE */
+        #main-ui { display:none; text-align: center; max-width: 850px; margin: 0 auto; padding: 15px; overflow-y: auto; height: 100vh; }
+        .header-box { padding: 15px; background: rgba(26, 15, 0, 0.95); border-bottom: 4px solid #ff0000; margin-bottom: 25px; }
+        .main-title { color: #ffffff; font-size: 2.2em; letter-spacing: 4px; text-transform: uppercase; margin: 0; }
+        
+        .section-container { display: flex; flex-direction: column; gap: 35px; align-items: center; padding-bottom: 150px; }
+        .search-zone { width: 100%; max-width: 550px; padding: 25px; background: rgba(20, 20, 20, 0.9); border: 2px solid #d4af37; border-radius: 12px; box-shadow: 0 10px 30px #000; }
+        input[type="text"] { padding: 18px; width: 100%; background: #000; color: #fff; border: 2px solid #ff0000; border-radius: 4px; font-size: 18px; text-align: center; box-sizing: border-box; }
+        .red-btn { padding: 15px; background: linear-gradient(135deg, #1a0101 0%, #a00000 100%); color: #ffffff; border: 2px solid #d4af37; font-weight: bold; border-radius: 4px; cursor: pointer; text-transform: uppercase; width: 100%; font-size: 1em; margin-top: 10px; }
+        
+        /* ENCYCLOPEDIA DISPLAY OVERLAY */
+        #encyclopedia-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:10000000000; overflow-y:auto; padding: 15px; box-sizing: border-box;}
+        .encyclopedia-page { background:#fff; color:#000; max-width: 900px; margin: 20px auto; padding: 40px; border: 8px double #d4af37; border-radius: 5px; box-shadow: 0 0 50px #000; text-align: left; }
+        .page-title { font-size: 2.5em; border-bottom: 4px solid #a00000; margin-bottom: 20px; color: #a00000; text-transform: uppercase; font-weight: 900; }
+        .history-block { font-size: 1.2em; line-height: 1.8; margin-bottom: 30px; white-space: pre-wrap; font-family: 'Times New Roman', serif; text-align: justify; }
+        .lineage-table { width: 100%; border-collapse: collapse; margin-top: 20px; border: 2px solid #000; }
+        .lineage-table th, .lineage-table td { border: 1px solid #000; padding: 12px; text-align: left; font-size: 0.95em; }
+        .lineage-table th { background: #eee; text-transform: uppercase; font-weight: 900; }
+        
+        .archive-item { width: 100%; max-width: 500px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .family-thumb { width: 100%; border: 4px solid #d4af37; box-shadow: 0 15px 35px #000; }
+    </style>
+</head>
+<body>
+
+    <div id="splash">
+        <img src="movie_splash2.png" class="splash-image" alt="Bloodline Saga Gate">
+        <div class="splash-text">Follow along with the saga of an amazing adventure and save, follow the bloodline.</div>
+        <input type="text" id="gateKey" class="pass-input" placeholder="ENTER PASSWORD">
+        <button class="gate-btn" onclick="verifyGate()">ENTER THE SAGA</button>
+    </div>
+
+    <div id="main-ui">
+        <div class="header-box"><h1 class="main-title">THE SOVEREIGN ARCHIVE LIBRARY</h1></div>
+        
+        <div class="section-container">
+            <div class="search-zone">
+                <input type="text" id="libSearch" placeholder="SEARCH NAMES, SHIPS, OR HISTORY...">
+                <button class="red-btn" onclick="runLibrarySearch()">CONSULT THE ENCYCLOPEDIA</button>
+            </div>
+
+            <div class="archive-item">
+                <img src="ship_arrival.jpg" class="family-thumb">
+                <button class="red-btn" onclick="showRecord('SHIPS')">GLOBAL MARITIME CHRONICLE: 1135–1750</button>
+            </div>
+
+            <div class="archive-item"><img src="raymond_surname.jpeg" class="family-thumb"><button class="red-btn" onclick="showRecord('VANCE')">VANCE ENCYCLOPEDIA & LINEAGE</button></div>
+            <div class="archive-item"><img src="william_surname.jpg" class="family-thumb"><button class="red-btn" onclick="showRecord('CHANEY')">CHANEY ENCYCLOPEDIA & LINEAGE</button></div>
+            <div class="archive-item"><img src="Perry_surname2.jpeg" class="family-thumb"><button class="red-btn" onclick="showRecord('PERRY')">PERRY ENCYCLOPEDIA & LINEAGE</button></div>
+            <div class="archive-item"><img src="henry_clay_surname.jpg" class="family-thumb"><button class="red-btn" onclick="showRecord('CLAY')">CLAY ENCYCLOPEDIA & LINEAGE</button></div>
+            <div class="archive-item"><img src="Alden_Williamson_Surname.jpeg" class="family-thumb"><button class="red-btn" onclick="showRecord('WILLIAMSON')">WILLIAMSON ENCYCLOPEDIA & LINEAGE</button></div>
+            
+            <div style="width:100%; max-width:500px; border:3px solid #d4af37; background:#111; padding:5px;">
+                <iframe width="100%" height="300" src="https://www.youtube.com/embed/t6x7gy60CO8" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="encyclopedia-overlay">
+        <div class="encyclopedia-page" id="page-content"></div>
+        <div style="text-align: center; padding-bottom: 50px;">
+            <button class="red-btn" style="width: 250px;" onclick="closeEncyclopedia()">CLOSE ARCHIVE RECORD</button>
+        </div>
+    </div>
+
+    <script>
+        function verifyGate() {
+            var val = document.getElementById('gateKey').value.toLowerCase().trim();
+            if (val === "fellowship") {
+                document.getElementById('splash').style.display = 'none';
+                document.getElementById('main-ui').style.display = 'block';
+                document.body.style.overflow = 'auto';
+            } else { alert("Access Denied."); }
+        }
+
+        // ENCYCLOPEDIA MASTER DATABASE
+        const libraryData = {
+            'SHIPS': {
+                title: "Global Maritime & Fellowship Chronicle: 1135–1750",
+                history: `EXHAUSTIVE MARITIME LEDGER\n\nThis documents the knightly service and trans-Atlantic crossings of the Fellowship lineages. Tracing from the service to the Crowns of Europe and the secret orders of the Old World to the arrival in the American Colonies.\n\nSIMON WATHES (1135): A soldier and knight who served King Stephen of England. This established the Watts line as "Knights of the Kingdom" nearly 900 years ago.\n\nCAPTAIN WILLIAM PERRY (1611): Arrived on the Starr. He was a Ship Captain and Navigator tasked with mapping the James River and establishing the "Perry’s Hundred" trade hub. His expertise in maritime law made him a primary officer of the Fellowship.\n\nJOHN CLAY (1613): Arrived on the Treasurer, an armed merchantman with 14 heavy guns. He served as a soldier-planter under Captain Samuel Argall, securing the Charles City fortifications.\n\nCHENEY BOYCE (1617): Arrived on the George. An "Ancient Planter" who established 100 acres in Charles City and survived the "Starving Time" and the Great Uprising.\n\nTHOMAS ADKINS (1635): Arrived on the Assurance as a specialized "Planter" to expand the economic reach of the tobacco trade Fellowship.`,
+                lineage: [
+                    { name: "Simon Wathes", role: "Knight of the Kingdom", date: "1135" },
+                    { name: "Capt. William Perry", role: "Navigator / Ship: Starr", date: "1611" },
+                    { name: "John Clay", role: "Armed Merchant / Ship: Treasurer", date: "1613" },
+                    { name: "Cheney Boyce", role: "Ancient Planter / Ship: George", date: "1617" },
+                    { name: "Richard Cheyney", role: "Land Speculator / Ship: Charles", date: "1621" },
+                    { name: "Thomas Adkins", role: "Merchant / Ship: Assurance", date: "1635" },
+                    { name: "Edward Watts I", role: "Soldier-Landowner", date: "c. 1640" },
+                    { name: "Hezekiah Sellards", role: "Weaver Fellowship Pioneer", date: "1732" },
+                    { name: "Charles Vance", role: "Elite Scouting Navigator", date: "1739" },
+                    { name: "Valentine Akers", role: "Revolutionary Soldier / Surveyor", date: "c. 1750" }
+                ]
+            },
+            'VANCE': {
+                title: "Vance Encyclopedia: Knights, Lords & Indian Spies",
+                history: `BIOGRAPHY OF THE VANCE LINEAGE\n\nParagraph 1: The Vance (Vans) lineage is one of the most distinguished in the Fellowship, with deep ties to the Knightly orders of Scotland. As the Lords of Barnbarroch in Wigtownshire, they served the Scottish Kings James II and IV as ambassadors and knights. Their alliance with the Sinclairs (Lords of Rosslyn) links them to the defense of Rosslyn Chapel and the preservation of secret Fellowships.\n\nParagraph 2: In the 1600s, the line moved to Ireland, where Reverend John Vans served as the Rector of Kilmacrenan. He was a pillar of the social Fellowship in Donegal. By 1739, Charles Vance arrived in the American colonies via Ulster Merchant Transports. The family arrived as an elite scouting unit, perfectly suited for the Virginia backcountry.\n\nParagraph 3: Their background as "Backcountry Rangers" allowed them to immediately serve the Fellowship as "Indian Spies" and scouts. Abner Vance (1760-1819) became a legendary figure in this role, defending the frontier and securing the lineage that would eventually move into the Tug Valley and beyond.`,
+                lineage: [
+                    { name: "John Vans", role: "Lord of Barnbarroch (Ambassador)", date: "c. 1450" },
+                    { name: "Reverend John Vans", role: "Rector of Kilmacrenan", date: "1610" },
+                    { name: "Charles Vance", role: "Immigrant Scouting Unit", date: "1739" },
+                    { name: "Abner Vance", role: "Frontier Indian Spy", date: "1760-1819" },
+                    { name: "Vicars Vance", role: "Pioneer", date: "1800s" },
+                    { name: "Elias Vance", role: "Civil War Era Record", date: "c. 1840" },
+                    { name: "Richard Vance", role: "Descendant", date: "c. 1870" },
+                    { name: "Mary Vance", role: "Descendant", date: "c. 1910" },
+                    { name: "Joshua Vance", role: "Descendant", date: "c. 1940" }
+                ]
+            },
+            'CHANEY': {
+                title: "Chaney Encyclopedia: Ancient Planters & The Resolution",
+                history: `BIOGRAPHY OF THE CHANEY LINEAGE\n\nParagraph 1: The Boyce and Cheney lines were "Ancient Planters"—a title reserved for those who arrived before 1616 and survived the "Starving Time." Cheney Boyce arrived on the George in 1617. As an associate of the Virginia Company, he held the right to claim headrights for the Kingdom, establishing 100 acres in Charles City.\n\nParagraph 2: Sarah Boyce, Cheney's wife, arrived in 1621 on the Sea Flower. She became a legendary figure in family history after surviving the Great Uprising of 1622 and a period of captivity. Her return established the biological and social core of the line. Meanwhile, Richard Cheyney arrived in 1621 to establish "Cheney’s Resolution," a massive plantation serving as a northern anchor for the Fellowship in Maryland.\n\nParagraph 3: The Chaney family continued to serve the Fellowship through the centuries as land speculators, artisans, and soldiers. Abraham Chaney defended the frontier in 1778, ensuring the family's place in the westward expansion of the colonies. The Master Ancestry Archive preserved today is a direct result of this multi-generational resilience.`,
+                lineage: [
+                    { name: "Cheney Boyce", role: "Ancient Planter / George", date: "1617" },
+                    { name: "Richard Cheyney", role: "Land Speculator / Charles", date: "1621" },
+                    { name: "Sarah Boyce", role: "Legendary Survivor", date: "1621" },
+                    { name: "Abraham Chaney", role: "Revolutionary Soldier", date: "1778" },
+                    { name: "Newman Chaney", role: "Record Keeper", date: "1900" }
+                ]
+            },
+            'PERRY': {
+                title: "Perry Encyclopedia: Royal Navigators",
+                history: `BIOGRAPHY OF THE PERRY LINEAGE\n\nParagraph 1: The Perrys were an elite maritime family. In England, they were recognized as high-ranking navigators and ship captains for the Royal Merchant fleets. Captain William Perry arrived in 1611 on the three-masted Royal Merchant Galleon, the Starr. He was a Ship Captain and Navigator charged with mapping the James River.\n\nParagraph 2: William established the "Perry’s Hundred" trade hub, making the family a primary officer of the economic Fellowship. His brother, John Perry, arrived in 1619 on the Bona Nova, bringing specialized tools and laborers to expand the family’s reach across the "Southside" of the river.\n\nParagraph 3: The Perry influence remained strong through their involvement in the 1622 Covenant and their continued service as maritime officers and navigators. Their knowledge of law and navigation made them indispensable to the early survival of the Jamestown Fellowship.`,
+                lineage: [
+                    { name: "Capt. William Perry", role: "Navigator / Ship: Starr", date: "1611" },
+                    { name: "John Perry", role: "Merchant / Ship: Bona Nova", date: "1619" },
+                    { name: "Thomas Perry", role: "Frontier Pioneer", date: "c. 1700" }
+                ]
+            }
+        };
+
+        function showRecord(key) {
+            const data = libraryData[key];
+            if (!data) return;
+            let rows = "";
+            data.lineage.forEach(p => { rows += `<tr><td>${p.name}</td><td>${p.role}</td><td>${p.date}</td></tr>`; });
+            const html = `
+                <h1 class="page-title">${data.title}</h1>
+                <div class="history-block">${data.history}</div>
+                <h2 style="border-bottom: 2px solid #000; margin-top:40px;">THE LINEAGE LEDGER: ANCESTORS & DESCENDANTS</h2>
+                <table class="lineage-table">
+                    <thead><tr><th>Name</th><th>Service / Status</th><th>Date</th></tr></thead>
+                    <tbody>${rows}</tbody>
+                </table>
+            `;
+            document.getElementById('page-content').innerHTML = html;
+            document.getElementById('encyclopedia-overlay').style.display = 'block';
+        }
+
+        function runLibrarySearch() {
+            const q = document.getElementById('libSearch').value.toUpperCase().trim();
+            if (!q) return;
+            for (let key in libraryData) {
+                if (key.includes(q) || libraryData[key].title.toUpperCase().includes(q) || libraryData[key].history.toUpperCase().includes(q)) {
+                    showRecord(key); return;
+                }
+            }
+            alert("No record found for: " + q);
+        }
+        function closeEncyclopedia() { document.getElementById('encyclopedia-overlay').style.display = 'none'; }
+    </script>
+</body>
+</html>
