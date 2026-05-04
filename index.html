@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>THE SOVEREIGN ARCHIVE: MASTER LIBRARY</title>
+    
+    <style>
+        /* CORE THEME - DARK WOOD & GOLD */
+        html, body { 
+            background-color:#050505; color:#e0c097; font-family:'Georgia',serif; 
+            margin:0; padding:0; height: 100%; width: 100%; overflow: hidden; 
+            background-image:url('https://www.transparenttextures.com/patterns/dark-wood.png');
+        }
+
+        /* SPLASH GATE SYSTEM */
+        #splash { 
+            position: fixed; top:0; left:0; width:100%; height:100%; 
+            z-index: 9999999999; background-color: #050505; 
+            display: flex; flex-direction: column; justify-content: flex-start; 
+            align-items: center; text-align: center; padding: 20px; box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .splash-image { 
+            width: 100%; max-width: 400px; height: auto; max-height: 20vh; 
+            object-fit: contain; border: 2px solid #d4af37; box-shadow: 0 0 30px #000; margin-bottom: 15px; margin-top: 10px;
+        }
+        
+        .join-history-text {
+            color: #ff0000; font-size: 1.25em; font-weight: 900; font-style: italic; 
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; 
+            text-shadow: 0 0 15px #ff0000;
+        }
+
+        .registry-container { width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: 8px; }
+        .reg-group { border: 1px solid #d4af37; padding: 10px; border-radius: 5px; background: rgba(20,0,0,0.6); margin-bottom: 8px; text-align: left;}
+        .group-label { font-size: 0.8em; text-transform: uppercase; color: #ff0000; margin-bottom: 5px; display: block; font-weight: 900; letter-spacing: 1px; }
+        
+        .reg-field {
+            padding: 10px; width: 100%; background: #000; color: #fff; 
+            border: 1px solid #444; border-radius: 4px; font-size: 1em; 
+            box-sizing: border-box; outline: none; margin-bottom: 5px;
+        }
+        .reg-field:focus { border-color: #d4af37; }
+
+        .gate-btn { 
+            display: block; padding: 18px 0; width: 100%; max-width: 380px;
+            background: linear-gradient(135deg, #1a0101 0%, #a00000 100%); 
+            color: #ffffff; border: 2px solid #d4af37; font-weight: 900; border-radius: 10px; 
+            text-transform: uppercase; letter-spacing: 2px; 
+            font-size: 1.2em; box-shadow: 0 0 25px #ff0000; margin-top: 15px; margin-bottom: 50px;
+            cursor: pointer; text-align: center;
+        }
+
+        /* MAIN UI */
+        #main-ui { display:none; text-align: center; max-width: 850px; margin: 0 auto; padding: 15px; overflow-y: auto; height: 100vh; }
+        .header-box { padding: 15px; background: rgba(26, 15, 0, 0.95); border-bottom: 4px solid #ff0000; margin-bottom: 25px; }
+        .main-title { color: #ffffff; font-size: 1.8em; letter-spacing: 4px; text-transform: uppercase; margin: 0; }
+        
+        .search-zone { width: 100%; max-width: 550px; padding: 20px; background: rgba(20, 20, 20, 0.9); border: 2px solid #d4af37; border-radius: 12px; margin: 0 auto 30px auto; }
+        input[type="text"].main-search { padding: 15px; width: 100%; background: #000; color: #fff; border: 2px solid #ff0000; border-radius: 4px; font-size: 18px; text-align: center; box-sizing: border-box; }
+        
+        .red-btn { padding: 15px; background: linear-gradient(135deg, #1a0101 0%, #a00000 100%); color: #ffffff; border: 2px solid #d4af37; font-weight: bold; border-radius: 4px; cursor: pointer; text-transform: uppercase; width: 100%; font-size: 1em; margin-top: 10px; }
+        
+        /* ARCHIVE LAYOUT - BUTTONS & PICTURES */
+        .archive-item { width: 100%; max-width: 500px; display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 0 auto 35px auto; }
+        .family-thumb { width: 100%; border: 4px solid #d4af37; box-shadow: 0 15px 35px #000; }
+        .video-panel { width: 100%; max-width: 500px; background: #111; border: 3px solid #d4af37; padding: 5px; margin: 25px auto; box-shadow: 0 0 20px #000; }
+
+        /* VISITOR LEDGER */
+        .log-container { background: rgba(0,0,0,0.95); border: 2px solid #d4af37; margin-top: 60px; padding: 20px; border-radius: 10px; color: #fff; text-align: left; overflow-x: auto; }
+        .log-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.85em; min-width: 700px; }
+        .log-table th, .log-table td { border: 1px solid #444; padding: 12px; vertical-align: top; }
+        .log-table th { background: #1a0101; color: #d4af37; text-transform: uppercase; }
+
+        /* ENCYCLOPEDIA OVERLAYS & TABLES */
+        #encyclopedia-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:10000000000; overflow-y:auto; padding: 15px; box-sizing: border-box;}
+        .encyclopedia-page { background:#fff; color:#000; max-width: 900px; margin: 20px auto; padding: 40px; border: 8px double #d4af37; border-radius: 5px; text-align: left; }
+        .page-title { font-size: 2.2em; border-bottom: 4px solid #a00000; margin-bottom: 20px; color: #a00000; text-transform: uppercase; font-weight: 900; }
+        .lineage-table { width: 100%; border-collapse: collapse; margin-top: 20px; border: 2px solid #000; font-family: 'Times New Roman', serif; }
+        .lineage-table th, .lineage-table td { border: 1px solid #000; padding: 12px; text-align: left; font-size: 1.05em; }
+        .lineage-table th { background: #eee; text-transform: uppercase; font-weight: bold; color: #000; }
+    </style>
+</head>
+<body>
+
+    <div id="splash">
+        <img src="movie_splash2.png" class="splash-image" alt="Bloodline Saga Gate">
+        
+        <div class="join-history-text">JOIN YOUR PLACE IN HISTORY IF YOU DARE.</div>
+        
+        <div class="registry-container">
+            <div class="reg-group">
+                <span class="group-label">I. Identity Registry (Required)</span>
+                <input type="text" id="regName" class="reg-field" placeholder="Your First & Last Name">
+                <input type="text" id="regBirth" class="reg-field" placeholder="Your Birth Date (MM/DD/YYYY)">
+            </div>
+            <div class="reg-group">
+                <span class="group-label">II. Father's Lineage (Optional)</span>
+                <input type="text" id="fName" class="reg-field" placeholder="Father's First & Last Name">
+                <input type="text" id="fDates" class="reg-field" placeholder="Father's Birth Date / Death Date">
+            </div>
+            <div class="reg-group">
+                <span class="group-label">III. Mother's Lineage (Optional)</span>
+                <input type="text" id="mName" class="reg-field" placeholder="Mother's First & Last Name">
+                <input type="text" id="mDates" class="reg-field" placeholder="Mother's Birth Date / Death Date">
+            </div>
+            
+            <div class="reg-group" style="border-color: #ff0000; background: rgba(50,0,0,0.5);">
+                <span class="group-label" style="color:#fff;">IV. Enter Admin Code</span>
+                <input type="password" id="gateKey" class="reg-field" style="text-align: center; font-weight: bold;" placeholder="PASSWORD (5676)">
+            </div>
+        </div>
+
+        <button class="gate-btn" onclick="checkEntrance()">ENTER THE ARCHIVE</button>
+    </div>
+
+    <div id="main-ui">
+        <div class="header-box"><h1 class="main-title">THE MASTER CHRONICLE LIBRARY</h1></div>
+        
+        <div class="search-zone">
+            <input type="text" id="libSearch" class="main-search" placeholder="SEARCH 800 YEARS OF HISTORY...">
+            <button class="red-btn" onclick="runDeepSearch()">CONSULT THE ENCYCLOPEDIA</button>
+        </div>
+
+        <div class="section-container">
+            <div class="archive-item">
+                <img src="ship_arrival.jpg" class="family-thumb">
+                <button class="red-btn" onclick="showRecord('SHIPS')">II. THE SHIP CHRONICLE (1611–1750)</button>
+            </div>
+
+            <div class="archive-item">
+                <img src="william_surname.jpg" class="family-thumb">
+                <button class="red-btn" onclick="showRecord('WATTS')">WATTS: THE 900-YEAR MILITARY LEGACY</button>
+            </div>
+
+            <div class="archive-item">
+                <img src="henry_clay_surname.jpg" class="family-thumb">
+                <button class="red-btn" onclick="showRecord('CLAY')">CLAY: COAL BARONS & ANCIENT PLANTERS</button>
+            </div>
+
+            <div class="archive-item">
+                <img src="raymond_surname.jpeg" class="family-thumb">
+                <button class="red-btn" onclick="showRecord('VANCE')">VANCE: LORDS OF BARNBARROCH</button>
+            </div>
+
+            <div class="archive-item">
+                <img src="william_surname.jpg" class="family-thumb">
+                <button class="red-btn" onclick="showRecord('CHANEY')">CHANEY & BOYCE: ANCIENT PLANTERS</button>
+            </div>
+
+            <div class="archive-item">
+                <img src="Perry_surname2.jpeg" class="family-thumb">
+                <button class="red-btn" onclick="showRecord('PERRY')">PERRY: ROYAL NAVIGATOR LOGS</button>
+            </div>
+
+            <div class="archive-item">
+                <img src="Alden_Williamson_Surname.jpeg" class="family-thumb">
+                <button class="red-btn" onclick="showRecord('WILLIAMSON')">WILLIAMSON: THE TRAIL-KEEPERS</button>
+            </div>
+
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 500px; margin-bottom: 20px;">
+                <button class="red-btn" style="width: 150px;" onclick="showRecord('ADKINS')">ADKINS</button>
+                <button class="red-btn" style="width: 150px;" onclick="showRecord('AKERS')">AKERS</button>
+                <button class="red-btn" style="width: 150px;" onclick="showRecord('SELLARDS')">SELLARDS</button>
+             </div>
+
+            <div class="video-panel" style="border-color: #ff0000;">
+                <div style="color:#ff0000; font-weight:bold; padding: 10px; font-size: 1.2em; text-transform: uppercase;">The Story of Jenny Wiley</div>
+                <iframe width="100%" height="300" src="https://www.youtube.com/embed/t6x7gy60CO8" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-panel" style="border-color: #ffffff;">
+                <div style="color:#ffffff; font-weight:bold; padding: 10px; font-size: 1.2em; text-transform: uppercase;">The Last of the Mohicans</div>
+                <iframe width="100%" height="300" src="https://www.youtube.com/embed/s3W6GSlZ0Vs" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <div class="log-container">
+                <h3 style="color:#ff0000; border-bottom: 2px solid #ff0000; text-transform: uppercase;">Fraternal Visitor Ledger</h3>
+                <table class="log-table">
+                    <thead><tr><th>Visitor Name & DOB</th><th>Father's Info</th><th>Mother's Info</th><th>Date Logged</th></tr></thead>
+                    <tbody id="logBody"></tbody>
+                </table>
+                <button class="red-btn" style="width:auto; padding: 5px 15px; font-size: 0.7em;" onclick="resetSiteData()">CLEAR REGISTRY DATA</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="encyclopedia-overlay">
+        <div class="encyclopedia-page" id="page-content"></div>
+        <div style="text-align: center; padding-bottom: 50px;"><button class="red-btn" style="width: 200px;" onclick="closeEncyclopedia()">CLOSE RECORD</button></div>
+    </div>
+
+    <script>
+        // Load log when page opens
+        window.onload = function() { loadLog(); };
+
+        function checkEntrance() {
+            var pass = document.getElementById('gateKey').value.trim().toLowerCase();
+            var myName = document.getElementById('regName').value.trim();
+            var myBirth = document.getElementById('regBirth').value.trim();
+            
+            // 1. ADMIN BYPASS: If you type 5676 (or fellowship), you go straight in. No registration needed.
+            if (pass === "5676" || pass === "fellowship") {
+                unlockSite();
+                return;
+            }
+
+            // 2. NEW VISITOR REGISTRATION: If they fill out Name and Birth Date, let them in.
+            if (myName !== "" && myBirth !== "") {
+                var fName = document.getElementById('fName').value.trim() || "Unknown";
+                var fDates = document.getElementById('fDates').value.trim() || "Unknown";
+                var mName = document.getElementById('mName').value.trim() || "Unknown";
+                var mDates = document.getElementById('mDates').value.trim() || "Unknown";
+
+                var data = {
+                    name: myName + " (" + myBirth + ")",
+                    father: fName + " (" + fDates + ")",
+                    mother: mName + " (" + mDates + ")",
+                    date: new Date().toLocaleDateString()
+                };
+                
+                // Save safely to browser memory
+                try {
+                    var lgr = JSON.parse(localStorage.getItem('memberLedger_v3')) || [];
+                    lgr.push(data);
+                    localStorage.setItem('memberLedger_v3', JSON.stringify(lgr));
+                } catch(e) {
+                    console.log("Storage blocked, but allowing entry.");
+                }
+                
+                unlockSite();
+                return;
+            }
+
+            // 3. IF EVERYTHING IS BLANK OR INCORRECT
+            alert("To enter the Archive:\nPlease type your First/Last Name AND Birth Date in Section I.\n\nOR enter the Admin Code in Section IV.");
+        }
+
+        function unlockSite() {
+            document.getElementById('splash').style.display = 'none';
+            document.getElementById('main-ui').style.display = 'block';
+            document.body.style.overflow = 'auto';
+            loadLog();
+        }
+
+        function resetSiteData() { 
+            if(confirm("Clear all visitor ledger data?")) { 
+                localStorage.removeItem('memberLedger_v3'); 
+                location.reload(); 
+            } 
+        }
+
+        function loadLog() {
+            try {
+                var lgr = JSON.parse(localStorage.getItem('memberLedger_v3')) || [];
+                var html = "";
+                lgr.forEach(function(e) { 
+                    html += "<tr><td>" + e.name + "</td><td>" + e.father + "</td><td>" + e.mother + "</td><td>" + e.date + "</td></tr>"; 
+                });
+                document.getElementById('logBody').innerHTML = html;
+            } catch(e) {}
+        }
+
+        /* THE MASTER CHRONICLE DATA - FULL UNABBREVIATED RESTORATION INCLUDING ALL LINEAGE TABLES */
+        var libraryData = {
+            'WATTS': { 
+                title: "WATTS: THE 900-YEAR ACCOUNT OF SERVICE", 
+                history: "I. THE ANCIENT ROOTS: Simon Wathes (c. 1135)\nTraditionally descended from a French soldier of fortune who accompanied King Stephen to England in 1135. He founded the Watts family seat at Hawkesdale Hall, establishing a 900-year military legacy.\n\nEdward Watts I (c. 1640)\nArrived as a soldier-landowner to defend the Rappahannock frontier in Stafford County, Virginia. The family seat at Hawkesdale was an 800-year anchor of service before the migration to the heart of Appalachia.",
+                lineage: [
+                    { n: "Simon Wathes", r: "French Soldier of Fortune / Knight", d: "1135" },
+                    { n: "Edward Watts I", r: "Soldier-Landowner / Frontier Defender", d: "1640" },
+                    { n: "Edward Watts II", r: "Stafford County Pioneer", d: "c. 1680" },
+                    { n: "Thomas Watts", r: "Virginia Frontier Descendant", d: "c. 1720" }
+                ]
+            },
+            'CLAY': { 
+                title: "CLAY: ARMED MERCHANTS & GUARDIANS", 
+                history: "I. THE ANCIENT ROOTS: Sir John Clay (b. 1558)\nA 'Coal Baron' of Wales reportedly knighted by Queen Elizabeth I in 1588. His descendants carried the Clay coat of arms—three trefoils between a chevron—into the Virginia Company's earliest fleets.\n\nJohn Clay ('The Immigrant')\nArrived in 1613 on the Treasurer, an armed merchantman carrying 14 heavy guns. Arrived as a soldier-planter under Capt. Samuel Argall. He was an 'Ancient Planter,' a title reserved for those who arrived before 1616 and established early land grants.\n\nAnne Clay\nArrived in 1620 on the Falcon to join the fortified estate. Established the biological core that later defended the Tug Valley. Henry Clay later served as a Grand Master of the Fellowship.",
+                lineage: [
+                    { n: "Sir John Clay", r: "Knighted Coal Baron (Wales)", d: "1558" },
+                    { n: "John Clay", r: "Ancient Planter / Soldier-Planter", d: "1613" },
+                    { n: "Anne Clay", r: "Matriarch / Lineage Core", d: "1620" },
+                    { n: "Charles Clay", r: "Virginia Frontier Soldier", d: "1638-1686" },
+                    { n: "Henry Clay", r: "Grand Master / Statesman", d: "c. 1800" }
+                ]
+            },
+            'VANCE': { 
+                title: "VANCE: LORDS OF BARNBARROCH & INDIAN SPIES", 
+                history: "I. THE ANCIENT ROOTS: The Lords of Barnbarroch\nThe Vance line (as Vans) were prominent Lords in Wigtownshire, serving Scottish Kings as ambassadors and knights. They were traditional allies of the Sinclairs of Rosslyn, serving as protectors of the secret Scottish Fellowships.\n\nCharles Vance\nArrived in 1739 on the Ulster Merchant. Known as 'Backcountry Rangers' in Ireland, they arrived as elite scouts and 'Indian Spies'. They formed spiritual and political alliances with tribal nations under the sacred bond of Fellowship.\n\nAbner Vance (1760-1819)\nBecame a legendary figure in the Tug Valley, serving as a scout during the frontier wars and acting as the bedrock of the Tug Valley line.",
+                lineage: [
+                    { n: "John Vans", r: "Lord of Barnbarroch / Ambassador", d: "c. 1450" },
+                    { n: "Reverend John Vans", r: "Rector of Kilmacrenan", d: "1610" },
+                    { n: "Charles Vance", r: "Immigrant / Backcountry Ranger", d: "1739" },
+                    { n: "Abner Vance", r: "Legendary Frontier Scout / Indian Spy", d: "1760-1819" },
+                    { n: "Vicars Vance", r: "Tug Valley Pioneer", d: "c. 1800" },
+                    { n: "Elias Vance", r: "Civil War Era Record", d: "c. 1840" }
+                ]
+            },
+            'CHANEY': { 
+                title: "CHANEY & BOYCE: THE ANCIENT PLANTERS", 
+                history: "I. THE ANCIENT PLANTERS\nThe Boyce and Cheney lines were 'Ancient Planters'—reserved for those arriving before 1616 and surviving the 'Starving Time'.\n\nCheney Boyce\nArrived in 1617 on the George. Arrived as a soldier and associate of the Virginia Company. He settled 100 acres in Charles City directly adjacent to the Perry and Clay estates.\n\nSarah Boyce\nArrived in 1621 on the Sea Flower. Arrived just prior to the 1622 Uprising; her subsequent survival of captivity established the family's 'Social' standing within tribal nations.\n\nRichard Cheyney\nArrived in 1621 on the Charles. A skilled artisan and land surveyor who established 'Cheney’s Resolution', a massive plantation in Anne Arundel County, Maryland.\n\nAbraham Chaney\nDefended the frontier in 1778, continuing the military tradition.",
+                lineage: [
+                    { n: "Cheney Boyce", r: "Ancient Planter / Virginia Co. Soldier", d: "1617" },
+                    { n: "Sarah Boyce", r: "Legendary Survivor of the Uprising", d: "1621" },
+                    { n: "Richard Cheyney", r: "Artisan / Maryland Land Speculator", d: "1621" },
+                    { n: "Abraham Chaney", r: "Revolutionary Frontier Defender", d: "1778" },
+                    { n: "Newman Chaney", r: "Master Record Keeper", d: "1900" }
+                ]
+            },
+            'PERRY': { 
+                title: "PERRY: ROYAL NAVIGATORS & BLOOD COVENANT", 
+                history: "I. ROYAL NAVIGATORS\nThe Perrys were an elite maritime family, recognized as high-ranking navigators and ship captains for the Royal Merchant fleets.\n\nCaptain William Perry\nArrived in 1611 on the Starr, a Three-masted Royal Merchant Galleon. A high-ranking Ship Captain and Navigator in the British Royal Merchant fleets. He was commissioned to map the James River expansion and founded 'Perry’s Hundred'.\n\nJohn Perry\nArrived in 1619 on the Bona Nova. Carried 120 passengers. John established the agricultural trade footprint for the Perry line on the south side of the James River.\n\nChanko & The Blood Covenant\nThe Perrys established the legendary 1622 Blood Covenant with Chanko, securing the survival of the Fellowship.",
+                lineage: [
+                    { n: "Capt. William Perry", r: "Royal Merchant Navigator / Ship: Starr", d: "1611" },
+                    { n: "John Perry", r: "Trade & Agriculture / Ship: Bona Nova", d: "1619" },
+                    { n: "Chanko", r: "Tribal Nation Blood Covenant", d: "1622" },
+                    { n: "Thomas Perry", r: "Frontier Expansion Line", d: "c. 1700" }
+                ]
+            },
+            'WILLIAMSON': { 
+                title: "WILLIAMSON: THE TRAIL-KEEPERS", 
+                history: "I. THE TRAIL-KEEPERS\nAlden Williamson and kin arrived on Chesapeake Tobacco Merchantmen. Known as 'Trail-Keepers,' their knowledge of waterways made them essential for pushing toward the Big Sandy.\n\nThe family merged with the Benge and Wiley lines in the frontier, linking directly to the survival legend of Jenny Wiley in 1789.",
+                lineage: [
+                    { n: "Alden Williamson", r: "Trail-Keeper / Navigator", d: "Late 1600s" },
+                    { n: "Jenny Wiley", r: "Legendary Frontier Survivor (Kin)", d: "1789" }
+                ]
+            },
+            'SHIPS': { 
+                title: "II. THE SHIP CHRONICLE: ARRIVALS (1611–1750)", 
+                history: "THE JAMESTOWN FLEET (1611–1623)\n1611: Starr - Capt. William Perry (Navigator)\n1613: Treasurer - John Clay (Soldier-Planter)\n1617: George - Cheney Boyce (Virginia Co. Associate)\n1619: Bona Nova - John Perry (Agricultural Trade)\n1620: Falcon - Anne Clay (Maids and Wives Fleet)\n1621: Sea Flower - Sarah Boyce (Uprising Survivor)\n1621: Charles - Richard Cheyney (Land Surveyor)\n\nTHE FRONTIER MIGRATION (1635–1750)\n1635: Assurance - Thomas Adkins (Merchant-Planter)\n1640: London Supply - Edward Watts I (Soldier-Landowner)\n1732: Ulster Brigantines - Hezekiah Sellards (Weaver)\n1739: Ulster Merchant - Charles Vance (Indian Spies)\n1750: Frontier Schooners - Valentine & Solomon Akers (Provers of Land)",
+                lineage: [
+                    { n: "Captain William Perry", r: "Starr", d: "1611" },
+                    { n: "John Clay", r: "Treasurer", d: "1613" },
+                    { n: "Cheney Boyce", r: "George", d: "1617" },
+                    { n: "Thomas Adkins", r: "Assurance", d: "1635" },
+                    { n: "Charles Vance", r: "Ulster Merchant", d: "1739" }
+                ]
+            },
+            'ADKINS': { 
+                title: "ADKINS: MERCHANT-PLANTERS", 
+                history: "Thomas Adkins (1635) arrived on the Assurance. A London merchant-planter established to grow the economic reach of the tobacco trade across Henrico and Goochland.",
+                lineage: [ { n: "Thomas Adkins", r: "Merchant-Planter", d: "1635" } ]
+            },
+            'AKERS': { 
+                title: "AKERS: PROVERS OF LAND", 
+                history: "Valentine & Solomon Akers (c. 1750) arrived via Frontier Coastal Schooners as specialized land surveyors and 'Provers of Land', essential for mapping the western expansion.",
+                lineage: [ { n: "Valentine Akers", r: "Surveyor / Prover of Land", d: "c. 1750" }, { n: "Solomon Akers", r: "Surveyor", d: "c. 1750" } ]
+            },
+            'SELLARDS': { 
+                title: "SELLARDS: WEAVER FELLOWSHIP", 
+                history: "Hezekiah Sellards (1732) arrived on Ulster Brigantines. Migrated from Ulster to Philadelphia, bringing specialized weaving and Presbyterian leadership to the Shenandoah Valley.",
+                lineage: [ { n: "Hezekiah Sellards", r: "Weaver / Religious Leader", d: "1732" } ]
+            }
+        };
+
+        function showRecord(k) {
+            var d = libraryData[k];
+            var rows = "";
+            if (d.lineage) {
+                d.lineage.forEach(function(p) { rows += "<tr><td>" + p.n + "</td><td>" + p.r + "</td><td>" + p.d + "</td></tr>"; });
+            }
+            
+            var tableHTML = rows ? "<h2 style='border-bottom: 2px solid #000; margin-top:30px; font-family:\"Georgia\",serif;'>ANCESTOR & DESCENDANT LEDGER</h2><table class='lineage-table'><thead><tr><th>Name</th><th>Service / Status</th><th>Era</th></tr></thead><tbody>" + rows + "</tbody></table>" : "";
+
+            document.getElementById('page-content').innerHTML = 
+                "<h1 class='page-title'>" + d.title + "</h1>" +
+                "<div style='font-size:1.15em; line-height:1.7; white-space:pre-wrap; font-family: \"Times New Roman\", serif;'>" + d.history + "</div>" +
+                tableHTML;
+            document.getElementById('encyclopedia-overlay').style.display = 'block';
+        }
+
+        function runDeepSearch() {
+            var q = document.getElementById('libSearch').value.toUpperCase().trim();
+            for (var k in libraryData) { 
+                if (k.includes(q) || libraryData[k].title.toUpperCase().includes(q) || libraryData[k].history.toUpperCase().includes(q)) { 
+                    showRecord(k); 
+                    return; 
+                } 
+            }
+            alert("No record found in the Master Chronicle.");
+        }
+        function closeEncyclopedia() { document.getElementById('encyclopedia-overlay').style.display = 'none'; }
+    </script>
+</body>
+</html>
