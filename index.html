@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Archive</title>
+    <style>
+        body { font-family: 'Segoe UI', serif; background-color: #f4f1ea; margin: 0; }
+        
+        /* THE REDESIGNED SPLASH PAGE (Password Only) */
+        .splash-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fff;
+            text-align: center;
+        }
+        .splash-card {
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 90%;
+        }
+        .splash-card img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #3e2723;
+        }
+        h1 { color: #3e2723; margin-bottom: 20px; }
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #c0b283;
+            border-radius: 6px;
+            font-size: 18px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .btn {
+            background-color: #3e2723;
+            color: #f4f1ea;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+        .btn:hover { background-color: #5d4037; }
+
+        /* THE MAIN ARCHIVE PAGE (Displayed after login) */
+        #main-archive { display: none; padding: 40px; max-width: 1200px; margin: auto; }
+        .archive-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+        .profile-card { background: white; border: 1px solid #d7ccc8; padding: 20px; border-radius: 8px; }
+        .profile-card img { width: 100%; height: 250px; object-fit: cover; border-radius: 4px; margin-bottom: 15px; }
+        h3 { color: #3e2723; border-bottom: 2px solid #e0e0e0; padding-bottom: 10px; }
+        p { line-height: 1.6; color: #444; }
+    </style>
+</head>
+<body>
+
+<div id="splash" class="splash-container">
+    <div class="splash-card">
+        <img src="family-tree-image.jpg" alt="Sovereign Archive">
+        <h1>Sovereign Archive Gateway</h1>
+        <input type="password" id="passInput" placeholder="Enter Fellowship Code">
+        <button class="btn" onclick="checkPassword()">Access Archive</button>
+    </div>
+</div>
+
+<div id="main-archive">
+    <h1>The Master Encyclopedia</h1>
+    <div class="archive-grid">
+        
+        <div class="profile-card">
+            <img src="Lincoln_clay.jpg" alt="Lincoln and Clay">
+            <h3>Lincoln & The Clay Fellowship</h3>
+            <p><strong>How they met:</strong> The Clays were political architects in the Whig
