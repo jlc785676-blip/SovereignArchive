@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Master Archive</title>
+    <style>
+        :root {
+            --primary: #3e2723;
+            --accent: #c0b283;
+            --bg: #f4f1ea;
+        }
+
+        /* RESET & CENTERING - Fixes the "Too Big/Empty" issue */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            font-family: 'Segoe UI', serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* THE SPLASH PAGE (Visible by default) */
+        #splash {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 1; /* Occupies full viewport height */
+            background-color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .splash-card {
+            max-width: 550px;
+            width: 100%;
+        }
+
+        /* Knights Templar Image */
+        .splash-card img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 3px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        h1.title { color: var(--primary); font-size: 32px; text-transform: uppercase; margin-bottom: 25px; }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 24px;
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-sizing: border-box;
+            background: #fafafa;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: #fff;
+            padding: 15px;
+            width: 100%;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        /* MAIN ARCHIVE (Hidden until password is entered) */
+        #main-archive {
+            display: none;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+            width: 100%;
+        }
+
+        .search-box { width: 100%; padding: 15px; font-size: 18px; border: 2px solid var(--accent); border-radius: 30px; margin-bottom: 40px; text-align: center; outline: none; }
+        .video-container { background: var(--primary); padding: 30px; border-radius: 12px; color: #fff; margin-bottom: 50px; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; margin-top: 20px; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 6px; border: 2px solid var(--accent); }
+        .archive-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+        .profile-card { background: white; border: 1px solid #d7ccc8; padding: 35px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .profile-card img { width: 100%; max-height: 500px; object-fit: cover; border-radius: 6px; margin-bottom: 25px; border-bottom: 4px solid var(--primary); }
+        h3 { color: var(--primary); font-size: 28px; border-left: 6px solid var(--accent); padding-left: 15px; }
+        .history-text { text-align: justify; font-size: 16px; color: #444; line-height: 1.8; }
+        .quote-block { background: #fdfaf4; padding: 20px; border-left: 5px solid var(--primary); font-style: italic; margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+<div id="splash">
+    <div class="splash-card">
+        <img src="knights_templar.jpg" alt="Knights Templar Beach">
+        <h1 class="title">Master Ancestry Archive</h1>
+        <input type="password" id="passInput" autofocus placeholder="...">
+        <button class="btn" onclick="enterArchive()">Enter Fellowship</button>
+    </div>
+</div>
+
+<div id="main-archive">
+    <div style="text-align:center;">
+        <h1 style="font-size: 42px; color: var(--primary);">The Sovereign Encyclopedia</h1>
+        <input type="text" id="archiveSearch" class="search-box" onkeyup="filterArchive()" placeholder="Search Surnames or Historical Records...">
+    </div>
+
+    <div class="video-container">
+        <h2>The Captivity of Jenny Wiley: Frontier Resilience</h2>
+        <p>This record serves as a vital testament to the resilience and survival of the mountain lineages. Her escape through the Appalachian wilderness mirrors the movements of the Sellards and Perry ancestors who occupied the same territory during the 1780s.</p>
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/t6x7gy60CO8" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="archive-grid" id="profileGrid">
+        
+        <div class="profile-card" data-name="Lincoln Clay Sentinel Henry Whig">
+            <img src="Lincoln_clay.jpg" alt="Lincoln and Clay">
+            <h3>The Lincoln-Clay Sentinel Fellowship</h3>
+            <div class="history-text">
+                <p>Abraham Lincoln famously viewed Henry Clay as his "beau ideal of a statesman," modeling his political philosophy and Whig party strategy after Clay’s "Great Compromiser" approach. This historical bond was tactical and personal. As the nation moved toward civil fracture in the 1860s, the physical safety of the President was entrusted to a specialized guard.</p>
+                <div class="quote-block">
+                    "Our family records document the Clay brothers as the physical and political 'Sentinels' for the administration. They met through the high-stakes Whig circuits where the Clays provided the tactical protection required to navigate the President through the most volatile period in American history."
+                </div>
+                <p>The Clays served as the physical line of defense, ensuring that the Union's leadership remained intact. This record preserves the fact that the Clays were the invisible hand and the iron shield behind the Lincoln administration.</p>
+            </div>
+        </div>
+
+        <div class="profile-card" data-name="Davy Crockett Williamson Perry Creek War Alamo">
+            <img src="davey_crockett.jpg" alt="Davy Crockett">
+            <h3>Davy Crockett & The Tennessee Volunteers</h3>
+            <div class="history-text">
+                <p>Davy Crockett’s history is inextricably linked to the Perry and Williamson ancestors through their unified service in the 2nd Regiment of Tennessee Volunteer Mounted Riflemen. During the Creek War of 1813, these men operated as a cohesive unit of scouts and soldiers, mapping the wilderness and engaging in reconnaissance along the Coosa River.</p>
+                <div class="quote-block">
+                    "Crockett and our kin shared campfires and military logs. This military brotherhood was so profound that the family lines reconverged years later during the Texas Revolution, where they stood together at the Alamo alongside Richardson Perry."
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-card" data-name="Daniel Boone Skaggs Sellards Perry Clay Trail">
+            <img src="daniel_boone.jpeg" alt="Daniel Boone">
+            <h3>Daniel Boone: Frontier Partner</h3>
+            <div class="history-text">
+                <p>Daniel Boone utilized the "Warrior's Path" trails co-established by the early Perry and Clay hunting parties. He relied heavily on the Skaggs and Sellards families for survival during his early pushes into the Kentucky territory.</p>
+                <div class="quote-block">
+                    "Records place Boone at the Sellards settlement, where he wintered during his explorations. He relied on the local knowledge of our ancestors to map the westward expansion of the American frontier."
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-card" data-name="Chaney Abraham Halifax Revolution">
+            <h3>The Chaney Lineage: Abraham Chaney (b. 1758)</h3>
+            <p class="history-text">Abraham Chaney is the foundational pillar of the family’s service record. A veteran of the Revolutionary War from Halifax County, Virginia, his lineage is defined by a commitment to the defense of the Appalachian settlements. Following the war, he brought the Chaney name into the high country of West Virginia, bridging the gap between the birth of the nation and the westward push.</p>
+        </div>
+
+        <div class="profile-card" data-name="Vance Arminda Branchland East Lynn">
+            <h3>The Vance Lineage: Arminda Vance</h3>
+            <p class="history-text">The Vance lineage is rooted in the rugged hollows of Branchland and East Lynn, West Virginia. This family preserved the survivalist culture of the Appalachians for generations, navigating the complex geography of the Guyandotte River basin.</p>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function enterArchive() {
+        var pw = document.getElementById("passInput").value;
+        // Password is 'jesus' (case-insensitive)
+        if (pw.toLowerCase() === "jesus") {
+            document.getElementById("splash").style.display = "none";
+            document.getElementById("main-archive").style.display = "block";
+            // Resets body flex to allow normal scrolling
+            document.body.style.display = "block";
+        } else {
+            alert("Access Denied.");
+        }
+    }
+
+    function filterArchive() {
+        var input = document.getElementById('archiveSearch');
+        var filter = input.value.toUpperCase();
+        var grid = document.getElementById("profileGrid");
+        var cards = grid.getElementsByClassName('profile-card');
+
+        for (var i = 0; i < cards.length; i++) {
+            var nameAttr = cards[i].getAttribute('data-name');
+            if (nameAttr.toUpperCase().indexOf(filter) > -1) {
+                cards[i].style.display = "";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
